@@ -25,7 +25,6 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   max-width: 35.2rem;
-  padding-bottom: 4rem;
   width: 100%;
 `
 
@@ -62,7 +61,7 @@ export const Button = styled.button`
   justify-content: center;
   font: inherit;
   font-size: 3.5rem;
-  padding-top: 2rem;
+  padding: 2rem;
 `
 
 export const ArrowRight = styled(AiOutlineArrowRight)`
