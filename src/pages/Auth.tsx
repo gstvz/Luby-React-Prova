@@ -1,4 +1,5 @@
 import React from "react";
+import { Footer } from "../components/Footer/Footer";
 import * as styled from "./styles";
 
 export const Auth = () => {
@@ -14,6 +15,7 @@ export const Auth = () => {
         </styled.Container>
         <styled.Container>Forms</styled.Container>
       </styled.MainContent>
+      <Footer />
     </styled.Main>
   );
 };
