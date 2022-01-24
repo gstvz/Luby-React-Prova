@@ -1,20 +1,20 @@
 import styled from 'styled-components';
-
 export const Main = styled.main`  
   display: flex;
   flex-direction: column;
   height: 100vh;
   width: 100%;
 `
-
 export const MainContent = styled.section`
   display: flex;
   height: 100%;
 `
 
 export const Container = styled.div`
+  align-items: center;
   display: flex;
   flex-direction: column;
+  width: 100%;
 `
 
 export const Title = styled.h1`
@@ -26,7 +26,6 @@ export const Title = styled.h1`
   justify-content: center;
   margin-left: 15rem;
 `
-
 export const TopSpan = styled.span`
   color: #707070;
   font-size: 6.5rem;
@@ -34,7 +33,6 @@ export const TopSpan = styled.span`
   text-align: center;
   width: 100%;
 `
-
 export const CenterSpan = styled.span`
   background-color: #B5C401;
   border-radius: 100px;
@@ -48,7 +46,6 @@ export const CenterSpan = styled.span`
   max-width: 14.4rem;
   width: 100%;
 `
-
 export const BottomSpan = styled.span`
   color: #707070;
   display: flex;
