@@ -30,7 +30,7 @@ export const Form = styled.form`
 
 export const Label = styled.label`
   border-bottom: 2px solid #EBEBEB;
-  padding: 3rem;
+  padding: 2.5rem;
   width: 100%;
 `
 
