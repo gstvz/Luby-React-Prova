@@ -13,8 +13,10 @@ export const MainContent = styled.section`
 `
 
 export const Container = styled.div`
+  align-items: center;
   display: flex;
   flex-direction: column;
+  width: 100%;
 `
 
 export const Title = styled.h1`
