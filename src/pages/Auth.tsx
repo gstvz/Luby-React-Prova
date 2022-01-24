@@ -1,7 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
 import { Footer } from "../components/Footer/Footer";
-import { AuthForm } from "../components/Forms/AuthForm";
 import * as S from "./styles";
 
 export const Auth = () => {
@@ -15,11 +13,7 @@ export const Auth = () => {
             <S.BottomSpan>LOTTERY</S.BottomSpan>
           </S.Title>
         </S.Container>
-        <S.Container>
-          <Routes>
-            <Route path="/" element={<AuthForm />} />
-          </Routes>
-        </S.Container>
+        <S.Container>Forms</S.Container>
       </S.MainContent>
       <Footer />
     </S.Main>
