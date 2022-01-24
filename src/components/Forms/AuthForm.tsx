@@ -13,8 +13,13 @@ export const AuthForm = () => {
           <S.Input type="password" id="password" placeholder="Password" />
         </S.Label>
         <S.PasswordLink to="/">I forget my password</S.PasswordLink>
-        <S.Button>Log In <S.ArrowRight /></S.Button>
+        <S.Button>
+          Log In <S.ArrowRight />
+        </S.Button>
       </S.Form>
+      <S.SignUpLink to="/">
+        Sign Up <S.ArrowRight />
+      </S.SignUpLink>
     </S.Container>
   );
 };

@@ -8,7 +8,7 @@ export const Container = styled.div`
   flex-direction: column;  
   font-style: italic;
   height: 100%;
-  justify-content: center;  
+  justify-content: center;
   width: 35.2rem;
 `
 
@@ -47,7 +47,7 @@ export const Input = styled.input`
 export const PasswordLink = styled(Link)`
   color: #C1C1C1;
   font-size: 1.7rem;
-  padding: 2rem;
+  padding: 4rem;
   text-decoration: none;
   text-align: right;
 `
@@ -67,4 +67,15 @@ export const ArrowRight = styled(AiOutlineArrowRight)`
   height: 2.4rem;  
   margin-left: 1rem;
   width: 2.4rem;
+`
+
+export const SignUpLink = styled(Link)`
+  color: #707070;
+  display: flex;
+  justify-content: center;
+  font: inherit;
+  font-size: 3.5rem;
+  padding: 3rem;
+  text-decoration: none;
+  text-align: right;
 `
