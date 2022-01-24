@@ -1,10 +1,10 @@
 import React from "react";
-import * as styled from "./styles";
+import * as S from "./styles";
 
 export const Footer = () => {
   return (
-    <styled.Footer>
-      <styled.FooterContent>Copyright 2020 Luby Software </styled.FooterContent>
-    </styled.Footer>
+    <S.Footer>
+      <S.FooterContent>Copyright 2020 Luby Software </S.FooterContent>
+    </S.Footer>
   );
 };

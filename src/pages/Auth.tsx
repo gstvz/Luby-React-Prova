@@ -1,21 +1,21 @@
 import React from "react";
 import { Footer } from "../components/Footer/Footer";
-import * as styled from "./styles";
+import * as S from "./styles";
 
 export const Auth = () => {
   return (
-    <styled.Main>
-      <styled.MainContent>
-        <styled.Container>
-          <styled.Title>
-            <styled.TopSpan>The Greatest App</styled.TopSpan>
-            <styled.CenterSpan>for</styled.CenterSpan>
-            <styled.BottomSpan>LOTTERY</styled.BottomSpan>
-          </styled.Title>
-        </styled.Container>
-        <styled.Container>Forms</styled.Container>
-      </styled.MainContent>
+    <S.Main>
+      <S.MainContent>
+        <S.Container>
+          <S.Title>
+            <S.TopSpan>The Greatest App</S.TopSpan>
+            <S.CenterSpan>for</S.CenterSpan>
+            <S.BottomSpan>LOTTERY</S.BottomSpan>
+          </S.Title>
+        </S.Container>
+        <S.Container>Forms</S.Container>
+      </S.MainContent>
       <Footer />
-    </styled.Main>
+    </S.Main>
   );
 };
