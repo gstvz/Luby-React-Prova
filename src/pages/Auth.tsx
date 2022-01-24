@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { Footer } from "../components/Footer/Footer";
 import { AuthForm } from "../components/Forms/AuthForm";
+import { RegisterForm } from "../components/Forms/RegisterForm";
 import { ResetForm } from "../components/Forms/ResetForm";
 import * as S from "./styles";
 
@@ -20,6 +21,7 @@ export const Auth = () => {
           <Routes>
             <Route path="/" element={<AuthForm />} />
             <Route path="/reset" element={<ResetForm />} />
+            <Route path="/register" element={<RegisterForm />} />
           </Routes>
         </S.Container>
       </S.MainContent>
