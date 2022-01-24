@@ -19,7 +19,7 @@ export const RegisterForm = () => {
           Register<S.ArrowRight />
         </S.Button>
       </S.Form>
-      <S.ActionLink to="/">
+      <S.ActionLink to="/auth">
         <S.ArrowLeft />Back
       </S.ActionLink>
     </S.Container>

@@ -12,12 +12,12 @@ export const AuthForm = () => {
         <S.Label htmlFor="password">
           <S.Input type="password" id="password" placeholder="Password" />
         </S.Label>
-        <S.PasswordLink to="/">I forget my password</S.PasswordLink>
+        <S.PasswordLink to="/reset">I forget my password</S.PasswordLink>
         <S.Button>
           Log In <S.ArrowRight />
         </S.Button>
       </S.Form>
-      <S.ActionLink to="/">
+      <S.ActionLink to="/register">
         Sign Up <S.ArrowRight />
       </S.ActionLink>
     </S.Container>

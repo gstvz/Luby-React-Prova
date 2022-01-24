@@ -19,7 +19,7 @@ export const Auth = () => {
         </S.Container>
         <S.Container>
           <Routes>
-            <Route path="/" element={<AuthForm />} />
+            <Route path="/auth" element={<AuthForm />} />
             <Route path="/reset" element={<ResetForm />} />
             <Route path="/register" element={<RegisterForm />} />
           </Routes>
