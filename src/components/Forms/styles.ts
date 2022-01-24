@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { AiOutlineArrowRight } from 'react-icons/ai';
+import { AiOutlineArrowRight, AiOutlineArrowLeft } from 'react-icons/ai';
 
 export const Container = styled.div`
   align-items: center;
@@ -47,7 +47,7 @@ export const Input = styled.input`
 export const PasswordLink = styled(Link)`
   color: #C1C1C1;
   font-size: 1.7rem;
-  padding: 4rem;
+  padding: 2rem 2rem 0 0;
   text-decoration: none;
   text-align: right;
 `
@@ -57,10 +57,12 @@ export const Button = styled.button`
   background: none;
   border: none;
   color: #B5C401;
+  cursor: pointer;
   display: flex;
   justify-content: center;
   font: inherit;
   font-size: 3.5rem;
+  padding-top: 2rem;
 `
 
 export const ArrowRight = styled(AiOutlineArrowRight)`
@@ -69,7 +71,14 @@ export const ArrowRight = styled(AiOutlineArrowRight)`
   width: 2.4rem;
 `
 
-export const SignUpLink = styled(Link)`
+export const ArrowLeft = styled(AiOutlineArrowLeft)`
+  height: 2.4rem;  
+  margin-right: 1rem;
+  width: 2.4rem;
+`
+
+export const ActionLink = styled(Link)`
+  align-items: center;
   color: #707070;
   display: flex;
   justify-content: center;

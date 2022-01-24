@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { Footer } from "../components/Footer/Footer";
 import { AuthForm } from "../components/Forms/AuthForm";
+import { ResetForm } from "../components/Forms/ResetForm";
 import * as S from "./styles";
 
 export const Auth = () => {
@@ -18,6 +19,7 @@ export const Auth = () => {
         <S.Container>
           <Routes>
             <Route path="/" element={<AuthForm />} />
+            <Route path="/reset" element={<ResetForm />} />
           </Routes>
         </S.Container>
       </S.MainContent>
