@@ -1,15 +1,14 @@
 import React from 'react';
 import { GlobalStyle } from './shared/styles/GlobalStyle';
-import { AuthPage } from './pages/AuthPage/AuthPage';
+import { HomePage } from './pages/HomePage/HomePage';
 import { BrowserRouter } from 'react-router-dom';
 import { Header } from './components/Header/Header';
 
 function App() {
   return (
     <BrowserRouter>
-      <Header />
       <GlobalStyle />
-      <AuthPage />
+      <HomePage />
     </BrowserRouter>
   );
 }
