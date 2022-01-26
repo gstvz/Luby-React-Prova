@@ -10,7 +10,7 @@ export const Footer = styled.footer`
 
 export const FooterContent = styled.span`
   align-items: center;
-  color: #707070;
   display: flex;
-  font-size: 1.5rem;  
+  font-size: 1.5rem;
+  font-weight: normal;
 `

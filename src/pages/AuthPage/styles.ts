@@ -27,7 +27,6 @@ export const Title = styled.h1`
   margin-left: 15rem;
 `
 export const TopSpan = styled.span`
-  color: #707070;
   font-size: 6.5rem;
   max-width: 24.4rem;
   text-align: center;
@@ -47,7 +46,6 @@ export const CenterSpan = styled.span`
   width: 100%;
 `
 export const BottomSpan = styled.span`
-  color: #707070;
   display: flex;
   font-size: 8.3rem;
   justify-content: center;

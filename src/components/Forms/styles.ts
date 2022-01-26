@@ -6,14 +6,12 @@ export const Container = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;  
-  font-style: italic;
   height: 100%;
   justify-content: center;
   width: 35.2rem;
 `
 
 export const FormTitle = styled.h2`
-  color: #707070;
   font-size: 3.5rem;
   margin-bottom: 3rem;
 `
@@ -39,7 +37,6 @@ export const Input = styled.input`
   color: #9D9D9D;
   font: inherit;
   font-size: 1.7rem;
-  font-weight: bold;
   width: 100%;
 `
 
@@ -47,7 +44,6 @@ export const PasswordLink = styled(Link)`
   color: #C1C1C1;
   font-size: 1.7rem;
   padding: 2rem 2rem 0 0;
-  text-decoration: none;
   text-align: right;
 `
 
@@ -56,7 +52,6 @@ export const Button = styled.button`
   background: none;
   border: none;
   color: #B5C401;
-  cursor: pointer;
   display: flex;
   justify-content: center;
   font: inherit;
@@ -78,7 +73,6 @@ export const ArrowLeft = styled(AiOutlineArrowLeft)`
 
 export const ActionLink = styled(Link)`
   align-items: center;
-  color: #707070;
   display: flex;
   justify-content: center;
   font: inherit;

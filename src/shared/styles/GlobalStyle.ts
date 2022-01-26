@@ -10,8 +10,24 @@ export const GlobalStyle = createGlobalStyle`
 
   html, body {
     background-color: #F7F7F7;
+    color: #707070;
     font-size: 62.5%;
     font-family: Helvetica, Arial, sans-serif;
+    font-style: italic;
+    font-weight: bold;
     min-height: 100vh;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button {
+    cursor: pointer;
+  }
+  
+  li {
+    list-style-type: none;
   }
 `;
