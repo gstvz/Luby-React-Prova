@@ -7,6 +7,7 @@ export const GameButton = styled.button`
   font-size: 1.4rem;
   font-style: inherit;
   font-weight: inherit;
+  margin-right: 2.5rem;
   max-width: 11rem;
   padding: 0.6rem;
 `
