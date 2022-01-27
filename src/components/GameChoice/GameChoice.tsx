@@ -1,5 +1,4 @@
 import React from 'react';
-import { GameButton } from '../GameButton/GameButton';
 import * as S from './styles';
 
 export const GameChoice = () => {
@@ -7,9 +6,9 @@ export const GameChoice = () => {
     <S.Container>
       <p>Choose a game</p>
       <S.Games>
-        <GameButton></GameButton>
-        <GameButton></GameButton>
-        <GameButton></GameButton>
+        <S.GameButton>Game</S.GameButton>
+        <S.GameButton>Game</S.GameButton>
+        <S.GameButton>Game</S.GameButton>
       </S.Games>
     </S.Container>
   );
