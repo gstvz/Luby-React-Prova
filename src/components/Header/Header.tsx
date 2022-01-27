@@ -10,7 +10,7 @@ export const Header = () => {
       </S.Logo>
       <S.Menu>
         <S.MenuItem>
-          <S.MenuItemLink to="/">Home</S.MenuItemLink>
+          <S.MenuItemLink to="/home">Home</S.MenuItemLink>
         </S.MenuItem>
         <S.MenuItem>
           <S.MenuItemLink to="/">Account</S.MenuItemLink>
