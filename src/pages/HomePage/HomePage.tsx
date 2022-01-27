@@ -1,6 +1,6 @@
 import React from 'react';
 import { Footer } from '../../components/Footer/Footer';
-import { GameButton } from '../../components/GameButton/GameButton';
+import { GameFilter } from '../../components/GameFilter/GameFilter';
 import { Header } from '../../components/Header/Header';
 import * as S from './styles';
 
@@ -14,9 +14,9 @@ export const HomePage = () => {
             <S.RecentGamesFilter>
               <S.RecentGamesTitle>RECENT GAMES</S.RecentGamesTitle>
               <S.RecentGamesFilterText>Filters</S.RecentGamesFilterText>
-              <GameButton />
-              <GameButton />
-              <GameButton />
+              <GameFilter />
+              <GameFilter />
+              <GameFilter />
             </S.RecentGamesFilter>
             <S.NewBet to="/">
               New Bet
