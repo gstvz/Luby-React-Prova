@@ -1,14 +1,32 @@
-import React from 'react';
-import * as S from './styles';
+import React from "react";
+import * as S from "./styles";
 
-export const GameChoice = () => {
+type GameData = {
+  id: number;
+  type: string;
+  description: string;
+  range: number;
+  price: number;
+  "max-number": number;
+  color: string;
+};
+
+type GameChoiceProps = {
+  games: GameData[];
+};
+
+export const GameChoice = (props: GameChoiceProps) => {
   return (
     <S.Container>
       <p>Choose a game</p>
       <S.Games>
-        <S.GameButton>Game</S.GameButton>
-        <S.GameButton>Game</S.GameButton>
-        <S.GameButton>Game</S.GameButton>
+        {props.games.map((game) => {
+          return (
+            <S.GameButton key={game.id} color={game.color}>
+              {game.type}
+            </S.GameButton>
+          );
+        })}
       </S.Games>
     </S.Container>
   );
