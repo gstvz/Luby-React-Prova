@@ -1,4 +1,4 @@
-import { api } from "../api/api";
+import { api } from "../../api/api";
 import { gamesActions } from './games';
 
 export const getGamesData = () => {
