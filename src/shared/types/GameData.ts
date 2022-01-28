@@ -4,6 +4,6 @@ export type GameData = {
   description: string;
   range: number;
   price: number;
-  "max-number": number;
+  max_number: number;
   color: string;
 };

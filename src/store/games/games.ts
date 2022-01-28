@@ -17,7 +17,7 @@ const initialState: GamesState = {
     description: '',
     range: 0,
     price: 0,
-    "max-number": 0,
+    max_number: 0,
     color: '',
   },
   selectedNumbers: []
