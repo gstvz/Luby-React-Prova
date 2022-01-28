@@ -1,28 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { GamesState } from '../../shared/types/index';
 import { getGamesData } from "../../store/gamesThunk";
 import * as S from "./styles";
 
-type GameData = {
-  id: number;
-  type: string;
-  description: string;
-  range: number;
-  price: number;
-  "max-number": number;
-  color: string;
-};
-
-type gamesState = {
-  games: {
-    min_cart_value: 0;
-    types: GameData[];
-  };
-};
-
 export const GameFilter = () => {
   const dispatch = useDispatch();
-  const games = useSelector((state: gamesState) => state.games.types);
+  const games = useSelector((state: GamesState) => state.games.types);
 
   useEffect(() => {
     dispatch(getGamesData());
