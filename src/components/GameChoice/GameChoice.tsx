@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { GameData, GamesState } from "../../shared/types/index";
+import { GameButton } from "../GameButton/GameButton";
 import * as S from "./styles";
 
 type GameChoiceProps = {
@@ -17,15 +18,15 @@ export const GameChoice = (props: GameChoiceProps) => {
       <S.Games>
         {props.games.map((game) => {
           return (
-            <S.GameButton
+            <GameButton
               key={game.id}
               color={game.color}
               value={game.id}
-              onClick={props.handleGameButtonClick}
+              handleGameButtonClick={props.handleGameButtonClick}
               isActive={activeGame.id === game.id}
             >
               {game.type}
-            </S.GameButton>
+            </GameButton>
           );
         })}
       </S.Games>

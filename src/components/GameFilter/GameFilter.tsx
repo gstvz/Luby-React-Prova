@@ -1,12 +1,26 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { GamesState } from '../../shared/types/index';
+import { GamesState } from "../../shared/types/index";
+import { gamesActions } from '../../store/games';
 import { getGamesData } from "../../store/gamesThunk";
-import * as S from "./styles";
+import { GameButton } from "../GameButton/GameButton";
 
 export const GameFilter = () => {
   const dispatch = useDispatch();
   const games = useSelector((state: GamesState) => state.games.types);
+  const activeGame = useSelector((state: GamesState) => state.games.activeGame);
+
+  const handleGameButtonClick = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    const newActiveGame = games.find(
+      (game) => game.id === +(event.target as HTMLButtonElement).value
+    );
+
+    dispatch(gamesActions.setActiveGame({
+      activeGame: newActiveGame
+    }));
+  };
 
   useEffect(() => {
     dispatch(getGamesData());
@@ -16,9 +30,15 @@ export const GameFilter = () => {
     <>
       {games.map((game) => {
         return (
-          <S.GameButton key={game.id} color={game.color}>
+          <GameButton
+            key={game.id}
+            color={game.color}
+            value={game.id}
+            handleGameButtonClick={handleGameButtonClick}
+            isActive={activeGame.id === game.id}
+          >
             {game.type}
-          </S.GameButton>
+          </GameButton>
         );
       })}
     </>
