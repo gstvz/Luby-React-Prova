@@ -47,7 +47,7 @@ export const NewBet = () => {
 
       setSelectedNumberButtons(filteredSelectedNumbers);
     } else {
-      if(selectedNumbers.length === activeGame.max_number) {
+      if (selectedNumbers.length === activeGame.max_number) {
         alert(`Você já escolheu ${activeGame.max_number} números!`);
         return;
       } else {
@@ -73,7 +73,10 @@ export const NewBet = () => {
         selectedNumbers={selectedNumbers}
         handleNumberButtonClick={handleNumberButtonClick}
       />
-      <GameActions />
+      <GameActions
+        selectedNumbers={selectedNumbers}
+        setSelectedNumberButtons={setSelectedNumberButtons}
+      />
     </S.NewBet>
   );
 };
