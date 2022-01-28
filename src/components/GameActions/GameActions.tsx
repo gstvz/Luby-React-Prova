@@ -46,11 +46,19 @@ export const GameActions = (props: GameActionsProps) => {
     );
   };
 
+  const handleClearGame = () => {
+    props.setSelectedNumberButtons([]);
+
+    dispatch(gamesActions.setSelectedNumbers({
+      selectedNumbers: []
+    }));
+  }
+
   return (
     <S.Container>
       <S.ButtonsContainer>
         <S.GameButton onClick={handleCompleteGame}>Complete game</S.GameButton>
-        <S.GameButton>Clear game</S.GameButton>
+        <S.GameButton onClick={handleClearGame}>Clear game</S.GameButton>
       </S.ButtonsContainer>
       <S.CartButton>
         <S.CartIcon />
