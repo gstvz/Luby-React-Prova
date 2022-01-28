@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+type NumberButtonProps = {
+  isSelected: boolean
+}
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -26,8 +30,8 @@ export const ListItem = styled.li`
   margin-right: 1.5rem;
 `
 
-export const NumberButton = styled.button`
-  background-color: #ADC0C4;
+export const NumberButton = styled.button<NumberButtonProps>`
+  background-color: ${(props) => props.isSelected ? props.color : '#ADC0C4'};
   border: none;
   border-radius: 50%;
   color: #FFFFFF;
