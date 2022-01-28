@@ -29,6 +29,9 @@ const gamesSlice = createSlice({
       state.min_cart_value = action.payload.min_cart_value;
       state.types = action.payload.types;
       state.activeGame = action.payload.types[0];
+    },
+    setActiveGame(state, action) {
+      state.activeGame = action.payload.activeGame;
     }
   },
 });

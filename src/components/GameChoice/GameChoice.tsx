@@ -1,18 +1,10 @@
 import React from "react";
+import { GameData } from "../../shared/types/index";
 import * as S from "./styles";
-
-type GameData = {
-  id: number;
-  type: string;
-  description: string;
-  range: number;
-  price: number;
-  "max-number": number;
-  color: string;
-};
 
 type GameChoiceProps = {
   games: GameData[];
+  handleGameButtonClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 export const GameChoice = (props: GameChoiceProps) => {
@@ -22,7 +14,12 @@ export const GameChoice = (props: GameChoiceProps) => {
       <S.Games>
         {props.games.map((game) => {
           return (
-            <S.GameButton key={game.id} color={game.color}>
+            <S.GameButton
+              key={game.id}
+              color={game.color}
+              value={game.id}
+              onClick={props.handleGameButtonClick}
+            >
               {game.type}
             </S.GameButton>
           );
