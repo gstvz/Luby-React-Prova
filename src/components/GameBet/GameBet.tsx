@@ -1,36 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { GamesState } from "../../shared/types/index";
 import * as S from "./styles";
 
 type GameBetProps = {
   description: string;
   range: number;
+  selectedNumbers: string[];
+  handleNumberButtonClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 export const GameBet = (props: GameBetProps) => {
   const [numberButtons, setNumberButtons] = useState<number[]>([]);
-  const [selectedNumbers, setSelectedNumbers] = useState<string[]>([]);
   const activeGame = useSelector((state: GamesState) => state.games.activeGame);
-
-  const handleNumberButtonClick = (
-    event: React.MouseEvent<HTMLButtonElement>
-  ) => {
-    const newNumber = (event.target as HTMLButtonElement).value;
-
-    if(selectedNumbers.includes(newNumber)) {
-      const filteredSelectedNumbers = selectedNumbers.filter((number) => {
-        return number !== newNumber;
-      });
-
-      setSelectedNumbers(filteredSelectedNumbers);
-    } else {
-      setSelectedNumbers((prevSelectedNumbers) => [
-        ...prevSelectedNumbers,
-        newNumber,
-      ]);
-    };
-  };
 
   useEffect(() => {
     const createNumberButtonsArray = () => {
@@ -62,9 +44,9 @@ export const GameBet = (props: GameBetProps) => {
             <S.ListItem key={number}>
               <S.NumberButton
                 value={formattedNumber}
-                onClick={handleNumberButtonClick}
+                onClick={props.handleNumberButtonClick}
                 color={activeGame.color}
-                isSelected={selectedNumbers.includes(formattedNumber) ? true : false}
+                isSelected={props.selectedNumbers.includes(formattedNumber) ? true : false}
               >
                 {formattedNumber}
               </S.NumberButton>

@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { GamesState } from "../../shared/types/index";
-import { gamesActions } from '../../store/games';
-import { getGamesData } from "../../store/gamesThunk";
+import { gamesActions } from '../../store/games/games';
+import { getGamesData } from "../../store/games/gamesThunk";
 import { GameButton } from "../GameButton/GameButton";
 
 export const GameFilter = () => {
@@ -19,7 +19,7 @@ export const GameFilter = () => {
 
     dispatch(gamesActions.setActiveGame({
       activeGame: newActiveGame
-    }));
+    }));    
   };
 
   useEffect(() => {
