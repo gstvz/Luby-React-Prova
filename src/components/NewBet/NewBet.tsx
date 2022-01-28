@@ -14,6 +14,10 @@ export const NewBet = () => {
   const games = useSelector((state: GamesState) => state.games.types);
   const activeGame = useSelector((state: GamesState) => state.games.activeGame);
 
+  useEffect(() => {
+    dispatch(getGamesData());
+  }, [dispatch]);
+
   const handleGameButtonClick = (
     event: React.MouseEvent<HTMLButtonElement>
   ) => {
@@ -43,18 +47,19 @@ export const NewBet = () => {
 
       setSelectedNumberButtons(filteredSelectedNumbers);
     } else {
-      setSelectedNumberButtons((prevSelectedNumbers) => [
-        ...prevSelectedNumbers,
-        newNumber,
-      ]);
+      if(selectedNumbers.length === activeGame.max_number) {
+        alert(`Você já escolheu ${activeGame.max_number} números!`);
+        return;
+      } else {
+        setSelectedNumberButtons((prevSelectedNumbers) => [
+          ...prevSelectedNumbers,
+          newNumber,
+        ]);
+      }
     }
 
     dispatch(gamesActions.setSelectedNumbers({ selectedNumbers }));
   };
-
-  useEffect(() => {
-    dispatch(getGamesData());
-  }, [dispatch]);
 
   return (
     <S.NewBet>
