@@ -11,7 +11,7 @@ export const getGamesData = () => {
     const gamesData = await getData();  
     dispatch(gamesActions.getGames({
       min_cart_value: gamesData.data.min_cart_value,   
-      types: gamesData.data.types
+      types: gamesData.data.types   
     }));
   }
 }
