@@ -2,22 +2,25 @@ import { createSlice } from "@reduxjs/toolkit";
 import { UserData } from '../../shared/types/index';
 
 const initialState: UserData = {
-  email: '',
-  password: '',
-  isAuthenticated: false
+  isAuthenticated: false,
+  user: {
+    id: 0,
+    email: '',
+    token: '',
+  }
 }
 
 const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    login(state) {
+    loginUser(state, action) {
       state.isAuthenticated = true;
-    },
-    logout(state) {
-      state.isAuthenticated = false;
+      state.user.id = action.payload.id;
+      state.user.email = action.payload.email;
+      state.user.token = action.payload.token;
     }
-  }
+  },
 });
 
 export const userActions = userSlice.actions;
