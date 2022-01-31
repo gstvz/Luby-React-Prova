@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getGamesData } from "../../store/games/gamesThunk";
+import { getGamesData } from "../../store/games/thunk";
 import { gamesActions } from "../../store/games/games";
 import { GamesState } from "../../shared/types/index";
 import { GameActions } from "../GameActions/GameActions";

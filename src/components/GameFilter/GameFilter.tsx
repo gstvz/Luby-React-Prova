@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { GamesState } from "../../shared/types/index";
 import { gamesActions } from '../../store/games/games';
-import { getGamesData } from "../../store/games/gamesThunk";
+import { getGamesData } from "../../store/games/thunk";
 import { GameButton } from "../GameButton/GameButton";
 
 export const GameFilter = () => {
