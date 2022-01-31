@@ -16,7 +16,7 @@ export const HomePage = () => {
               <S.RecentGamesFilterText>Filters</S.RecentGamesFilterText>
               <GameFilter />
             </S.RecentGamesFilter>
-            <S.NewBet to="/bet">
+            <S.NewBet to="bet">
               New Bet
               <S.ArrowRight />
             </S.NewBet>

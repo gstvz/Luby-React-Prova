@@ -19,9 +19,9 @@ export const AuthPage = () => {
         </S.Container>
         <S.Container>
           <Routes>
-            <Route path="/auth" element={<AuthForm />} />
-            <Route path="/reset" element={<ResetForm />} />
-            <Route path="/register" element={<RegisterForm />} />
+            <Route path="/" element={<AuthForm />} />
+            <Route path="reset" element={<ResetForm />} />
+            <Route path="register" element={<RegisterForm />} />
           </Routes>
         </S.Container>
       </S.MainContent>
