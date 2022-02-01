@@ -16,3 +16,9 @@ export type UserData = {
 export type UserState = {
   user: UserData;
 };
+
+export type NewUser = {
+  email?: string;
+  password?: string;
+  name?: string;
+}
