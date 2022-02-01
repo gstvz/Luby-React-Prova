@@ -4,9 +4,10 @@ import { UserData } from '../../shared/types/index';
 const initialState: UserData = {
   isAuthenticated: false,
   user: {
-    id: 0,
-    email: '',
-    token: '',
+    id: null,
+    email: null,
+    token: null,
+    expires_at: null
   }
 }
 
@@ -14,11 +15,35 @@ const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
+    getUser(state) {
+      const isLoggedIn: string | null = localStorage.getItem('token');
+
+      if(isLoggedIn) {
+        state.isAuthenticated = true;
+      };
+    },
     loginUser(state, action) {
+      const user = {
+        id: action.payload.id,
+        email: action.payload.email,
+        token: action.payload.token,
+        expires_at: action.payload.expires_at
+      };     
+
       state.isAuthenticated = true;
-      state.user.id = action.payload.id;
-      state.user.email = action.payload.email;
-      state.user.token = action.payload.token;
+      state.user = user;
+      localStorage.setItem('user', JSON.stringify(user));
+    },
+    logoutUser(state) {
+      state.isAuthenticated = false;
+      state.user = {
+        id: null,
+        email: null,
+        token: null,
+        expires_at: null
+      };
+
+      localStorage.clear();
     }
   },
 });
