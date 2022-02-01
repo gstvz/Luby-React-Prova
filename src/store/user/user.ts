@@ -19,11 +19,11 @@ const userSlice = createSlice({
       alert("Usuário cadastrado!");
     },
     getUser(state) {
-      const isLoggedIn: string | null = localStorage.getItem('token');
+      const isLoggedIn: string | null = localStorage.getItem('user');
 
       if(isLoggedIn) {
         state.isAuthenticated = true;
-      };
+      };      
     },
     loginUser(state, action) {
       const user = {
