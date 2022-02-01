@@ -54,12 +54,12 @@ export const AuthForm = () => {
             required
           />
         </S.Label>
-        <S.PasswordLink to="/reset">I forgot my password</S.PasswordLink>
+        <S.PasswordLink to="reset">I forgot my password</S.PasswordLink>
         <S.Button>
           Log In <S.ArrowRight />
         </S.Button>
       </S.Form>
-      <S.ActionLink to="/register">
+      <S.ActionLink to="register">
         Sign Up <S.ArrowRight />
       </S.ActionLink>
     </S.Container>
