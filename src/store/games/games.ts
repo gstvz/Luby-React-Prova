@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { GameData, Bet } from '../../shared/types/index';
+import { GameData, Bet } from "../../shared/types/index";
 
 type GamesState = {
   min_cart_value: number;
@@ -15,16 +15,16 @@ const initialState: GamesState = {
   types: [],
   activeGame: {
     id: 0,
-    type: '',
-    description: '',
+    type: "",
+    description: "",
     range: 0,
     price: 0,
     max_number: 0,
-    color: '',
+    color: "",
   },
   selectedNumbers: [],
   bets: [],
-  cartTotal: 0
+  cartTotal: 0,
 };
 
 const gamesSlice = createSlice({
@@ -46,15 +46,17 @@ const gamesSlice = createSlice({
       state.bets = [...state.bets, action.payload];
     },
     calculateCartTotal(state) {
-      const cartTotal = state.bets.map(game => {
-        const gamePrice = state.types.find(type => type.id === game.gameId)
-        return gamePrice!.price
-      }).reduce((acc, cur) => acc + cur);
+      const cartTotal = state.bets
+        .map((game) => {
+          const gamePrice = state.types.find((type) => type.id === game.gameId);
+          return gamePrice!.price;
+        })
+        .reduce((acc, cur) => acc + cur, 0);
       state.cartTotal = cartTotal;
     },
     removeFromCart(state, action) {
-      state.bets = state.bets.filter(bet => bet.gameId !== action.payload);
-    }
+      state.bets = state.bets.filter((bet) => bet.gameId !== action.payload);
+    },
   },
 });
 

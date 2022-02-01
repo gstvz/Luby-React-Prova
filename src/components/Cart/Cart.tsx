@@ -6,13 +6,14 @@ import * as S from "./styles";
 
 export const Cart = () => {
   const dispatch = useDispatch();
-  const games = useSelector((state: GamesState) => state.games.types)
+  const games = useSelector((state: GamesState) => state.games.types);
   const cartGames = useSelector((state: GamesState) => state.games.bets);
   const cartTotal = useSelector((state: GamesState) => state.games.cartTotal);
 
   const handleDeleteGame = (id: number) => {
     dispatch(gamesActions.removeFromCart(id));
-  }
+    dispatch(gamesActions.calculateCartTotal());
+  };
 
   return (
     <S.Aside>
@@ -21,27 +22,38 @@ export const Cart = () => {
           <strong>CART</strong>
         </S.CartTitle>
         <S.Games>
-          {cartGames.map(game => {
-            const gameType = games.find(type => type.id === game.gameId);
+          {cartGames.map((game) => {
+            const gameType = games.find((type) => type.id === game.gameId);
             return (
               <S.Game key={game.gameId} id={game.gameId.toString()}>
                 <S.DeleteGame onClick={() => handleDeleteGame(game.gameId)}>
                   <S.Trash />
                 </S.DeleteGame>
                 <S.GameInfo color={gameType!.color}>
-                  <S.GameNumbers>{game.numbers.join(', ')}</S.GameNumbers>
+                  <S.GameNumbers>{game.numbers.join(", ")}</S.GameNumbers>
                   <S.GameData color={gameType!.color}>
                     <strong>{gameType!.type}</strong>
-                    <span>R${gameType!.price}</span>
+                    <span>
+                      {gameType!.price.toLocaleString("pt-br", {
+                        style: "currency",
+                        currency: "BRL",
+                      })}
+                    </span>
                   </S.GameData>
                 </S.GameInfo>
               </S.Game>
-            )
-          })}          
+            );
+          })}
         </S.Games>
         <S.CartTotal>
           <strong>CART </strong>
-          <span>TOTAL: R${cartTotal}</span>
+          <span>
+            TOTAL:{" "}
+            {cartTotal.toLocaleString("pt-br", {
+              style: "currency",
+              currency: "BRL",
+            })}
+          </span>
         </S.CartTotal>
       </S.Cart>
       <S.SaveButton>
