@@ -1,5 +1,5 @@
 import { api } from "../../api/api";
-import { LoginData } from "../../shared/types";
+import { LoginData, NewUser } from "../../shared/types";
 import { userActions } from "./user";
 
 export const postUserData = (loginData: LoginData) => {
@@ -14,9 +14,22 @@ export const postUserData = (loginData: LoginData) => {
       };
     };
 
-    const userData = await postData();
-    const expirationTime = new Date(userData.expires_at).getTime();
+    const userData = await postData();    
     dispatch(userActions.loginUser(userData));
-    setTimeout(() => {dispatch(userActions.logoutUser())}, expirationTime);
+    // const expirationTime = new Date(userData.expires_at).getTime();
+    // setTimeout(() => {dispatch(userActions.logoutUser())}, expirationTime);
   }
-}
+};
+
+export const postRegisterUser = (newUser: NewUser) => {
+  return async (dispatch: Function) => {
+    const postData = async () => {
+      const response = await api.post('user/create', newUser);
+      if(response.status === 200) {
+        dispatch(userActions.registerUser());        
+      }
+    }
+
+    postData();
+  }
+};
