@@ -10,9 +10,15 @@ export type GameData = {
 
 export type GamesState = {
   games: {
-    min_cart_value: 0;
+    min_cart_value: number;
     types: GameData[];
     activeGame: GameData;
     selectedNumbers: string[];
+    bets: Bet[];
   };
 };
+
+export type Bet = {
+  gameId: number,
+  numbers: string[]
+}
