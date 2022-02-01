@@ -77,7 +77,7 @@ export const GameActions = (props: GameActionsProps) => {
       });
 
     const newBet = {
-      gameId: activeGame.id,
+      game_id: activeGame.id,
       numbers: sortedNumbers,
     };
 

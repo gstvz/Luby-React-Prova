@@ -23,10 +23,10 @@ export const Cart = () => {
         </S.CartTitle>
         <S.Games>
           {cartGames.map((game) => {
-            const gameType = games.find((type) => type.id === game.gameId);
+            const gameType = games.find((type) => type.id === game.game_id);
             return (
-              <S.Game key={game.gameId} id={game.gameId.toString()}>
-                <S.DeleteGame onClick={() => handleDeleteGame(game.gameId)}>
+              <S.Game key={game.game_id} id={game.game_id.toString()}>
+                <S.DeleteGame onClick={() => handleDeleteGame(game.game_id)}>
                   <S.Trash />
                 </S.DeleteGame>
                 <S.GameInfo color={gameType!.color}>

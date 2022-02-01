@@ -20,6 +20,6 @@ export type GamesState = {
 };
 
 export type Bet = {
-  gameId: number,
+  game_id: number,
   numbers: string[]
 }

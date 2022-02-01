@@ -48,14 +48,14 @@ const gamesSlice = createSlice({
     calculateCartTotal(state) {
       const cartTotal = state.bets
         .map((game) => {
-          const gamePrice = state.types.find((type) => type.id === game.gameId);
+          const gamePrice = state.types.find((type) => type.id === game.game_id);
           return gamePrice!.price;
         })
         .reduce((acc, cur) => acc + cur, 0);
       state.cartTotal = cartTotal;
     },
     removeFromCart(state, action) {
-      state.bets = state.bets.filter((bet) => bet.gameId !== action.payload);
+      state.bets = state.bets.filter((bet) => bet.game_id !== action.payload);
     },
   },
 });
