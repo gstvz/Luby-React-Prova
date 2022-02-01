@@ -15,6 +15,7 @@ export type GamesState = {
     activeGame: GameData;
     selectedNumbers: string[];
     bets: Bet[];
+    cartTotal: number;
   };
 };
 

@@ -7,6 +7,7 @@ type GamesState = {
   activeGame: GameData;
   selectedNumbers: string[];
   bets: Bet[];
+  cartTotal: number;
 };
 
 const initialState: GamesState = {
@@ -22,7 +23,8 @@ const initialState: GamesState = {
     color: '',
   },
   selectedNumbers: [],
-  bets: []
+  bets: [],
+  cartTotal: 0
 };
 
 const gamesSlice = createSlice({
@@ -42,7 +44,13 @@ const gamesSlice = createSlice({
     },
     addGameToCart(state, action) {
       state.bets = [...state.bets, action.payload];
-      console.log(state.bets);
+    },
+    calculateCartTotal(state) {
+      const cartTotal = state.bets.map(game => {
+        const gamePrice = state.types.find(type => type.id === game.gameId)
+        return gamePrice!.price
+      }).reduce((acc, cur) => acc + cur);
+      state.cartTotal = cartTotal;
     }
   },
 });

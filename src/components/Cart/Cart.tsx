@@ -1,7 +1,13 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { GamesState } from "../../shared/types";
 import * as S from "./styles";
 
 export const Cart = () => {
+  const games = useSelector((state: GamesState) => state.games.types)
+  const cartGames = useSelector((state: GamesState) => state.games.bets);
+  const cartTotal = useSelector((state: GamesState) => state.games.cartTotal);
+
   return (
     <S.Aside>
       <S.Cart>
@@ -9,58 +15,27 @@ export const Cart = () => {
           <strong>CART</strong>
         </S.CartTitle>
         <S.Games>
-          <S.Game>
-            <S.DeleteGame>
-              <S.Trash />
-            </S.DeleteGame>
-            <S.GameInfo>
-              <S.GameNumbers>01, 02,04,05,06,07,09,15,17,20,21, 22,23,24,25</S.GameNumbers>
-              <S.GameData>
-                <strong>Lotofácil</strong>
-                <span>R$ 2,50</span>
-              </S.GameData>
-            </S.GameInfo>
-          </S.Game>
-          <S.Game>
-            <S.DeleteGame>
-              <S.Trash />
-            </S.DeleteGame>
-            <S.GameInfo>
-              <S.GameNumbers>01, 02,04,05,06,07,09,15,17,20,21, 22,23,24,25</S.GameNumbers>
-              <S.GameData>
-                <strong>Lotofácil</strong>
-                <span>R$ 2,50</span>
-              </S.GameData>
-            </S.GameInfo>
-          </S.Game>
-          <S.Game>
-            <S.DeleteGame>
-              <S.Trash />
-            </S.DeleteGame>
-            <S.GameInfo>
-              <S.GameNumbers>01, 02,04,05,06,07,09,15,17,20,21, 22,23,24,25</S.GameNumbers>
-              <S.GameData>
-                <strong>Lotofácil</strong>
-                <span>R$ 2,50</span>
-              </S.GameData>
-            </S.GameInfo>
-          </S.Game>
-          <S.Game>
-            <S.DeleteGame>
-              <S.Trash />
-            </S.DeleteGame>
-            <S.GameInfo>
-              <S.GameNumbers>01, 02,04,05,06,07,09,15,17,20,21, 22,23,24,25</S.GameNumbers>
-              <S.GameData>
-                <strong>Lotofácil</strong>
-                <span>R$ 2,50</span>
-              </S.GameData>
-            </S.GameInfo>
-          </S.Game>
+          {cartGames.map(game => {
+            const gameType = games.find(type => type.id === game.gameId);
+            return (
+              <S.Game key={game.gameId}>
+                <S.DeleteGame>
+                  <S.Trash />
+                </S.DeleteGame>
+                <S.GameInfo color={gameType!.color}>
+                  <S.GameNumbers>{game.numbers.join(', ')}</S.GameNumbers>
+                  <S.GameData color={gameType!.color}>
+                    <strong>{gameType!.type}</strong>
+                    <span>R${gameType!.price}</span>
+                  </S.GameData>
+                </S.GameInfo>
+              </S.Game>
+            )
+          })}          
         </S.Games>
         <S.CartTotal>
           <strong>CART </strong>
-          <span>TOTAL: R$2,50</span>
+          <span>TOTAL: R${cartTotal}</span>
         </S.CartTotal>
       </S.Cart>
       <S.SaveButton>

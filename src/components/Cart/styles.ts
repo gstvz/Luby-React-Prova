@@ -2,6 +2,10 @@ import styled from "styled-components";
 import { AiOutlineArrowRight } from 'react-icons/ai';
 import { BsTrash } from 'react-icons/bs';
 
+type ActiveGame = {
+  color: string;
+}
+
 export const Aside = styled.aside`
   background-color: #FFFFFF;
   border-radius: 10px;
@@ -66,8 +70,8 @@ export const Trash = styled(BsTrash)`
   width: 2rem;
 `
 
-export const GameInfo = styled.div`
-  border-left: 4px solid #7F3992;
+export const GameInfo = styled.div<ActiveGame>`
+  border-left: 4px solid ${props => props.color};
   border-radius: 4px;
   margin-bottom: 0.6rem;
   margin-left: 1.2rem;
@@ -81,8 +85,8 @@ export const GameNumbers = styled.p`
   width: 25rem;
 `
 
-export const GameData = styled.p`
-  color: #7F3992;
+export const GameData = styled.p<ActiveGame>`
+  color: ${props => props.color};
   font-size: 1.6rem;
   margin-left: 1.2rem;
 
