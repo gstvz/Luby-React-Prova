@@ -35,6 +35,7 @@ export const GameActions = (props: GameActionsProps) => {
 
       if (
         !randomNumbers.includes(formattedNumber) &&
+        !props.selectedNumbers.includes(formattedNumber) &&
         formattedNumber !== "00"
       ) {
         randomNumbers.push(formattedNumber);
