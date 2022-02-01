@@ -1,3 +1,2 @@
-export * from './GameData';
-export * from './GamesState';
-export * from './UserData';
+export * from './games';
+export * from './user';
