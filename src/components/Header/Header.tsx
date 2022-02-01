@@ -1,7 +1,18 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { userActions } from '../../store/user/user';
 import * as S from './styles';
 
 export const Header = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleLogOut = () => {
+    dispatch(userActions.logoutUser());
+    navigate("/");
+  }
+
   return <S.Container>
     <S.Nav>
       <S.Logo>
@@ -16,7 +27,7 @@ export const Header = () => {
           <S.MenuItemLink to="/">Account</S.MenuItemLink>
         </S.MenuItem>
         <S.MenuItem>
-          <S.MenuItemLink to="/">
+          <S.MenuItemLink to="/" onClick={handleLogOut}>
             Log Out
             <S.ArrowRight />
           </S.MenuItemLink>
