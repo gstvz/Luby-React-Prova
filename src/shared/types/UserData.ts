@@ -6,9 +6,10 @@ export type LoginData = {
 export type UserData = {
   isAuthenticated: boolean;
   user: {
-    id: number,
-    email: string,
-    token: string;
+    id: number | null,
+    email: string | null,
+    token: string | null,
+    expires_at: string | null
   }
 };
 
