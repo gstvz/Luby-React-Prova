@@ -1,11 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { GameData } from '../../shared/types/index';
+import { GameData, Bet } from '../../shared/types/index';
 
 type GamesState = {
   min_cart_value: number;
   types: GameData[];
   activeGame: GameData;
   selectedNumbers: string[];
+  bets: Bet[];
 };
 
 const initialState: GamesState = {
@@ -20,7 +21,8 @@ const initialState: GamesState = {
     max_number: 0,
     color: '',
   },
-  selectedNumbers: []
+  selectedNumbers: [],
+  bets: []
 };
 
 const gamesSlice = createSlice({
@@ -37,6 +39,10 @@ const gamesSlice = createSlice({
     },
     setSelectedNumbers(state, action) {
       state.selectedNumbers = action.payload.selectedNumbers;
+    },
+    addGameToCart(state, action) {
+      state.bets = [...state.bets, action.payload];
+      console.log(state.bets);
     }
   },
 });

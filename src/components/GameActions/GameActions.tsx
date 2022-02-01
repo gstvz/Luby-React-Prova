@@ -13,6 +13,11 @@ export const GameActions = (props: GameActionsProps) => {
   const dispatch = useDispatch();
   const activeGame = useSelector((state: GamesState) => state.games.activeGame);
 
+  const formatNumber = (number: number) => {
+    const formattedNumber = number < 10 ? `0${number}` : `${number}`;
+    return formattedNumber;
+  }
+
   const handleCompleteGame = () => {
     const numbersLeft = activeGame.max_number - props.selectedNumbers.length;
 
@@ -26,8 +31,7 @@ export const GameActions = (props: GameActionsProps) => {
     while(randomNumbers.length !== numbersLeft) {
       let randomNumber = Math.floor(Math.random() * activeGame.range);
 
-      const formattedNumber =
-        randomNumber < 10 ? `0${randomNumber}` : `${randomNumber}`;
+      const formattedNumber = formatNumber(randomNumber);
 
       if (!props.selectedNumbers.includes(formattedNumber)) {
         randomNumbers.push(formattedNumber);
@@ -54,13 +58,31 @@ export const GameActions = (props: GameActionsProps) => {
     }));
   }
 
+  const handleAddToCart = () => {    
+    const sortedNumbers = props.selectedNumbers.map((number) => {
+      return parseInt(number);
+    }).sort((a, b) => {
+      return a - b;
+    }).map((number) => {
+      const formattedNumber = formatNumber(number);
+      return formattedNumber;
+    });
+
+    const newBet = {
+      gameId: activeGame.id,
+      numbers: sortedNumbers
+    };
+
+    dispatch(gamesActions.addGameToCart(newBet));
+  }
+
   return (
     <S.Container>
       <S.ButtonsContainer>
         <S.GameButton onClick={handleCompleteGame}>Complete game</S.GameButton>
         <S.GameButton onClick={handleClearGame}>Clear game</S.GameButton>
       </S.ButtonsContainer>
-      <S.CartButton>
+      <S.CartButton onClick={handleAddToCart}>
         <S.CartIcon />
         Add to cart
       </S.CartButton>

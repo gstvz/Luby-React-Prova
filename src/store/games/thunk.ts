@@ -1,4 +1,5 @@
 import { api } from "../../api/api";
+// import { Bet } from "../../shared/types";
 import { gamesActions } from './games';
 
 export const getGamesData = () => {
@@ -15,3 +16,14 @@ export const getGamesData = () => {
     }));
   }
 }
+
+// export const postBetData = (bet: Bet) => {
+//   return async (dispatch: Function) => {
+//     const postData = async () => {
+//       const response = await api.post('bet/new-bet', bet);
+//       console.log(response);
+//     }
+
+//     postData();
+//   }
+// }
