@@ -16,7 +16,7 @@ export const GameActions = (props: GameActionsProps) => {
   const formatNumber = (number: number) => {
     const formattedNumber = number < 10 ? `0${number}` : `${number}`;
     return formattedNumber;
-  }
+  };
 
   const handleCompleteGame = () => {
     const numbersLeft = activeGame.max_number - props.selectedNumbers.length;
@@ -28,19 +28,22 @@ export const GameActions = (props: GameActionsProps) => {
 
     const randomNumbers: string[] = [];
 
-    while(randomNumbers.length !== numbersLeft) {
+    while (randomNumbers.length !== numbersLeft) {
       let randomNumber = Math.floor(Math.random() * activeGame.range);
 
       const formattedNumber = formatNumber(randomNumber);
 
-      if (!props.selectedNumbers.includes(formattedNumber)) {
+      if (
+        !randomNumbers.includes(formattedNumber) &&
+        formattedNumber !== "00"
+      ) {
         randomNumbers.push(formattedNumber);
       }
     }
 
     props.setSelectedNumberButtons((prevSelectedNumbers) => [
       ...prevSelectedNumbers,
-      ...randomNumbers
+      ...randomNumbers,
     ]);
 
     dispatch(
@@ -53,29 +56,34 @@ export const GameActions = (props: GameActionsProps) => {
   const handleClearGame = () => {
     props.setSelectedNumberButtons([]);
 
-    dispatch(gamesActions.setSelectedNumbers({
-      selectedNumbers: []
-    }));
-  }
+    dispatch(
+      gamesActions.setSelectedNumbers({
+        selectedNumbers: [],
+      })
+    );
+  };
 
-  const handleAddToCart = () => {    
-    const sortedNumbers = props.selectedNumbers.map((number) => {
-      return parseInt(number);
-    }).sort((a, b) => {
-      return a - b;
-    }).map((number) => {
-      const formattedNumber = formatNumber(number);
-      return formattedNumber;
-    });
+  const handleAddToCart = () => {
+    const sortedNumbers = props.selectedNumbers
+      .map((number) => {
+        return parseInt(number);
+      })
+      .sort((a, b) => {
+        return a - b;
+      })
+      .map((number) => {
+        const formattedNumber = formatNumber(number);
+        return formattedNumber;
+      });
 
     const newBet = {
       gameId: activeGame.id,
-      numbers: sortedNumbers
+      numbers: sortedNumbers,
     };
 
     dispatch(gamesActions.addGameToCart(newBet));
     dispatch(gamesActions.calculateCartTotal());
-  }
+  };
 
   return (
     <S.Container>
