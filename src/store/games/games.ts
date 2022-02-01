@@ -51,6 +51,9 @@ const gamesSlice = createSlice({
         return gamePrice!.price
       }).reduce((acc, cur) => acc + cur);
       state.cartTotal = cartTotal;
+    },
+    removeFromCart(state, action) {
+      state.bets = state.bets.filter(bet => bet.gameId !== action.payload);
     }
   },
 });

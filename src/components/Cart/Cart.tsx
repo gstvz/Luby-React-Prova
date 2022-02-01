@@ -1,12 +1,18 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { GamesState } from "../../shared/types";
+import { gamesActions } from "../../store/games/games";
 import * as S from "./styles";
 
 export const Cart = () => {
+  const dispatch = useDispatch();
   const games = useSelector((state: GamesState) => state.games.types)
   const cartGames = useSelector((state: GamesState) => state.games.bets);
   const cartTotal = useSelector((state: GamesState) => state.games.cartTotal);
+
+  const handleDeleteGame = (id: number) => {
+    dispatch(gamesActions.removeFromCart(id));
+  }
 
   return (
     <S.Aside>
@@ -18,8 +24,8 @@ export const Cart = () => {
           {cartGames.map(game => {
             const gameType = games.find(type => type.id === game.gameId);
             return (
-              <S.Game key={game.gameId}>
-                <S.DeleteGame>
+              <S.Game key={game.gameId} id={game.gameId.toString()}>
+                <S.DeleteGame onClick={() => handleDeleteGame(game.gameId)}>
                   <S.Trash />
                 </S.DeleteGame>
                 <S.GameInfo color={gameType!.color}>
