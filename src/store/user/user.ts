@@ -3,6 +3,15 @@ import { UserData } from '../../shared/types/index';
 
 const initialState: UserData = {
   isAuthenticated: false,
+  userBets: [{
+    choosen_numbers: '',
+    created_at: '',
+    game_id: 0,
+    id: 0,
+    price: 0,
+    type: {id: 0, type: ''},
+    user_id: 0,
+  }],
   user: {
     id: null,
     email: null,
@@ -47,6 +56,9 @@ const userSlice = createSlice({
       };
 
       localStorage.clear();
+    },
+    setUserBets(state, action) {
+      state.userBets = action.payload;
     }
   },
 });

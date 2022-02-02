@@ -1,4 +1,5 @@
 import { api } from "../../api/api";
+import { getUserToken } from "../../shared/helpers/userToken";
 import { LoginData, NewUser } from "../../shared/types";
 import { userActions } from "./user";
 
@@ -44,5 +45,19 @@ export const postResetPassword = (userEmail: { email: string }) => {
     }
 
     postData();
+  }
+}
+
+export const getUserBets = () => {
+  return async (dispatch: Function) => {
+    const getData = async () => {
+      const response = await api.get('bet/all-bets', {
+        headers: {
+          Authorization: `Bearer ${getUserToken()}`,
+        }});
+      return response.data;
+    }
+    const bets = await getData();
+    dispatch(userActions.setUserBets(bets));
   }
 }
