@@ -1,7 +1,9 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { createBet } from "../../shared/helpers/createBet";
 import { GamesState } from "../../shared/types";
 import { gamesActions } from "../../store/games/games";
+import { postBetData } from "../../store/games/thunk";
 import * as S from "./styles";
 
 export const Cart = () => {
@@ -16,8 +18,12 @@ export const Cart = () => {
 
   const handleDeleteGame = (numbers: string[]) => {
     dispatch(gamesActions.removeFromCart(numbers));
-    dispatch(gamesActions.calculateCartTotal());
   };
+
+  const handleSaveBet = () => {
+    const bets = createBet(cartGames);
+    dispatch(postBetData(bets));
+  }
 
   return (
     <S.Aside>
@@ -61,7 +67,7 @@ export const Cart = () => {
           </span>
         </S.CartTotal>
       </S.Cart>
-      <S.SaveButton>
+      <S.SaveButton onClick={handleSaveBet}>
         Save
         <S.ArrowRight />
       </S.SaveButton>

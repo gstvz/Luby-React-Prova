@@ -60,6 +60,10 @@ const gamesSlice = createSlice({
         return JSON.stringify(bet.numbers) !== JSON.stringify(action.payload)
       });
     },
+    saveBet(state) {
+      state.bets = [];
+      state.cartTotal = 0;    
+    }
   },
 });
 
