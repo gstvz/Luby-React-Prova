@@ -10,8 +10,12 @@ export const Cart = () => {
   const cartGames = useSelector((state: GamesState) => state.games.bets);
   const cartTotal = useSelector((state: GamesState) => state.games.cartTotal);
 
-  const handleDeleteGame = (id: number) => {
-    dispatch(gamesActions.removeFromCart(id));
+  const generateKey = (index: number) => {
+    return `${index}_${new Date().getTime() + index}`
+  }
+
+  const handleDeleteGame = (numbers: string[]) => {
+    dispatch(gamesActions.removeFromCart(numbers));
     dispatch(gamesActions.calculateCartTotal());
   };
 
@@ -22,11 +26,12 @@ export const Cart = () => {
           <strong>CART</strong>
         </S.CartTitle>
         <S.Games>
-          {cartGames.map((game) => {
+          {cartGames.map((game, index) => {
             const gameType = games.find((type) => type.id === game.game_id);
+            const uniqueId = generateKey(index);
             return (
-              <S.Game key={game.game_id} id={game.game_id.toString()}>
-                <S.DeleteGame onClick={() => handleDeleteGame(game.game_id)}>
+              <S.Game key={uniqueId} id={uniqueId}>
+                <S.DeleteGame onClick={() => handleDeleteGame(game.numbers)}>
                   <S.Trash />
                 </S.DeleteGame>
                 <S.GameInfo color={gameType!.color}>
