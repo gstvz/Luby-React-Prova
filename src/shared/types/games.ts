@@ -20,6 +20,13 @@ export type GamesState = {
 };
 
 export type Bet = {
-  game_id: number,
-  numbers: string[]
-}
+  game_id: number;
+  numbers: string[];
+};
+
+export type Bets = {
+  games: { 
+    game_id: number; 
+    numbers: number[] 
+  }[];
+};
