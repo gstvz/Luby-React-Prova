@@ -40,40 +40,6 @@ export const RecentGamesFilterText = styled.p`
   margin-right: 1.5rem;
 `
 
-export const RecentGamesList = styled.ul`
-  display: flex;
-  flex-direction: column;
-`
-
-export const RecentGamesItem = styled.li`
-  display: flex;
-  flex-direction: column;
-  border-left: 6px solid #7F3992;
-  border-radius: 4px;
-  margin-bottom: 3rem;
-`
-
-export const RecentGamesItemNumbers = styled.p`
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  margin-left: 1rem;
-`
-
-export const RecentGamesItemDate = styled.p`
-  font-size: 1.7rem;
-  font-weight: normal;
-  margin-bottom: 1rem;
-  margin-left: 1rem;
-  width: 20rem;
-`
-
-export const RecentGamesItemName = styled.p`
-  color: #7F3992;
-  font-size: 2rem;
-  margin-left: 1rem;
-  width: 24rem;
-`
-
 export const NewBet = styled(Link)`
   align-items: center;
   color: #B5C401;
