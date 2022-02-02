@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { useDispatch } from "react-redux";
+import { isEmailValid } from "../../shared/helpers/emailValidation";
 import { postRegisterUser } from "../../store/user/thunk";
 import * as S from "./styles";
 
@@ -15,6 +16,11 @@ export const RegisterForm = () => {
     const enteredName = nameInputRef.current?.value;
     const enteredEmail = emailInputRef.current?.value;
     const enteredPassword = passwordInputRef.current?.value;
+
+    if(!isEmailValid(enteredEmail!)) {
+      alert("Email inválido!");
+      return;
+    };
 
     const newUser = {
       name: enteredName,

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { isEmailValid } from "../../shared/helpers/emailValidation";
 import { UserState } from "../../shared/types";
 import { postUserData } from "../../store/user/thunk";
 import * as S from "./styles";
@@ -17,6 +18,11 @@ export const AuthForm = () => {
 
     const enteredEmail = emailInputRef.current?.value;
     const enteredPassword = passwordInputRef.current?.value;
+
+    if(!isEmailValid(enteredEmail!)) {
+      alert("Email inválido!");
+      return;
+    }
 
     const loginData = {
       email: enteredEmail,

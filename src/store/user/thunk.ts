@@ -33,3 +33,16 @@ export const postRegisterUser = (newUser: NewUser) => {
     postData();
   }
 };
+
+export const postResetPassword = (userEmail: { email: string }) => {
+  return async (dispatch: Function) => {
+    const postData = async () => {
+      const response = await api.post('reset', userEmail);
+      if(response.status === 200) {
+        alert("Link para resetar a senha enviado!");
+      }
+    }
+
+    postData();
+  }
+}
