@@ -83,6 +83,12 @@ export const GameActions = (props: GameActionsProps) => {
   }
 
   const handleAddToCart = () => {
+    if(props.selectedNumbers.length < activeGame.max_number) {
+      const numbersLeft = activeGame.max_number - props.selectedNumbers.length;      
+      alert(`Ainda falta escolher ${numbersLeft} ${numbersLeft === 1 ? "número" : "números"}!`);
+      return;
+    }
+
     const sortedNumbers = props.selectedNumbers
       .map((number) => {
         return parseInt(number);
