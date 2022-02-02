@@ -12,6 +12,7 @@ type GameActionsProps = {
 export const GameActions = (props: GameActionsProps) => {
   const dispatch = useDispatch();
   const activeGame = useSelector((state: GamesState) => state.games.activeGame);
+  const cartGames = useSelector((state: GamesState) => state.games.bets);
 
   const formatNumber = (number: number) => {
     const formattedNumber = number < 10 ? `0${number}` : `${number}`;
@@ -64,6 +65,23 @@ export const GameActions = (props: GameActionsProps) => {
     );
   };
 
+  const isGameAlreadyOnCart = (game: {
+    game_id: number,
+    numbers: string[],
+  }) => {
+    const gameType = game.game_id;
+    const gameNumbers = game.numbers;
+    let boolean = false;
+
+    for(const item of cartGames) {      
+      if(item.game_id === gameType) {
+        boolean = JSON.stringify(gameNumbers) === JSON.stringify(item.numbers);
+      }
+    }
+
+    return boolean;
+  }
+
   const handleAddToCart = () => {
     const sortedNumbers = props.selectedNumbers
       .map((number) => {
@@ -80,7 +98,12 @@ export const GameActions = (props: GameActionsProps) => {
     const newBet = {
       game_id: activeGame.id,
       numbers: sortedNumbers,
-    };
+    };    
+
+    if(isGameAlreadyOnCart(newBet)) {
+      alert("Você já tem esse jogo no carrinho!");
+      return;
+    }
 
     dispatch(gamesActions.addGameToCart(newBet));
     dispatch(gamesActions.calculateCartTotal());
