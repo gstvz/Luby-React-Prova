@@ -84,6 +84,7 @@ export const GameActions = (props: GameActionsProps) => {
 
     dispatch(gamesActions.addGameToCart(newBet));
     dispatch(gamesActions.calculateCartTotal());
+    props.setSelectedNumberButtons([]);
   };
 
   return (

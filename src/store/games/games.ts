@@ -44,6 +44,7 @@ const gamesSlice = createSlice({
     },
     addGameToCart(state, action) {
       state.bets = [...state.bets, action.payload];
+      state.selectedNumbers = [];
     },
     calculateCartTotal(state) {
       const cartTotal = state.bets
