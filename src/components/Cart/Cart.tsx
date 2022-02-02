@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createBet } from "../../shared/helpers/createBet";
+import { formatToBRL } from "../../shared/helpers/formatToBRL";
 import { GamesState } from "../../shared/types";
 import { gamesActions } from "../../store/games/games";
 import { postBetData } from "../../store/games/thunk";
@@ -9,6 +10,7 @@ import * as S from "./styles";
 export const Cart = () => {
   const dispatch = useDispatch();
   const games = useSelector((state: GamesState) => state.games.types);
+  const minCart = useSelector((state: GamesState) => state.games.min_cart_value);
   const cartGames = useSelector((state: GamesState) => state.games.bets);
   const cartTotal = useSelector((state: GamesState) => state.games.cartTotal);
 
@@ -21,6 +23,11 @@ export const Cart = () => {
   };
 
   const handleSaveBet = () => {
+    if(cartTotal < minCart) {
+      alert(`O carrinho não atingiu o valor mínimo de ${formatToBRL(minCart)}!`);
+      return;
+    };
+
     const bets = createBet(cartGames);
     dispatch(postBetData(bets));
   }
@@ -45,10 +52,7 @@ export const Cart = () => {
                   <S.GameData color={gameType!.color}>
                     <strong>{gameType!.type}</strong>
                     <span>
-                      {gameType!.price.toLocaleString("pt-br", {
-                        style: "currency",
-                        currency: "BRL",
-                      })}
+                      {formatToBRL(gameType!.price)}
                     </span>
                   </S.GameData>
                 </S.GameInfo>
@@ -60,10 +64,7 @@ export const Cart = () => {
           <strong>CART </strong>
           <span>
             TOTAL:{" "}
-            {cartTotal.toLocaleString("pt-br", {
-              style: "currency",
-              currency: "BRL",
-            })}
+            {formatToBRL(cartTotal)}
           </span>
         </S.CartTotal>
       </S.Cart>
