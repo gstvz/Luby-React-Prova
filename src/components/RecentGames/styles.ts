@@ -5,9 +5,12 @@ import { BsCartX } from 'react-icons/bs';
 
 export const RecentGames = styled.div`
   align-items: center;
-  display: flex;
-  justify-content: flex-end;
+  display: flex;  
   margin-bottom: 2rem;
+
+  @media(max-width: 996px) {
+    justify-content: flex-end;
+  }
 `
 
 export const RecentGamesTitle = styled.h2`
@@ -22,9 +25,9 @@ export const RecentGamesTitle = styled.h2`
 export const RecentGamesFilter = styled.div`
   align-items: center;
   display: flex;
+  flex: 1;
 
-  @media(max-width: 996px) {
-    flex: 1;
+  @media(max-width: 996px) {    
     flex-direction: column;
   }
 `
