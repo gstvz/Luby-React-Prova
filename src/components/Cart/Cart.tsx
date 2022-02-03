@@ -39,26 +39,32 @@ export const Cart = () => {
           <strong>CART</strong>
         </S.CartTitle>
         <S.Games>
-          {cartGames.map((game, index) => {
-            const gameType = games.find((type) => type.id === game.game_id);
-            const uniqueId = generateKey(index);
-            return (
-              <S.Game key={uniqueId} id={uniqueId}>
-                <S.DeleteGame onClick={() => handleDeleteGame(game.numbers)}>
-                  <S.Trash />
-                </S.DeleteGame>
-                <S.GameInfo color={gameType!.color}>
-                  <S.GameNumbers>{game.numbers.join(", ")}</S.GameNumbers>
-                  <S.GameData color={gameType!.color}>
-                    <strong>{gameType!.type}</strong>
-                    <span>
-                      {formatToBRL(gameType!.price)}
-                    </span>
-                  </S.GameData>
-                </S.GameInfo>
-              </S.Game>
-            );
-          })}
+          {cartGames.length === 0 ?            
+            <S.EmptyCart>     
+              <S.EmptyCartIcon />         
+              <span>O carrinho está vazio :(</span>
+            </S.EmptyCart> :
+            cartGames.map((game, index) => {
+              const gameType = games.find((type) => type.id === game.game_id);
+              const uniqueId = generateKey(index);
+              return (
+                <S.Game key={uniqueId} id={uniqueId}>
+                  <S.DeleteGame onClick={() => handleDeleteGame(game.numbers)}>
+                    <S.Trash />
+                  </S.DeleteGame>
+                  <S.GameInfo color={gameType!.color}>
+                    <S.GameNumbers>{game.numbers.join(", ")}</S.GameNumbers>
+                    <S.GameData color={gameType!.color}>
+                      <strong>{gameType!.type}</strong>
+                      <span>
+                        {formatToBRL(gameType!.price)}
+                      </span>
+                    </S.GameData>
+                  </S.GameInfo>
+                </S.Game>
+              );
+            })
+          }
         </S.Games>
         <S.CartTotal>
           <strong>CART </strong>

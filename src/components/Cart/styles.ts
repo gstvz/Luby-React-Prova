@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { AiOutlineArrowRight } from 'react-icons/ai';
-import { BsTrash } from 'react-icons/bs';
+import { BsTrash, BsCartX } from 'react-icons/bs';
 
 type ActiveGame = {
   color: string;
@@ -55,7 +55,7 @@ export const Games = styled.ul`
 export const Game = styled.li`
   align-items: center;  
   display: flex;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 `
 
 export const DeleteGame = styled.button`
@@ -100,6 +100,7 @@ export const GameData = styled.p<ActiveGame>`
 
 export const CartTotal = styled.p`
   font-size: 2.4rem;
+  margin: 2rem 0 0;
 
   & span {
     font-style: normal;
@@ -122,4 +123,18 @@ export const ArrowRight = styled(AiOutlineArrowRight)`
   height: 2rem;
   margin-left: 1rem;
   width: 2.4rem;
+`
+
+export const EmptyCart = styled.li`
+  align-items: center;
+  color: red;
+  display: flex;
+  font-size: 1.6rem;
+  margin-left: 1.2rem;
+`
+
+export const EmptyCartIcon = styled(BsCartX)`
+  height: 3rem;  
+  margin-right: 1rem;
+  width: 3rem;
 `
