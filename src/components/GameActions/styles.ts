@@ -4,6 +4,7 @@ import { AiOutlineShoppingCart } from 'react-icons/ai';
 export const Container = styled.div`
   display: flex;  
   margin-top: 2rem;
+  max-width: 67.5rem;
 
   & button {
     border-radius: 10px;
