@@ -2,12 +2,16 @@ import styled from 'styled-components';
 export const Main = styled.main`  
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
 `
 export const MainContent = styled.section`
   display: flex;
   height: 100%;
+
+  @media(max-width: 996px) {
+    flex-direction: column;    
+  }
 `
 
 export const Container = styled.div`
@@ -25,6 +29,10 @@ export const Title = styled.h1`
   height: 100%;
   justify-content: center;
   margin-left: 15rem;
+
+  @media(max-width: 996px) {
+    margin-left: 0;
+  }
 `
 export const TopSpan = styled.span`
   font-size: 6.5rem;
