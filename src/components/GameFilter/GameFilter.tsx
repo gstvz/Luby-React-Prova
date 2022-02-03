@@ -1,41 +1,40 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { GamesState } from "../../shared/types/index";
+import React from "react";
+import { useDispatch } from "react-redux";
+import { GameData, UserBets } from "../../shared/types/index";
 import { gamesActions } from '../../store/games/games';
-import { getGamesData } from "../../store/games/thunk";
 import { GameButton } from "../GameButton/GameButton";
 
-export const GameFilter = () => {
+type GameFilterProps = {
+  games: GameData[];
+  activeGame: GameData;
+  userBets: UserBets;
+}
+
+export const GameFilter = (props: GameFilterProps) => {
   const dispatch = useDispatch();
-  const games = useSelector((state: GamesState) => state.games.types);
-  const activeGame = useSelector((state: GamesState) => state.games.activeGame);
 
   const handleGameButtonClick = (
     event: React.MouseEvent<HTMLButtonElement>
   ) => {
-    const newActiveGame = games.find(
+    const newActiveGame = props.games.find(
       (game) => game.id === +(event.target as HTMLButtonElement).value
     );
 
     dispatch(gamesActions.setActiveGame({
       activeGame: newActiveGame
-    }));    
+    }));
   };
-
-  useEffect(() => {
-    dispatch(getGamesData());
-  }, [dispatch]);
 
   return (
     <>
-      {games.map((game) => {
+      {props.games.map((game) => {
         return (
           <GameButton
             key={game.id}
             color={game.color}
             value={game.id}
             handleGameButtonClick={handleGameButtonClick}
-            isActive={activeGame.id === game.id}
+            isActive={props.activeGame.id === game.id}
           >
             {game.type}
           </GameButton>

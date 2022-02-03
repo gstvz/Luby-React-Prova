@@ -1,7 +1,7 @@
 import React from "react";
 import { Footer } from "../../components/Footer/Footer";
-import { GamesList } from "../../components/GamesList/GamesList";
 import { Header } from "../../components/Header/Header";
+import { RecentGames } from "../../components/RecentGames/RecentGames";
 import * as S from "./styles";
 
 export const HomePage = () => {
@@ -10,7 +10,7 @@ export const HomePage = () => {
       <Header />
       <S.Main>
         <S.MainContent>
-          <GamesList />
+          <RecentGames />
         </S.MainContent>
       </S.Main>
       <Footer />

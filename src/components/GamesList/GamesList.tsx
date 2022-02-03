@@ -1,58 +1,36 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
 import { formatDate } from "../../shared/helpers/formatDate";
 import { formatToBRL } from "../../shared/helpers/formatToBRL";
 import { padNumbers } from "../../shared/helpers/padNumbers";
-import { GamesState, UserState } from "../../shared/types";
-import { getGamesData } from "../../store/games/thunk";
-import { getUserBets } from "../../store/user/thunk";
-import { GameFilter } from "../GameFilter/GameFilter";
+import { GameData, UserBets } from "../../shared/types";
 import * as S from "./styles";
 
-export const GamesList = () => {
-  const dispatch = useDispatch();
-  const userBets = useSelector((state: UserState) => state.user.userBets);
-  const gameTypes = useSelector((state: GamesState) => state.games.types);
+type GamesListProps = {
+  games: GameData[];
+  activeGame: GameData;
+  userBets: UserBets;
+}
 
-  useEffect(() => {
-    dispatch(getGamesData());
-    dispatch(getUserBets());
-  }, [dispatch]);
-
-  return (
-    <>
-      <S.RecentGames>
-        <S.RecentGamesFilter>
-          <S.RecentGamesTitle>RECENT GAMES</S.RecentGamesTitle>
-          <S.RecentGamesFilterText>Filters</S.RecentGamesFilterText>
-          <GameFilter />
-        </S.RecentGamesFilter>
-        <S.NewBet to="bet">
-          New Bet
-          <S.ArrowRight />
-        </S.NewBet>
-      </S.RecentGames>
-      <S.RecentGamesList>
-        {userBets.map((bet) => {
-          const color = gameTypes.find(
-            (game) => game.id === bet.type.id
-          )?.color;
-          const date = formatDate(bet.created_at!);
-          return (
-            <S.RecentGamesItem key={bet.id} color={color}>
-              <S.RecentGamesItemNumbers>
-                {padNumbers(bet.choosen_numbers!)}
-              </S.RecentGamesItemNumbers>
-              <S.RecentGamesItemDateAndPrice>
-                {`${date} - (${formatToBRL(bet.price!)})`}
-              </S.RecentGamesItemDateAndPrice>
-              <S.RecentGamesItemName color={color}>
-                {bet.type.type}
-              </S.RecentGamesItemName>
-            </S.RecentGamesItem>
-          );
-        })}
-      </S.RecentGamesList>
-    </>
+export const GamesList = (props: GamesListProps) => {
+  return ( 
+    <S.RecentGamesList>
+      {props.userBets.map((bet) => {
+        const color = props.games.find((game) => game.id === bet.type.id)?.color;
+        const date = formatDate(bet.created_at!);
+        return (
+          <S.RecentGamesItem key={bet.id} color={color}>
+            <S.RecentGamesItemNumbers>
+              {padNumbers(bet.choosen_numbers!)}
+            </S.RecentGamesItemNumbers>
+            <S.RecentGamesItemDateAndPrice>
+              {`${date} - (${formatToBRL(bet.price!)})`}
+            </S.RecentGamesItemDateAndPrice>
+            <S.RecentGamesItemName color={color}>
+              {bet.type.type}
+            </S.RecentGamesItemName>
+          </S.RecentGamesItem>
+        );
+      })}
+    </S.RecentGamesList>
   );
 };

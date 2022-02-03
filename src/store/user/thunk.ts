@@ -48,10 +48,10 @@ export const postResetPassword = (userEmail: { email: string }) => {
   }
 }
 
-export const getUserBets = () => {
+export const getUserBets = (params: string) => {
   return async (dispatch: Function) => {
     const getData = async () => {
-      const response = await api.get('bet/all-bets', {
+      const response = await api.get(`bet/all-bets?${params}`, {
         headers: {
           Authorization: `Bearer ${getUserToken()}`,
         }});
