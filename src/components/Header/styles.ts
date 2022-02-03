@@ -9,7 +9,7 @@ export const Container = styled.header`
   display: flex;
   height: 7rem;
   justify-content: center;
-  width: 100%;
+  width: 100vw;
 `
 
 export const Nav = styled.nav`
