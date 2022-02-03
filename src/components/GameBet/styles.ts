@@ -7,6 +7,7 @@ type NumberButtonProps = {
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+  max-width: 67.5rem;
 `
 
 export const Description = styled.div`
