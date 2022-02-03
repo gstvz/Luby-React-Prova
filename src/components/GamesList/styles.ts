@@ -1,50 +1,27 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { AiOutlineArrowRight } from 'react-icons/ai';
-
-export const RecentGames = styled.div`
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 4rem;
-`
-
-export const RecentGamesTitle = styled.h2`
-  font-size: 2.4rem;
-  margin-right: 4.5rem;
-`
-
-export const RecentGamesFilter = styled.div`
-  align-items: center;
-  display: flex;  
-`
-
-export const RecentGamesFilterText = styled.p`
-  font-size: 1.7rem;
-  font-weight: normal;
-  margin-right: 1.5rem;
-`
-
-export const NewBet = styled(Link)`
-  align-items: center;
-  color: #B5C401;
-  display: flex;
-  justify-content: center;
-  font: inherit;
-  font-size: 2.4rem;
-  text-decoration: none;
-  text-align: right;
-`
-
-export const ArrowRight = styled(AiOutlineArrowRight)`
-  height: 2.4rem;  
-  margin-left: 1rem;
-  width: 2.4rem;
-`
 
 export const RecentGamesList = styled.ul`
   display: flex;
   flex-direction: column;
+  overflow-y: scroll;
+  max-height: calc(100vh - 25rem);
+  width: 60rem;
+
+  &::-webkit-scrollbar {
+    width: 0.4rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border: 5px solid;
+    border-radius: 10rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    position: absolute;
+    right: -3rem;
+    top: -50rem;
+    background: transparent;
+  }
 `
 
 export const RecentGamesItem = styled.li`
