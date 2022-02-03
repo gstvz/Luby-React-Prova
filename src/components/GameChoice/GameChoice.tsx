@@ -21,7 +21,7 @@ export const GameChoice = (props: GameChoiceProps) => {
             <GameButton
               key={game.id}
               color={game.color}
-              value={game.type}
+              value={game.id}
               handleGameButtonClick={props.handleGameButtonClick}
               isActive={activeGame.id === game.id}
             >
