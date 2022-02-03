@@ -15,7 +15,7 @@ export const RecentGames = () => {
   const [selectedGames, setSelectedGames] = useState<string[]>([]);
 
   useEffect(() => {    
-    dispatch(getGamesData());
+    dispatch(getGamesData());    
   }, []);
 
   useEffect(() => {
@@ -42,7 +42,13 @@ export const RecentGames = () => {
           <S.ArrowRight />
         </S.NewBet>
       </S.RecentGames>
-      <GamesList games={games} activeGame={activeGame} userBets={userBets} />
+      {selectedGames.length === 0 ?
+        <S.EmptyGames>
+          <S.EmptyCartIcon />
+          Não há jogos ativos!
+        </S.EmptyGames> :
+        <GamesList games={games} activeGame={activeGame} userBets={userBets} />
+      }      
     </>
   );
 };

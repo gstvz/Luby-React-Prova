@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { AiOutlineArrowRight } from 'react-icons/ai';
+import { BsCartX } from 'react-icons/bs';
 
 export const RecentGames = styled.div`
   align-items: center;
@@ -74,4 +75,17 @@ export const RecentGamesItemName = styled.p`
   font-size: 2rem;
   margin-left: 1rem;
   width: 24rem;
+`
+
+export const EmptyGames = styled.p`
+  color: red;
+  font-size: 1.7rem;
+  font-weight: normal;
+  margin-right: 1.5rem;
+`
+
+export const EmptyCartIcon = styled(BsCartX)`
+  height: 2.4rem;  
+  margin-right: 1rem;
+  width: 2.4rem;
 `
