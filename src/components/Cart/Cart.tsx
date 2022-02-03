@@ -1,4 +1,4 @@
-import React from "react";
+import React, { SetStateAction } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createBet } from "../../shared/helpers/createBet";
 import { formatToBRL } from "../../shared/helpers/formatToBRL";
@@ -7,7 +7,12 @@ import { gamesActions } from "../../store/games/games";
 import { postBetData } from "../../store/games/thunk";
 import * as S from "./styles";
 
-export const Cart = () => {
+type CartProps = {
+  isCart: boolean;
+  setIsCart: React.Dispatch<SetStateAction<boolean>>;
+}
+
+export const Cart = (props: CartProps) => {
   const dispatch = useDispatch();
   const games = useSelector((state: GamesState) => state.games.types);
   const minCart = useSelector((state: GamesState) => state.games.min_cart_value);
@@ -31,10 +36,21 @@ export const Cart = () => {
 
     const bets = createBet(cartGames);
     dispatch(postBetData(bets));
+    props.setIsCart(false);
+  }
+
+  const handleReturnButton = () => {
+    props.setIsCart(false);
   }
 
   return (
-    <S.Aside>
+    <S.Aside isCart={props.isCart}>
+      {props.isCart &&
+        <S.ReturnButton onClick={handleReturnButton}>
+          <S.ArrowLeft />
+          Close Cart
+        </S.ReturnButton>
+      }
       <S.Cart>
         <S.CartTitle>
           <strong>CART</strong>

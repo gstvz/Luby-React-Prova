@@ -1,16 +1,40 @@
 import styled from "styled-components";
-import { AiOutlineArrowRight } from 'react-icons/ai';
+import { AiOutlineArrowRight, AiOutlineArrowLeft } from 'react-icons/ai';
 import { BsTrash, BsCartX } from 'react-icons/bs';
 
 type ActiveGame = {
   color: string;
 }
 
-export const Aside = styled.aside`  
+type AsideProps = {
+  isCart: boolean;
+}
+
+export const Aside = styled.aside<AsideProps>`  
   display: flex;
   flex-direction: column;
   height: 100%;
   width: 34rem;
+
+  @media(max-width: 996px) {
+    display: none;
+
+    ${props => props.isCart && `
+      align-items: center;
+      background-color: #F7F7F7;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      justify-content: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      z-index: 100;
+    `}
+  }
 `
 
 export const Cart = styled.div`
@@ -138,4 +162,25 @@ export const EmptyCartIcon = styled(BsCartX)`
   height: 3rem;  
   margin-right: 1rem;
   width: 3rem;
+`
+
+export const ReturnButton = styled.button`
+  align-items: center;
+  background: none;  
+  border: none;
+  color: #707070;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  font: inherit;
+  font-size: 2.4rem;
+  padding: 3rem;
+  text-decoration: none;
+  text-align: right;
+`
+
+export const ArrowLeft = styled(AiOutlineArrowLeft)`
+  color: #707070;
+  height: 2.4rem;  
+  width: 2.4rem;
 `

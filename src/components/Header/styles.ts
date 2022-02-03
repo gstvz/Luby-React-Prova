@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { AiOutlineArrowRight, AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
+import { AiOutlineArrowRight, AiOutlineMenu, AiOutlineClose, AiOutlineShoppingCart } from 'react-icons/ai';
 
 type MobileMenuProps = {
   isMenuOpen: boolean;
@@ -68,6 +68,8 @@ export const Menu = styled.ul<MobileMenuProps>`
   flex: 1;
 
   @media(max-width: 996px) {
+    justify-content: flex-end;
+
     ${props => props.isMenuOpen && `
       flex-direction: column;
       justify-content: center;
@@ -114,6 +116,28 @@ export const ArrowRight = styled(AiOutlineArrowRight)`
   width: 2.4rem;
 `
 
+export const CartButton = styled.button<MobileMenuProps>`
+  display: none;
+
+  @media(max-width: 996px) {
+    ${props => props.isMenuOpen ? `
+      display: none;
+    ` : `
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: block;
+      margin-right: 1rem;    
+    `}
+  }
+`
+
+export const CartIcon = styled(AiOutlineShoppingCart)`
+  color: #707070;
+  height: 2.4rem;  
+  width: 2.4rem;
+`
+
 export const MobileMenuButton = styled.button<MobileMenuProps>`
   background: none;  
   border: none;
@@ -121,13 +145,13 @@ export const MobileMenuButton = styled.button<MobileMenuProps>`
   display: none;
 
   @media(max-width: 996px) {
-    display: ${props => props.isMenuOpen ? "none" : "flex"};
-    flex: 1;
+    display: ${props => props.isMenuOpen ? "none" : "flex"};    
     justify-content: flex-end;
   }
 `
 
 export const MobileMenuIcon = styled(AiOutlineMenu)`
+  color: #707070;
   height: 2.4rem;  
   width: 2.4rem;
 `
