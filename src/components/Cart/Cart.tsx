@@ -74,11 +74,11 @@ export const Cart = () => {
             {formatToBRL(cartTotal)}
           </span>
         </S.CartTotal>
+        <S.SaveButton onClick={handleSaveBet}>
+          Save
+          <S.ArrowRight />
+        </S.SaveButton>
       </S.Cart>
-      <S.SaveButton onClick={handleSaveBet}>
-        Save
-        <S.ArrowRight />
-      </S.SaveButton>
     </S.Aside>
   );
 };

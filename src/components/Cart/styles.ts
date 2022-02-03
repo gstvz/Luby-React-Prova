@@ -6,33 +6,32 @@ type ActiveGame = {
   color: string;
 }
 
-export const Aside = styled.aside`
+export const Aside = styled.aside`  
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 34rem;
+`
+
+export const Cart = styled.div`
   background-color: #FFFFFF;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   height: 100%;
-  margin-top: 4rem;
-  max-height: 50rem;
-  width: 34rem;
-`
-
-export const Cart = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
   justify-content: space-between;
-  max-height: 32rem;
-  padding: 2rem 1.5rem 2rem 1.5rem;
+  max-height: 45rem;
 `
 
 export const CartTitle = styled.p`
   font-size: 2.4rem;
-  margin: 2rem 0;  
+  padding: 2rem;  
 `
 
 export const Games = styled.ul`
+  max-height: 20rem;
   overflow-y: auto;
+  padding: 2rem;
   width: 100%;
 
   &::-webkit-scrollbar {
@@ -100,7 +99,7 @@ export const GameData = styled.p<ActiveGame>`
 
 export const CartTotal = styled.p`
   font-size: 2.4rem;
-  margin: 2rem 0 0;
+  padding: 2rem;
 
   & span {
     font-style: normal;
