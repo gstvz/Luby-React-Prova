@@ -10,10 +10,19 @@ export const Container = styled.div`
     border-radius: 10px;
     font-style: normal;
   }
+
+  @media(max-width: 996px) {
+    flex-direction: column;
+    align-items: center; 
+  }
 `
 
 export const ButtonsContainer = styled.div`
   flex: 1;
+
+  @media(max-width: 996px) {
+    margin-bottom: 1rem;
+  }
 `
 
 export const GameButton = styled.button`
