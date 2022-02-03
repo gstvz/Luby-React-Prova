@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 export const Main = styled.main`  
   display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  flex-direction: column;  
   width: 100%;
 `
 export const MainContent = styled.section`
   display: flex;
   height: 100%;
+  min-height: calc(100vh - 8rem);
 
   @media(max-width: 996px) {
     flex-direction: column;    
