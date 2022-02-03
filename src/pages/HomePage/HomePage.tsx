@@ -7,7 +7,7 @@ import * as S from "./styles";
 export const HomePage = () => {
   return (
     <>
-      <Header />
+      <Header isHome />
       <S.Main>
         <S.MainContent>
           <RecentGames />

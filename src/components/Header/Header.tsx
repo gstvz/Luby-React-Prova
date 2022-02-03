@@ -4,7 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import { userActions } from '../../store/user/user';
 import * as S from './styles';
 
-export const Header = () => {
+type HeaderProps = {
+  isHome?: boolean
+}
+
+export const Header = (props: HeaderProps) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -21,7 +25,7 @@ export const Header = () => {
       </S.Logo>
       <S.Menu>
         <S.MenuItem>
-          <S.MenuItemLink to="/">Home</S.MenuItemLink>
+          {!props.isHome ? <S.MenuItemLink to="/">Home</S.MenuItemLink> : ''}          
         </S.MenuItem>
         <S.MenuItem>
           <S.MenuItemLink to="/">Account</S.MenuItemLink>
