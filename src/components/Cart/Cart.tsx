@@ -20,6 +20,7 @@ export const Cart = () => {
 
   const handleDeleteGame = (numbers: string[]) => {
     dispatch(gamesActions.removeFromCart(numbers));
+    dispatch(gamesActions.calculateCartTotal());
   };
 
   const handleSaveBet = () => {
