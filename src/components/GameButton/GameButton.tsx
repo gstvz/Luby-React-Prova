@@ -4,7 +4,7 @@ import * as S from "./styles";
 type GameButtonProps = {
   children: React.ReactNode;
   color: string;
-  value: number;
+  value: string;
   handleGameButtonClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
   isActive: boolean;
 };

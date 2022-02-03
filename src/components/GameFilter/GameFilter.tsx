@@ -1,4 +1,4 @@
-import React from "react";
+import React, { SetStateAction } from "react";
 import { useDispatch } from "react-redux";
 import { GameData, UserBets } from "../../shared/types/index";
 import { gamesActions } from '../../store/games/games';
@@ -8,6 +8,8 @@ type GameFilterProps = {
   games: GameData[];
   activeGame: GameData;
   userBets: UserBets;
+  selectedGames: string[];
+  setSelectedGames: React.Dispatch<SetStateAction<string[]>>
 }
 
 export const GameFilter = (props: GameFilterProps) => {
@@ -16,13 +18,29 @@ export const GameFilter = (props: GameFilterProps) => {
   const handleGameButtonClick = (
     event: React.MouseEvent<HTMLButtonElement>
   ) => {
+    const selectedGame = (event.target as HTMLButtonElement).value;
     const newActiveGame = props.games.find(
-      (game) => game.id === +(event.target as HTMLButtonElement).value
+      (game) => game.type === selectedGame
     );
 
+    if(props.selectedGames.includes(selectedGame)) {
+      props.setSelectedGames((prevSelectedGames) => {
+        return prevSelectedGames.filter((prevSelectedGame) => {
+          return prevSelectedGame !== selectedGame
+        })
+      })
+      return;
+    }
+
+    props.setSelectedGames((prevSelectedGames) => {
+      return [...prevSelectedGames, selectedGame];
+    });
+
+    console.log(props.selectedGames);
+    
     dispatch(gamesActions.setActiveGame({
       activeGame: newActiveGame
-    }));
+    }));    
   };
 
   return (
@@ -32,9 +50,9 @@ export const GameFilter = (props: GameFilterProps) => {
           <GameButton
             key={game.id}
             color={game.color}
-            value={game.id}
+            value={game.type}
             handleGameButtonClick={handleGameButtonClick}
-            isActive={props.activeGame.id === game.id}
+            isActive={props.selectedGames.includes(game.type)}
           >
             {game.type}
           </GameButton>

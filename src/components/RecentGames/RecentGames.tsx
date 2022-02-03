@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { GamesState, UserState } from "../../shared/types";
 import { getGamesData } from "../../store/games/thunk";
@@ -12,15 +12,16 @@ export const RecentGames = () => {
   const games = useSelector((state: GamesState) => state.games.types);
   const activeGame = useSelector((state: GamesState) => state.games.activeGame);
   const userBets = useSelector((state: UserState) => state.user.userBets);
+  const [selectedGames, setSelectedGames] = useState<string[]>([]);
 
   useEffect(() => {    
     dispatch(getGamesData());
   }, []);
 
   useEffect(() => {
-    const params = `type%5B%5D=${activeGame.type}`
+    const params = `type%5B%5D=${selectedGames.join('&type%5B%5D=')}`
     dispatch(getUserBets(params));
-  }, [activeGame.type])
+  }, [selectedGames])
 
   return (
     <>
@@ -32,6 +33,8 @@ export const RecentGames = () => {
             games={games}
             activeGame={activeGame}
             userBets={userBets}
+            selectedGames={selectedGames}
+            setSelectedGames={setSelectedGames}
           />
         </S.RecentGamesFilter>
         <S.NewBet to="bet">
