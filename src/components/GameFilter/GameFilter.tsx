@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { GameData, UserBets } from "../../shared/types/index";
 import { gamesActions } from '../../store/games/games';
 import { GameButton } from "../GameButton/GameButton";
+import * as S from './styles';
 
 type GameFilterProps = {
   games: GameData[];
@@ -44,7 +45,7 @@ export const GameFilter = (props: GameFilterProps) => {
   };
 
   return (
-    <>
+    <S.Container>
       {props.games.map((game) => {
         return (
           <GameButton
@@ -58,6 +59,6 @@ export const GameFilter = (props: GameFilterProps) => {
           </GameButton>
         );
       })}
-    </>
+    </S.Container>
   );
 };
