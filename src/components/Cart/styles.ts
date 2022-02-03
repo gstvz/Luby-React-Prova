@@ -29,6 +29,7 @@ export const CartTitle = styled.p`
 `
 
 export const Games = styled.ul`
+  height: 20rem;
   max-height: 20rem;
   overflow-y: auto;
   padding: 2rem;
@@ -129,6 +130,7 @@ export const EmptyCart = styled.li`
   color: red;
   display: flex;
   font-size: 1.6rem;
+  margin-top: 7rem;
   margin-left: 1.2rem;
 `
 
