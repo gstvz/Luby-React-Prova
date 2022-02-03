@@ -24,6 +24,10 @@ export const Description = styled.div`
 export const List = styled.ul`
   display: flex;
   flex-wrap: wrap;
+
+  @media(max-width: 996px) {
+    justify-content: center;     
+  }
 `
 
 export const ListItem = styled.li`
