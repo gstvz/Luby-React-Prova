@@ -6,24 +6,38 @@ import { BsCartX } from 'react-icons/bs';
 export const RecentGames = styled.div`
   align-items: center;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   margin-bottom: 2rem;
 `
 
 export const RecentGamesTitle = styled.h2`
   font-size: 2.4rem;
   margin-right: 4.5rem;
+
+  @media(max-width: 996px) {
+    margin-right: 0;
+  }
 `
 
 export const RecentGamesFilter = styled.div`
   align-items: center;
-  display: flex;  
+  display: flex;
+
+  @media(max-width: 996px) {
+    flex: 1;
+    flex-direction: column;
+  }
 `
 
 export const RecentGamesFilterText = styled.p`
   font-size: 1.7rem;
   font-weight: normal;
   margin-right: 1.5rem;
+
+  @media(max-width: 996px) {
+    margin-right: 0;
+    padding: 0.5rem;
+  }
 `
 
 export const NewBet = styled(Link)`
