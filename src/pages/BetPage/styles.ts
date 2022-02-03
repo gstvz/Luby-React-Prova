@@ -7,6 +7,6 @@ export const Main = styled.main`
   min-height: calc(100vh - 14rem);
   margin: 0 auto;
   max-width: 120rem;
-  padding: 2rem 0;
+  padding: 4rem 0;
   width: 75%;
 `
