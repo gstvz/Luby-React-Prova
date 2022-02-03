@@ -5,8 +5,7 @@ export const NewBet = styled.section`
   flex-direction: column;
   height: 100%;
   margin-top: 4rem;
-  max-width: 120rem;
-  width: 50%;
+  max-width: 120rem;  
 `
 
 export const Title = styled.h2`
