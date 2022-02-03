@@ -9,4 +9,9 @@ export const Main = styled.main`
   max-width: 120rem;
   padding: 4rem 0;
   width: 75%;
+
+  @media(max-width: 996px) {
+    display: flex;
+    flex-direction: column;
+  }
 `
