@@ -7,7 +7,7 @@ export const RecentGames = styled.div`
   align-items: center;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
 `
 
 export const RecentGamesTitle = styled.h2`

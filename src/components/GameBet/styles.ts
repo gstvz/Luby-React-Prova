@@ -13,7 +13,7 @@ export const Container = styled.div`
 export const Description = styled.div`
   font-size: 1.7rem;  
   font-weight: normal;
-  max-width: 65rem;
+  max-width: 67.5rem;
 
   & p {
     font-size: 1.7rem;
