@@ -2,23 +2,12 @@ import { api } from "../../api/api";
 import { getUserToken } from "@helpers";
 import { LoginData, NewUser } from "@types";
 import { userActions } from "@store";
+import { postData } from "src/shared/services/auth/login";
 
 export const postUserData = (loginData: LoginData) => {
   return async (dispatch: Function) => {
-    const postData = async () => {
-      const response = await api.post("login", loginData);
-      return {
-        id: response.data.user.id,
-        email: response.data.user.email,
-        token: response.data.token.token,
-        expires_at: response.data.token.expires_at,
-      };
-    };
-
-    const userData = await postData();
+    const userData = await postData(loginData);
     dispatch(userActions.loginUser(userData));
-    // const expirationTime = new Date(userData.expires_at).getTime();
-    // setTimeout(() => {dispatch(userActions.logoutUser())}, expirationTime);
   };
 };
 
