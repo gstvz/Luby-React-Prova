@@ -1,22 +1,33 @@
-import React from 'react';
+import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { UserState } from "../shared/types";
 import { AuthPage } from "../pages/AuthPage/AuthPage";
 import { HomePage } from "../pages/HomePage/HomePage";
 import { BetPage } from "../pages/BetPage/BetPage";
-import { userActions } from '../store/user/user';
+import { userActions } from "../store/user/user";
 
 export const AppRoutes = () => {
   const dispatch = useDispatch();
   dispatch(userActions.getUser());
-  const isAuthenticated = useSelector((state: UserState) => state.user.isAuthenticated)
+  const isAuthenticated = useSelector(
+    (state: UserState) => state.user.isAuthenticated
+  );
 
   return (
     <Routes>
-      <Route path="/" element={isAuthenticated ? <HomePage /> : <Navigate to="/auth" />} />
-      <Route path="auth/*" element={!isAuthenticated ? <AuthPage /> : <Navigate to="/" />} />
-      <Route path="bet" element={isAuthenticated ? <BetPage /> : <Navigate to="/auth" />} />      
-  </Routes>
+      <Route
+        path="/"
+        element={isAuthenticated ? <HomePage /> : <Navigate to="/auth" />}
+      />
+      <Route
+        path="auth/*"
+        element={!isAuthenticated ? <AuthPage /> : <Navigate to="/" />}
+      />
+      <Route
+        path="bet"
+        element={isAuthenticated ? <BetPage /> : <Navigate to="/auth" />}
+      />
+    </Routes>
   );
 };

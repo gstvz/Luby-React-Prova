@@ -66,26 +66,30 @@ export const GameActions = (props: GameActionsProps) => {
   };
 
   const isGameAlreadyOnCart = (game: {
-    game_id: number,
-    numbers: string[],
+    game_id: number;
+    numbers: string[];
   }) => {
     const gameType = game.game_id;
     const gameNumbers = game.numbers;
     let boolean = false;
 
-    for(const item of cartGames) {      
-      if(item.game_id === gameType) {
+    for (const item of cartGames) {
+      if (item.game_id === gameType) {
         boolean = JSON.stringify(gameNumbers) === JSON.stringify(item.numbers);
       }
     }
 
     return boolean;
-  }
+  };
 
   const handleAddToCart = () => {
-    if(props.selectedNumbers.length < activeGame.max_number) {
-      const numbersLeft = activeGame.max_number - props.selectedNumbers.length;      
-      alert(`Ainda falta escolher ${numbersLeft} ${numbersLeft === 1 ? "número" : "números"}!`);
+    if (props.selectedNumbers.length < activeGame.max_number) {
+      const numbersLeft = activeGame.max_number - props.selectedNumbers.length;
+      alert(
+        `Ainda falta escolher ${numbersLeft} ${
+          numbersLeft === 1 ? "número" : "números"
+        }!`
+      );
       return;
     }
 
@@ -104,9 +108,9 @@ export const GameActions = (props: GameActionsProps) => {
     const newBet = {
       game_id: activeGame.id,
       numbers: sortedNumbers,
-    };    
+    };
 
-    if(isGameAlreadyOnCart(newBet)) {
+    if (isGameAlreadyOnCart(newBet)) {
       alert("Você já tem esse jogo no carrinho!");
       return;
     }

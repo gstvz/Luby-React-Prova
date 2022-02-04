@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 type GameButtonProps = {
   isActive: boolean;
-}
+};
 
 export const GameButton = styled.button<GameButtonProps>`
   background-color: ${(props) => (props.isActive ? props.color : "#fff")};

@@ -46,7 +46,9 @@ export const GameBet = (props: GameBetProps) => {
                 value={formattedNumber}
                 onClick={props.handleNumberButtonClick}
                 color={activeGame.color}
-                isSelected={props.selectedNumbers.includes(formattedNumber) ? true : false}
+                isSelected={
+                  props.selectedNumbers.includes(formattedNumber) ? true : false
+                }
               >
                 {formattedNumber}
               </S.NumberButton>

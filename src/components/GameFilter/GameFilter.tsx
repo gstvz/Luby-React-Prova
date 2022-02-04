@@ -1,17 +1,17 @@
 import React, { SetStateAction } from "react";
 import { useDispatch } from "react-redux";
 import { GameData, UserBets } from "../../shared/types/index";
-import { gamesActions } from '../../store/games/games';
+import { gamesActions } from "../../store/games/games";
 import { GameButton } from "../GameButton/GameButton";
-import * as S from './styles';
+import * as S from "./styles";
 
 type GameFilterProps = {
   games: GameData[];
   activeGame: GameData;
   userBets: UserBets;
   selectedGames: string[];
-  setSelectedGames: React.Dispatch<SetStateAction<string[]>>
-}
+  setSelectedGames: React.Dispatch<SetStateAction<string[]>>;
+};
 
 export const GameFilter = (props: GameFilterProps) => {
   const dispatch = useDispatch();
@@ -24,12 +24,12 @@ export const GameFilter = (props: GameFilterProps) => {
       (game) => game.type === selectedGame
     );
 
-    if(props.selectedGames.includes(selectedGame)) {
+    if (props.selectedGames.includes(selectedGame)) {
       props.setSelectedGames((prevSelectedGames) => {
         return prevSelectedGames.filter((prevSelectedGame) => {
-          return prevSelectedGame !== selectedGame
-        })
-      })
+          return prevSelectedGame !== selectedGame;
+        });
+      });
       return;
     }
 
@@ -38,10 +38,12 @@ export const GameFilter = (props: GameFilterProps) => {
     });
 
     console.log(props.selectedGames);
-    
-    dispatch(gamesActions.setActiveGame({
-      activeGame: newActiveGame
-    }));    
+
+    dispatch(
+      gamesActions.setActiveGame({
+        activeGame: newActiveGame,
+      })
+    );
   };
 
   return (

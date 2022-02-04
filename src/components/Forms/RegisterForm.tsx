@@ -17,19 +17,19 @@ export const RegisterForm = () => {
     const enteredEmail = emailInputRef.current?.value;
     const enteredPassword = passwordInputRef.current?.value;
 
-    if(!isEmailValid(enteredEmail!)) {
+    if (!isEmailValid(enteredEmail!)) {
       alert("Email inválido!");
       return;
-    };
+    }
 
     const newUser = {
       name: enteredName,
       email: enteredEmail,
-      password: enteredPassword
+      password: enteredPassword,
     };
 
     dispatch(postRegisterUser(newUser));
-  }
+  };
 
   return (
     <S.Container>

@@ -1,6 +1,6 @@
 export type LoginData = {
-  email?: string,
-  password?: string
+  email?: string;
+  password?: string;
 };
 
 export type UserBets = {
@@ -9,19 +9,19 @@ export type UserBets = {
   game_id: number;
   id: number;
   price: number;
-  type: {id: number, type: string};
+  type: { id: number; type: string };
   user_id: number;
-}[]
+}[];
 
 export type UserData = {
   isAuthenticated: boolean;
   userBets: UserBets;
   user: {
-    id: number | null,
-    email: string | null,
-    token: string | null,
-    expires_at: string | null
-  }
+    id: number | null;
+    email: string | null;
+    token: string | null;
+    expires_at: string | null;
+  };
 };
 
 export type UserState = {
@@ -32,4 +32,4 @@ export type NewUser = {
   email?: string;
   password?: string;
   name?: string;
-}
+};

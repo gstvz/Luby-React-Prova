@@ -9,7 +9,9 @@ import * as S from "./styles";
 export const AuthForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const isAuthenticated = useSelector((state: UserState) => state.user.isAuthenticated);
+  const isAuthenticated = useSelector(
+    (state: UserState) => state.user.isAuthenticated
+  );
   const emailInputRef = useRef<HTMLInputElement>(null);
   const passwordInputRef = useRef<HTMLInputElement>(null);
 
@@ -19,21 +21,21 @@ export const AuthForm = () => {
     const enteredEmail = emailInputRef.current?.value;
     const enteredPassword = passwordInputRef.current?.value;
 
-    if(!isEmailValid(enteredEmail!)) {
+    if (!isEmailValid(enteredEmail!)) {
       alert("Email inválido!");
       return;
     }
 
     const loginData = {
       email: enteredEmail,
-      password: enteredPassword
+      password: enteredPassword,
     };
 
     dispatch(postUserData(loginData));
   };
 
   useEffect(() => {
-    if(isAuthenticated) {
+    if (isAuthenticated) {
       navigate("/home");
     }
   }, [isAuthenticated, navigate]);

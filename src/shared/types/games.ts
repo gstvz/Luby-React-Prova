@@ -25,8 +25,8 @@ export type Bet = {
 };
 
 export type Bets = {
-  games: { 
-    game_id: number; 
-    numbers: number[] 
+  games: {
+    game_id: number;
+    numbers: number[];
   }[];
 };

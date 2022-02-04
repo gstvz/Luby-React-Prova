@@ -49,21 +49,23 @@ const gamesSlice = createSlice({
     calculateCartTotal(state) {
       const cartTotal = state.bets
         .map((game) => {
-          const gamePrice = state.types.find((type) => type.id === game.game_id);
+          const gamePrice = state.types.find(
+            (type) => type.id === game.game_id
+          );
           return gamePrice!.price;
         })
         .reduce((acc, cur) => acc + cur, 0);
       state.cartTotal = cartTotal;
     },
-    removeFromCart(state, action) {      
+    removeFromCart(state, action) {
       state.bets = state.bets.filter((bet) => {
-        return JSON.stringify(bet.numbers) !== JSON.stringify(action.payload)
+        return JSON.stringify(bet.numbers) !== JSON.stringify(action.payload);
       });
     },
     saveBet(state) {
       state.bets = [];
-      state.cartTotal = 0;    
-    }
+      state.cartTotal = 0;
+    },
   },
 });
 

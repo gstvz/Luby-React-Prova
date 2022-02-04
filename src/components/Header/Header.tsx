@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { userActions } from '../../store/user/user';
-import { Cart } from '../Cart/Cart';
-import * as S from './styles';
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { userActions } from "../../store/user/user";
+import { Cart } from "../Cart/Cart";
+import * as S from "./styles";
 
 type HeaderProps = {
-  isHome?: boolean
-}
+  isHome?: boolean;
+};
 
 export const Header = (props: HeaderProps) => {
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ export const Header = (props: HeaderProps) => {
   const handleLogOut = () => {
     dispatch(userActions.logoutUser());
     navigate("/");
-  }
+  };
 
   const handleMobileMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -37,10 +37,12 @@ export const Header = (props: HeaderProps) => {
         </S.Logo>
         <S.Menu isMenuOpen={isMenuOpen}>
           <S.MenuItem isMenuOpen={isMenuOpen}>
-            {!props.isHome ? <S.MenuItemLink to="/">Home</S.MenuItemLink> : ''}          
+            {!props.isHome ? <S.MenuItemLink to="/">Home</S.MenuItemLink> : ""}
           </S.MenuItem>
           <S.MenuItem isMenuOpen={isMenuOpen}>
-            <S.MenuItemLink to="/" onClick={handleMobileMenu}>Account</S.MenuItemLink>
+            <S.MenuItemLink to="/" onClick={handleMobileMenu}>
+              Account
+            </S.MenuItemLink>
           </S.MenuItem>
           <S.MenuItem isMenuOpen={isMenuOpen}>
             <S.MenuItemLink to="/" onClick={handleLogOut}>
@@ -48,20 +50,26 @@ export const Header = (props: HeaderProps) => {
               {!isMenuOpen && <S.ArrowRight />}
             </S.MenuItemLink>
           </S.MenuItem>
-          {!props.isHome &&
+          {!props.isHome && (
             <S.CartButton isMenuOpen={isMenuOpen} onClick={handleCartButton}>
               <S.CartIcon />
             </S.CartButton>
-          }
-          <S.MobileMenuButton isMenuOpen={isMenuOpen} onClick={handleMobileMenu}>
+          )}
+          <S.MobileMenuButton
+            isMenuOpen={isMenuOpen}
+            onClick={handleMobileMenu}
+          >
             <S.MobileMenuIcon />
           </S.MobileMenuButton>
-          <S.CloseMobileMenuButton isMenuOpen={isMenuOpen} onClick={handleMobileMenu}>
+          <S.CloseMobileMenuButton
+            isMenuOpen={isMenuOpen}
+            onClick={handleMobileMenu}
+          >
             <S.MobileMenuCloseIcon />
           </S.CloseMobileMenuButton>
         </S.Menu>
       </S.Nav>
       {isCart && <Cart isCart={isCart} setIsCart={setIsCart} />}
     </S.Container>
-  )
+  );
 };

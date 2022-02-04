@@ -14,14 +14,14 @@ export const RecentGames = () => {
   const userBets = useSelector((state: UserState) => state.user.userBets);
   const [selectedGames, setSelectedGames] = useState<string[]>([]);
 
-  useEffect(() => {    
-    dispatch(getGamesData());    
+  useEffect(() => {
+    dispatch(getGamesData());
   }, []);
 
   useEffect(() => {
-    const params = `type%5B%5D=${selectedGames.join('&type%5B%5D=')}`
+    const params = `type%5B%5D=${selectedGames.join("&type%5B%5D=")}`;
     dispatch(getUserBets(params));
-  }, [selectedGames])
+  }, [selectedGames]);
 
   return (
     <>
@@ -42,13 +42,14 @@ export const RecentGames = () => {
           <S.ArrowRight />
         </S.NewBet>
       </S.RecentGames>
-      {selectedGames.length === 0 ?
+      {selectedGames.length === 0 ? (
         <S.EmptyGames>
           <S.EmptyCartIcon />
           Não há jogos ativos!
-        </S.EmptyGames> :
+        </S.EmptyGames>
+      ) : (
         <GamesList games={games} activeGame={activeGame} userBets={userBets} />
-      }      
+      )}
     </>
   );
 };

@@ -9,13 +9,15 @@ type GamesListProps = {
   games: GameData[];
   activeGame: GameData;
   userBets: UserBets;
-}
+};
 
 export const GamesList = (props: GamesListProps) => {
-  return ( 
+  return (
     <S.RecentGamesList>
       {props.userBets.map((bet) => {
-        const color = props.games.find((game) => game.id === bet.type.id)?.color;
+        const color = props.games.find(
+          (game) => game.id === bet.type.id
+        )?.color;
         const date = formatDate(bet.created_at!);
         return (
           <S.RecentGamesItem key={bet.id} color={color}>

@@ -9,8 +9,8 @@ export const Container = styled.div`
     margin-bottom: 1rem;
   }
 
-  @media(max-width: 996px) {
-      text-align: center;     
+  @media (max-width: 996px) {
+    text-align: center;
   }
 `;
 
@@ -18,7 +18,7 @@ export const Games = styled.div`
   display: flex;
   margin-bottom: 1rem;
 
-  @media(max-width: 996px) {
+  @media (max-width: 996px) {
     justify-content: center;
   }
 `;
