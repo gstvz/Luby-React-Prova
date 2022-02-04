@@ -1,7 +1,5 @@
 import React from "react";
-import { Footer } from "../../components/Footer/Footer";
-import { Header } from "../../components/Header/Header";
-import { RecentGames } from "../../components/RecentGames/RecentGames";
+import { Header, Footer, RecentGames } from "../../components";
 import * as S from "./styles";
 
 export const HomePage = () => {

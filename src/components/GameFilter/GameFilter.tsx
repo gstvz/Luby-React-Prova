@@ -2,7 +2,7 @@ import React, { SetStateAction } from "react";
 import { useDispatch } from "react-redux";
 import { GameData, UserBets } from "../../shared/types/index";
 import { gamesActions } from "../../store/games/games";
-import { GameButton } from "../GameButton/GameButton";
+import { GameButton } from "../";
 import * as S from "./styles";
 
 type GameFilterProps = {
