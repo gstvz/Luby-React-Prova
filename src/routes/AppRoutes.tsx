@@ -1,9 +1,9 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { UserState } from "../shared/types";
+import { UserState } from "@types";
 import { AuthPage, HomePage, BetPage } from "@pages";
-import { userActions } from "../store/user/user";
+import { userActions } from "@store";
 
 export const AppRoutes = () => {
   const dispatch = useDispatch();
