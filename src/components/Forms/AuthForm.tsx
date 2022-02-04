@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { isEmailValid } from "../../shared/helpers/emailValidation";
+import { isEmailValid } from "@helpers";
 import { UserState } from "../../shared/types";
 import { postUserData } from "../../store/user/thunk";
 import * as S from "./styles";

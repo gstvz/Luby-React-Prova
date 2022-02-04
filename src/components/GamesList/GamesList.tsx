@@ -1,7 +1,5 @@
 import React from "react";
-import { formatDate } from "../../shared/helpers/formatDate";
-import { formatToBRL } from "../../shared/helpers/formatToBRL";
-import { padNumbers } from "../../shared/helpers/padNumbers";
+import { formatDate, formatToBRL, padNumbers } from "@helpers";
 import { GameData, UserBets } from "../../shared/types";
 import * as S from "./styles";
 

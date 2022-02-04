@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { useDispatch } from "react-redux";
-import { isEmailValid } from "../../shared/helpers/emailValidation";
+import { isEmailValid } from "@helpers";
 import { postRegisterUser } from "../../store/user/thunk";
 import * as S from "./styles";
 

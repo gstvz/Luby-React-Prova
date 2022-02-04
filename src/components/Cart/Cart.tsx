@@ -1,7 +1,6 @@
 import React, { SetStateAction } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createBet } from "../../shared/helpers/createBet";
-import { formatToBRL } from "../../shared/helpers/formatToBRL";
+import { createBet, formatToBRL } from "@helpers";
 import { GamesState } from "../../shared/types";
 import { gamesActions } from "../../store/games/games";
 import { postBetData } from "../../store/games/thunk";
