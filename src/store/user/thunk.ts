@@ -2,7 +2,7 @@ import { api } from "../../api/api";
 import { getUserToken } from "@helpers";
 import { LoginData, NewUser } from "@types";
 import { userActions } from "@store";
-import { createUser, postData } from "@services";
+import { createUser, postData, resetPassword } from "@services";
 
 export const postUserData = (loginData: LoginData) => {
   return async (dispatch: Function) => {
@@ -23,14 +23,11 @@ export const postRegisterUser = (newUser: NewUser) => {
 
 export const postResetPassword = (userEmail: { email: string }) => {
   return async (dispatch: Function) => {
-    const postData = async () => {
-      const response = await api.post("reset", userEmail);
-      if (response.status === 200) {
-        alert("Link para resetar a senha enviado!");
-      }
-    };
+    const response = await resetPassword(userEmail);
 
-    postData();
+    if (response.status === 200) {
+      alert("Link para resetar a senha enviado!");
+    }
   };
 };
 
