@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { GamesState, UserState } from "../../shared/types";
 import { getGamesData } from "../../store/games/thunk";
 import { getUserBets } from "../../store/user/thunk";
-import { GameFilter, GamesList } from "../";
+import { GameFilter, GamesList } from "@components";
 import * as S from "./styles";
 
 export const RecentGames = () => {

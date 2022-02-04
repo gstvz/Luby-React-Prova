@@ -4,7 +4,7 @@ import { getGamesData } from "../../store/games/thunk";
 import { gamesActions } from "../../store/games/games";
 import { GamesState } from "../../shared/types/index";
 import { GameActions } from "../GameActions/GameActions";
-import { GameChoice, GameBet } from "../";
+import { GameChoice, GameBet } from "@components";
 import * as S from "./styles";
 
 export const NewBet = () => {

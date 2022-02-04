@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Header, Footer, NewBet, Cart } from "../../components";
+import { Header, Footer, NewBet, Cart } from "@components";
 import * as S from "./styles";
 
 export const BetPage = () => {

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { userActions } from "../../store/user/user";
-import { Cart } from "../";
+import { Cart } from "@components";
 import * as S from "./styles";
 
 type HeaderProps = {
