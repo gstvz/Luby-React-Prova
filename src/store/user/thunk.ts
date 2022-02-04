@@ -1,8 +1,6 @@
-import { api } from "../../api/api";
-import { getUserToken } from "@helpers";
 import { LoginData, NewUser } from "@types";
 import { userActions } from "@store";
-import { createUser, loginUser, resetPassword } from "@services";
+import { createUser, listBet, loginUser, resetPassword } from "@services";
 
 export const postUserData = (loginData: LoginData) => {
   return async (dispatch: Function) => {
@@ -33,15 +31,7 @@ export const postResetPassword = (userEmail: { email: string }) => {
 
 export const getUserBets = (params: string) => {
   return async (dispatch: Function) => {
-    const getData = async () => {
-      const response = await api.get(`bet/all-bets${params}`, {
-        headers: {
-          Authorization: `Bearer ${getUserToken()}`,
-        },
-      });
-      return response.data;
-    };
-    const bets = await getData();
+    const bets = await listBet(params);
     dispatch(userActions.setUserBets(bets));
   };
 };

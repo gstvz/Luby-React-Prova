@@ -4,3 +4,5 @@ export * from "./auth/login";
 export * from "./auth/resetPassword";
 
 export * from "./user/createUser";
+
+export * from "./bets/listBet";
