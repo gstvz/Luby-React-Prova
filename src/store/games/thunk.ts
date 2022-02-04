@@ -1,8 +1,6 @@
-import { api } from "../../api/api";
-import { getUserToken } from "@helpers";
 import { Bets } from "@types";
 import { gamesActions } from "@store";
-import { listGames } from "@services";
+import { listGames, newBet } from "@services";
 
 export const getGamesData = () => {
   return async (dispatch: Function) => {
@@ -19,19 +17,11 @@ export const getGamesData = () => {
 
 export const postBetData = (bets: Bets) => {
   return async (dispatch: Function) => {
-    const postData = async () => {
-      const response = await api.post("bet/new-bet", bets, {
-        headers: {
-          Authorization: `Bearer ${getUserToken()}`,
-        },
-      });
+    const response = await newBet(bets);
 
-      if (response.status === 200) {
-        dispatch(gamesActions.saveBet());
-        dispatch(gamesActions.calculateCartTotal());
-      }
-    };
-
-    postData();
+    if (response.status === 200) {
+      dispatch(gamesActions.saveBet());
+      dispatch(gamesActions.calculateCartTotal());
+    }
   };
 };
