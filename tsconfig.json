@@ -8,6 +8,7 @@
       "@types": ["./src/shared/types/index"],
       "@store": ["./src/store/index"],
       "@routes": ["./src/routes/index"],
+      "@pages": ["./src/pages/index"],
     },
     "target": "es5",
     "lib": [

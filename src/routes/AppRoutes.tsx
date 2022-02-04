@@ -2,9 +2,7 @@ import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { UserState } from "../shared/types";
-import { AuthPage } from "../pages/AuthPage/AuthPage";
-import { HomePage } from "../pages/HomePage/HomePage";
-import { BetPage } from "../pages/BetPage/BetPage";
+import { AuthPage, HomePage, BetPage } from "@pages";
 import { userActions } from "../store/user/user";
 
 export const AppRoutes = () => {
