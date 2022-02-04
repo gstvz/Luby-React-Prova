@@ -37,8 +37,6 @@ export const GameFilter = (props: GameFilterProps) => {
       return [...prevSelectedGames, selectedGame];
     });
 
-    console.log(props.selectedGames);
-
     dispatch(
       gamesActions.setActiveGame({
         activeGame: newActiveGame,
