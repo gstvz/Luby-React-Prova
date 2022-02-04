@@ -4,7 +4,11 @@ import { isEmailValid } from "@helpers";
 import { postRegisterUser } from "@store";
 import * as S from "./styles";
 
-export const RegisterForm = () => {
+type RegisterFormProps = {
+  isAccount?: boolean;
+}
+
+export const RegisterForm = ({ isAccount }: RegisterFormProps) => {
   const dispatch = useDispatch();
   const nameInputRef = useRef<HTMLInputElement>(null);
   const emailInputRef = useRef<HTMLInputElement>(null);
@@ -28,12 +32,17 @@ export const RegisterForm = () => {
       password: enteredPassword,
     };
 
+    const updatedUser = {
+      email: enteredEmail,
+      name: enteredName,
+    };
+
     dispatch(postRegisterUser(newUser));
   };
 
   return (
     <S.Container>
-      <S.FormTitle>Registration</S.FormTitle>
+      <S.FormTitle>{isAccount ? "Update Account" : "Registration"}</S.FormTitle>
       <S.Form onSubmit={handleSubmit}>
         <S.Label htmlFor="name">
           <S.Input
@@ -41,6 +50,7 @@ export const RegisterForm = () => {
             id="name"
             placeholder="Name"
             ref={nameInputRef}
+            required
           />
         </S.Label>
         <S.Label htmlFor="email">
@@ -49,18 +59,23 @@ export const RegisterForm = () => {
             id="email"
             placeholder="Email"
             ref={emailInputRef}
+            required
           />
-        </S.Label>
-        <S.Label htmlFor="password">
-          <S.Input
-            type="password"
-            id="password"
-            placeholder="Password"
-            ref={passwordInputRef}
-          />
-        </S.Label>
+        </S.Label>        
+        {!isAccount ?
+          <S.Label htmlFor="password">
+            <S.Input
+              type="password"
+              id="password"
+              placeholder="Password"
+              ref={passwordInputRef}
+              required
+            />
+          </S.Label> :
+          ''
+        }
         <S.Button>
-          Register
+          {isAccount ? "Save" : "Register"}
           <S.ArrowRight />
         </S.Button>
       </S.Form>

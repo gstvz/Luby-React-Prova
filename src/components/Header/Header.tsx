@@ -40,7 +40,7 @@ export const Header = (props: HeaderProps) => {
             {!props.isHome ? <S.MenuItemLink to="/">Home</S.MenuItemLink> : ""}
           </S.MenuItem>
           <S.MenuItem isMenuOpen={isMenuOpen}>
-            <S.MenuItemLink to="/" onClick={handleMobileMenu}>
+            <S.MenuItemLink to="/account" onClick={handleMobileMenu}>
               Account
             </S.MenuItemLink>
           </S.MenuItem>

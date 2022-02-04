@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { UserState } from "@types";
-import { AuthPage, HomePage, BetPage } from "@pages";
+import { AuthPage, HomePage, BetPage, AccountPage } from "@pages";
 import { userActions } from "@store";
 
 export const AppRoutes = () => {
@@ -25,6 +25,10 @@ export const AppRoutes = () => {
       <Route
         path="bet"
         element={isAuthenticated ? <BetPage /> : <Navigate to="/auth" />}
+      />
+      <Route
+        path="account"
+        element={isAuthenticated ? <AccountPage /> : <Navigate to="/auth" />}
       />
     </Routes>
   );
