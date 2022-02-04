@@ -2,7 +2,7 @@ import { api } from "../../api/api";
 import { getUserToken } from "@helpers";
 import { LoginData, NewUser } from "@types";
 import { userActions } from "@store";
-import { postData } from "src/shared/services/auth/login";
+import { createUser, postData } from "@services";
 
 export const postUserData = (loginData: LoginData) => {
   return async (dispatch: Function) => {
@@ -13,14 +13,11 @@ export const postUserData = (loginData: LoginData) => {
 
 export const postRegisterUser = (newUser: NewUser) => {
   return async (dispatch: Function) => {
-    const postData = async () => {
-      const response = await api.post("user/create", newUser);
-      if (response.status === 200) {
-        dispatch(userActions.registerUser());
-      }
-    };
+    const response = await createUser(newUser);
 
-    postData();
+    if (response.status === 200) {
+      dispatch(userActions.registerUser());
+    }
   };
 };
 
