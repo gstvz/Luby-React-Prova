@@ -2,8 +2,7 @@ import React, { SetStateAction } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createBet, formatToBRL } from "@helpers";
 import { GamesState } from "@types";
-import { gamesActions } from "../../store/games/games";
-import { postBetData } from "../../store/games/thunk";
+import { gamesActions, postBetData } from "@store";
 import * as S from "./styles";
 
 type CartProps = {

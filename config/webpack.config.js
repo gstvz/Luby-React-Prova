@@ -312,6 +312,7 @@ module.exports = function (webpackEnv) {
         '@helpers': path.resolve(__dirname, '../src/shared/helpers', ),
         '@styles': path.resolve(__dirname, '../src/shared/styles', ),
         '@types': path.resolve(__dirname, '../src/shared/types', ),
+        '@store': path.resolve(__dirname, '../src/store', ),
         // Support React Native Web
         // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
         'react-native': 'react-native-web',

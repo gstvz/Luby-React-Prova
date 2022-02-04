@@ -6,6 +6,7 @@
       "@helpers": ["./src/shared/helpers/index"],
       "@styles": ["./src/shared/styles/index"],
       "@types": ["./src/shared/types/index"],
+      "@store": ["./src/store/index"],
     },
     "target": "es5",
     "lib": [

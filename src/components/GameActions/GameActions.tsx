@@ -1,7 +1,7 @@
 import React, { SetStateAction } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { GamesState } from "@types";
-import { gamesActions } from "../../store/games/games";
+import { gamesActions } from "@store";
 import * as S from "./styles";
 
 type GameActionsProps = {

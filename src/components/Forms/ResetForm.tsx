@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { useDispatch } from "react-redux";
 import { isEmailValid } from "@helpers";
-import { postResetPassword } from "../../store/user/thunk";
+import { postResetPassword } from "@store";
 import * as S from "./styles";
 
 export const ResetForm = () => {

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { isEmailValid } from "@helpers";
 import { UserState } from "@types";
-import { postUserData } from "../../store/user/thunk";
+import { postUserData } from "@store";
 import * as S from "./styles";
 
 export const AuthForm = () => {

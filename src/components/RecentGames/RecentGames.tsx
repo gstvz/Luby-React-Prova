@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { GamesState, UserState } from "@types";
-import { getGamesData } from "../../store/games/thunk";
-import { getUserBets } from "../../store/user/thunk";
+import { getGamesData, getUserBets } from "@store";
 import { GameFilter, GamesList } from "@components";
 import * as S from "./styles";
 

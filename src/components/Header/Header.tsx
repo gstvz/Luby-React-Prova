@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { userActions } from "../../store/user/user";
+import { userActions } from "@store";
 import { Cart } from "@components";
 import * as S from "./styles";
 

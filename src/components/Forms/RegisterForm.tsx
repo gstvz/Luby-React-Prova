@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { useDispatch } from "react-redux";
 import { isEmailValid } from "@helpers";
-import { postRegisterUser } from "../../store/user/thunk";
+import { postRegisterUser } from "@store";
 import * as S from "./styles";
 
 export const RegisterForm = () => {

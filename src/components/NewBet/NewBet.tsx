@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getGamesData } from "../../store/games/thunk";
-import { gamesActions } from "../../store/games/games";
+import { getGamesData, gamesActions } from "@store";
 import { GamesState } from "@types";
-import { GameActions } from "../GameActions/GameActions";
-import { GameChoice, GameBet } from "@components";
+import { GameChoice, GameBet, GameActions } from "@components";
 import * as S from "./styles";
 
 export const NewBet = () => {
