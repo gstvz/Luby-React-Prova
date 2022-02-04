@@ -17,7 +17,7 @@ export const Container = styled.header`
   display: flex;
   height: 7rem;
   justify-content: center;
-  width: 100vw;
+  width: 100%;
 `;
 
 export const Nav = styled.nav<MobileMenuProps>`
