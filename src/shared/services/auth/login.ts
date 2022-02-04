@@ -1,7 +1,7 @@
 import { api } from "../axiosConfig";
 import { LoginData } from "@types";
 
-export const postData = async (loginData: LoginData) => {
+export const loginUser = async (loginData: LoginData) => {
     const response = await api.post("login", loginData);
 
     return {

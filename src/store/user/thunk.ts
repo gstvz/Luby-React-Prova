@@ -2,11 +2,11 @@ import { api } from "../../api/api";
 import { getUserToken } from "@helpers";
 import { LoginData, NewUser } from "@types";
 import { userActions } from "@store";
-import { createUser, postData, resetPassword } from "@services";
+import { createUser, loginUser, resetPassword } from "@services";
 
 export const postUserData = (loginData: LoginData) => {
   return async (dispatch: Function) => {
-    const userData = await postData(loginData);
+    const userData = await loginUser(loginData);
     dispatch(userActions.loginUser(userData));
   };
 };
