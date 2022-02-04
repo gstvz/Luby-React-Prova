@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { UserData } from "../../shared/types/index";
+import { UserData } from "@types";
 
 const initialState: UserData = {
   isAuthenticated: false,
@@ -22,7 +22,7 @@ const initialState: UserData = {
   },
 };
 
-const userSlice = createSlice({
+export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
@@ -66,4 +66,3 @@ const userSlice = createSlice({
 });
 
 export const userActions = userSlice.actions;
-export default userSlice;

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { GameData, Bet } from "../../shared/types/index";
+import { GameData, Bet } from "@types";
 
 type GamesState = {
   min_cart_value: number;
@@ -27,7 +27,7 @@ const initialState: GamesState = {
   cartTotal: 0,
 };
 
-const gamesSlice = createSlice({
+export const gamesSlice = createSlice({
   name: "games",
   initialState,
   reducers: {
@@ -70,4 +70,3 @@ const gamesSlice = createSlice({
 });
 
 export const gamesActions = gamesSlice.actions;
-export default gamesSlice;

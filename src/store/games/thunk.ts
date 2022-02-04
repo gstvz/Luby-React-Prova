@@ -1,7 +1,7 @@
 import { api } from "../../api/api";
-import { getUserToken } from "../../shared/helpers/userToken";
-import { Bets } from "../../shared/types";
-import { gamesActions } from "./games";
+import { getUserToken } from "@helpers";
+import { Bets } from "@types";
+import { gamesActions } from "@store";
 
 export const getGamesData = () => {
   return async (dispatch: Function) => {

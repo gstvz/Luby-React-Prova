@@ -1,3 +1,5 @@
+export * from "./store";
+
 export * from "./games/games";
 export * from "./games/thunk";
 

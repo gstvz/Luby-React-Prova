@@ -1,7 +1,7 @@
 import { api } from "../../api/api";
-import { getUserToken } from "../../shared/helpers/userToken";
-import { LoginData, NewUser } from "../../shared/types";
-import { userActions } from "./user";
+import { getUserToken } from "@helpers";
+import { LoginData, NewUser } from "@types";
+import { userActions } from "@store";
 
 export const postUserData = (loginData: LoginData) => {
   return async (dispatch: Function) => {
