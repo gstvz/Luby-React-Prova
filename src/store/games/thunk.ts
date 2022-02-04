@@ -2,15 +2,12 @@ import { api } from "../../api/api";
 import { getUserToken } from "@helpers";
 import { Bets } from "@types";
 import { gamesActions } from "@store";
+import { listGames } from "@services";
 
 export const getGamesData = () => {
   return async (dispatch: Function) => {
-    const getData = async () => {
-      const response = await api.get("cart_games");
-      return response;
-    };
-
-    const gamesData = await getData();
+    const gamesData = await listGames();
+    
     dispatch(
       gamesActions.getGames({
         min_cart_value: gamesData.data.min_cart_value,
