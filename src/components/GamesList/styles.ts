@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const RecentGamesList = styled.ul`
+  align-self: center;
   display: flex;
   flex-direction: column;
   overflow-y: scroll;

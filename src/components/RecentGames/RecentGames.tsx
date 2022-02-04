@@ -17,12 +17,15 @@ export const RecentGames = () => {
   }, []);
 
   useEffect(() => {
-    const params = `type%5B%5D=${selectedGames.join("&type%5B%5D=")}`;
+    const params =
+      selectedGames.length > 0
+        ? `?type%5B%5D=${selectedGames.join("&type%5B%5D=")}`
+        : "";
     dispatch(getUserBets(params));
   }, [selectedGames]);
 
   return (
-    <>
+    <S.Container>
       <S.RecentGames>
         <S.RecentGamesFilter>
           <S.RecentGamesTitle>RECENT GAMES</S.RecentGamesTitle>
@@ -40,14 +43,14 @@ export const RecentGames = () => {
           <S.ArrowRight />
         </S.NewBet>
       </S.RecentGames>
-      {selectedGames.length === 0 ? (
+      {userBets.length === 0 ? (
         <S.EmptyGames>
           <S.EmptyCartIcon />
-          Não há jogos ativos!
+          Não há apostas feitas!
         </S.EmptyGames>
       ) : (
         <GamesList games={games} activeGame={activeGame} userBets={userBets} />
       )}
-    </>
+    </S.Container>
   );
 };

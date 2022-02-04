@@ -3,6 +3,12 @@ import { Link } from "react-router-dom";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { BsCartX } from "react-icons/bs";
 
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`
+
 export const RecentGames = styled.div`
   align-items: center;
   display: flex;
@@ -95,14 +101,17 @@ export const RecentGamesItemName = styled.p`
 `;
 
 export const EmptyGames = styled.p`
+  align-items: center;
   color: red;
-  font-size: 1.7rem;
+  display: flex;
+  font-size: 4rem;
   font-weight: normal;
-  margin-right: 1.5rem;
+  height: 100%;
+  justify-content: center;
 `;
 
-export const EmptyCartIcon = styled(BsCartX)`
-  height: 2.4rem;
+export const EmptyCartIcon = styled(BsCartX)`  
+  height: 5rem;
   margin-right: 1rem;
-  width: 2.4rem;
+  width: 5rem;
 `;
