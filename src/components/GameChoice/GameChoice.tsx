@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { GameData, GamesState } from "../../shared/types/index";
+import { GameData, GamesState } from "@types";
 import { GameButton } from "@components";
 import * as S from "./styles";
 

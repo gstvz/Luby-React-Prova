@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { GamesState } from "../../shared/types/index";
+import { GamesState } from "@types";
 import * as S from "./styles";
 
 type GameBetProps = {

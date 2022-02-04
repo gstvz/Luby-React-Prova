@@ -1,6 +1,6 @@
 import React from "react";
 import { formatDate, formatToBRL, padNumbers } from "@helpers";
-import { GameData, UserBets } from "../../shared/types";
+import { GameData, UserBets } from "@types";
 import * as S from "./styles";
 
 type GamesListProps = {

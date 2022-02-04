@@ -1,6 +1,6 @@
 import React, { SetStateAction } from "react";
 import { useDispatch } from "react-redux";
-import { GameData, UserBets } from "../../shared/types/index";
+import { GameData, UserBets } from "@types";
 import { gamesActions } from "../../store/games/games";
 import { GameButton } from "@components";
 import * as S from "./styles";

@@ -4,7 +4,8 @@
     "paths": {
       "@components": ["./src/components/index"],
       "@helpers": ["./src/shared/helpers/index"],
-      "@styles": ["./src/shared/styles/index"]
+      "@styles": ["./src/shared/styles/index"],
+      "@types": ["./src/shared/types/index"],
     },
     "target": "es5",
     "lib": [
