@@ -19,7 +19,7 @@ export const postBetData = (bets: Bets) => {
   return async (dispatch: Function) => {
     const response = await newBet(bets);
 
-    if (response.status === 200) {
+    if (response?.status === 200) {
       dispatch(gamesActions.saveBet());
       dispatch(gamesActions.calculateCartTotal());      
     }
