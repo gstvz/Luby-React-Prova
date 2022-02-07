@@ -1,7 +1,6 @@
-import { LoginData, NewUser } from "@types";
+import { LoginData } from "@types";
 import { userActions } from "@store";
 import {
-  createUser,
   listBet,
   loginUser,
   resetPassword,
@@ -11,16 +10,6 @@ export const postUserData = (loginData: LoginData) => {
   return async (dispatch: Function) => {
     const userData = await loginUser(loginData);
     dispatch(userActions.loginUser(userData));
-  };
-};
-
-export const postRegisterUser = (newUser: NewUser) => {
-  return async (dispatch: Function) => {
-    const response = await createUser(newUser);
-
-    if (response.status === 200) {
-      dispatch(userActions.registerUser());
-    }
   };
 };
 

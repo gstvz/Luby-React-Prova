@@ -26,9 +26,6 @@ export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    registerUser() {
-      alert("Usuário cadastrado!");
-    },
     getUser(state) {
       const isLoggedIn: string | null = localStorage.getItem("user");
 

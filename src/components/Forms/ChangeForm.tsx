@@ -1,13 +1,14 @@
 import React, { useRef } from "react";
 import { changePassword } from "@services";
 import * as S from "./styles";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export const ChangeForm = () => {
+  const navigate = useNavigate();
   const params = useParams();
   const passwordInputRef = useRef<HTMLInputElement>(null);
 
-  const handleSubmit = (event: React.MouseEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.MouseEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const enteredPassword = passwordInputRef.current?.value;
@@ -16,7 +17,8 @@ export const ChangeForm = () => {
       password: enteredPassword!,
     };
 
-    changePassword(newPassword, params.token!);
+    await changePassword(newPassword, params.token!);
+    navigate("/");
   };
 
   return (

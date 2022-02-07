@@ -1,21 +1,20 @@
 import React, { useRef } from "react";
-import { useDispatch } from "react-redux";
 import { isEmailValid } from "@helpers";
-import { postRegisterUser } from "@store";
 import * as S from "./styles";
-import { updateMyUser } from "@services";
+import { createUser, updateMyUser } from "@services";
+import { useNavigate } from "react-router-dom";
 
 type RegisterFormProps = {
   isAccount?: boolean;
 }
 
 export const RegisterForm = ({ isAccount }: RegisterFormProps) => {
-  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const nameInputRef = useRef<HTMLInputElement>(null);
   const emailInputRef = useRef<HTMLInputElement>(null);
   const passwordInputRef = useRef<HTMLInputElement>(null);
 
-  const handleSubmit = (event: React.MouseEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.MouseEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const enteredName = nameInputRef.current?.value;
@@ -39,9 +38,11 @@ export const RegisterForm = ({ isAccount }: RegisterFormProps) => {
     };
 
     if(isAccount) {
-      updateMyUser(updatedUser);
+      await updateMyUser(updatedUser);
+      navigate("/");
     } else {
-      dispatch(postRegisterUser(newUser));
+      await createUser(newUser);
+      navigate("/");
     }
   };
 
