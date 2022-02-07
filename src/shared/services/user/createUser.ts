@@ -6,7 +6,7 @@ import { errorMessage } from '@helpers';
 export const createUser = async (newUser: NewUser) => {  
   try {
     const response = await toast.promise(
-      api.post("user/createss", newUser),
+      api.post("user/create", newUser),
       {
         pending: 'Registering user...',
         success: 'User registered 👌'
