@@ -1,6 +1,11 @@
+import { errorMessage } from "@helpers";
 import { api } from "@services";
 
 export const listGames = async () => {
-  const response = await api.get("cart_games");
-  return response;
+  try {
+    const response = await api.get("cart_games");
+    return response;
+  } catch(error) {
+    errorMessage(error);
+  };
 };
