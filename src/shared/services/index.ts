@@ -2,6 +2,7 @@ export * from "./axiosConfig";
 
 export * from "./auth/loginUser";
 export * from "./auth/resetPassword";
+export * from "./auth/changePassword";
 
 export * from "./user/createUser";
 

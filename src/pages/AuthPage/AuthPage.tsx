@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { Footer, AuthForm, RegisterForm, ResetForm } from '@components';
+import { Footer, AuthForm, ChangeForm, RegisterForm, ResetForm } from '@components';
 import * as S from "./styles";
 
 export const AuthPage = () => {
@@ -18,6 +18,7 @@ export const AuthPage = () => {
           <Routes>
             <Route path="/" element={<AuthForm />} />
             <Route path="reset" element={<ResetForm />} />
+            <Route path="reset/:token" element={<ChangeForm />} />
             <Route path="register" element={<RegisterForm />} />
           </Routes>
         </S.Container>
