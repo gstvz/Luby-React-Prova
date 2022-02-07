@@ -1,4 +1,5 @@
 import React, { SetStateAction } from "react";
+import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from "react-redux";
 import { GamesState } from "@types";
 import { gamesActions } from "@store";
@@ -23,7 +24,11 @@ export const GameActions = (props: GameActionsProps) => {
     const numbersLeft = activeGame.max_number - props.selectedNumbers.length;
 
     if (numbersLeft === 0) {
-      alert("O seu jogo já está completo!");
+      toast.error('Your game is already completed!', {
+        autoClose: 2000,
+        draggable: false,
+        progress: undefined,
+        });
       return;
     }
 
@@ -85,11 +90,11 @@ export const GameActions = (props: GameActionsProps) => {
   const handleAddToCart = () => {
     if (props.selectedNumbers.length < activeGame.max_number) {
       const numbersLeft = activeGame.max_number - props.selectedNumbers.length;
-      alert(
-        `Ainda falta escolher ${numbersLeft} ${
-          numbersLeft === 1 ? "número" : "números"
-        }!`
-      );
+      toast.error(`You still have to choose ${numbersLeft} ${numbersLeft === 1 ? "number" : "numbers"}!`, {
+        autoClose: 2000,
+        draggable: false,
+        progress: undefined,
+        });
       return;
     }
 
@@ -111,7 +116,11 @@ export const GameActions = (props: GameActionsProps) => {
     };
 
     if (isGameAlreadyOnCart(newBet)) {
-      alert("Você já tem esse jogo no carrinho!");
+      toast.error('You already have this game on your cart!', {
+        autoClose: 2000,
+        draggable: false,
+        progress: undefined,
+        });
       return;
     }
 
