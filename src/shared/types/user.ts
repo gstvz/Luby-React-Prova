@@ -33,3 +33,8 @@ export type NewUser = {
   password?: string;
   name?: string;
 };
+
+export type UpdatedUser = {
+  email?: string;
+  name?: string;
+}

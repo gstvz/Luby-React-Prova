@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { isEmailValid } from "@helpers";
 import { postRegisterUser } from "@store";
 import * as S from "./styles";
+import { updateMyUser } from "@services";
 
 type RegisterFormProps = {
   isAccount?: boolean;
@@ -37,7 +38,11 @@ export const RegisterForm = ({ isAccount }: RegisterFormProps) => {
       name: enteredName,
     };
 
-    dispatch(postRegisterUser(newUser));
+    if(isAccount) {
+      updateMyUser(updatedUser);
+    } else {
+      dispatch(postRegisterUser(newUser));
+    }
   };
 
   return (

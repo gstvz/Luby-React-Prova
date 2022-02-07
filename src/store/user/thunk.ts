@@ -1,6 +1,11 @@
 import { LoginData, NewUser } from "@types";
 import { userActions } from "@store";
-import { createUser, listBet, loginUser, resetPassword } from "@services";
+import {
+  createUser,
+  listBet,
+  loginUser,
+  resetPassword,
+} from "@services";
 
 export const postUserData = (loginData: LoginData) => {
   return async (dispatch: Function) => {
