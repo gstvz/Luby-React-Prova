@@ -7,6 +7,7 @@
       "@styles": ["./src/shared/styles/index"],
       "@types": ["./src/shared/types/index"],
       "@services": ["./src/shared/services/index"],
+      "@schemas": ["./src/shared/schemas/index"],
       "@store": ["./src/store/index"],
       "@routes": ["./src/routes/index"],
       "@pages": ["./src/pages/index"],

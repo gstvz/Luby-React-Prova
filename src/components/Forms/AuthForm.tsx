@@ -5,7 +5,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { UserState } from "@types";
 import { postUserData } from "@store";
-import { loginSchema } from "src/shared/schemas/loginSchema";
+import { loginSchema } from "@schemas";
 import * as S from "./styles";
 
 type LoginInputs = {

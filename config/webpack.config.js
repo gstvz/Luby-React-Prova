@@ -313,6 +313,7 @@ module.exports = function (webpackEnv) {
         '@styles': path.resolve(__dirname, '../src/shared/styles', ),
         '@types': path.resolve(__dirname, '../src/shared/types', ),
         '@services': path.resolve(__dirname, '../src/shared/services', ),
+        '@schemas': path.resolve(__dirname, '../src/shared/schemas', ),
         '@store': path.resolve(__dirname, '../src/store', ),
         '@routes': path.resolve(__dirname, '../src/routes', ),
         '@pages': path.resolve(__dirname, '../src/pages', ),
