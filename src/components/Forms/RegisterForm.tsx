@@ -1,72 +1,58 @@
-import React, { useRef } from "react";
-import { isEmailValid } from "@helpers";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { yupResolver } from '@hookform/resolvers/yup';
+import { registerSchema } from "@schemas";
 import * as S from "./styles";
 import { createUser, updateMyUser } from "@services";
-import { useNavigate } from "react-router-dom";
 
 type RegisterFormProps = {
   isAccount?: boolean;
 }
 
+type RegisterInputs = {
+  name?: string,
+  email: string,
+  password?: string
+}
+
 export const RegisterForm = ({ isAccount }: RegisterFormProps) => {
   const navigate = useNavigate();
-  const nameInputRef = useRef<HTMLInputElement>(null);
-  const emailInputRef = useRef<HTMLInputElement>(null);
-  const passwordInputRef = useRef<HTMLInputElement>(null);
+  const { register, handleSubmit, formState: { errors }} = useForm<RegisterInputs>({
+    resolver: yupResolver(registerSchema)
+  });
 
-  const handleSubmit = async (event: React.MouseEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    const enteredName = nameInputRef.current?.value;
-    const enteredEmail = emailInputRef.current?.value;
-    const enteredPassword = passwordInputRef.current?.value;
-
-    if (!isEmailValid(enteredEmail!)) {
-      alert("Email inválido!");
-      return;
-    }
-
-    const newUser = {
-      name: enteredName,
-      email: enteredEmail,
-      password: enteredPassword,
-    };
-
-    const updatedUser = {
-      email: enteredEmail,
-      name: enteredName,
-    };
-
+  const onSubmit: SubmitHandler<RegisterInputs> = async(userData) => {
     if(isAccount) {
-      await updateMyUser(updatedUser);
-      navigate("/");
-    } else {
-      await createUser(newUser);
+      await updateMyUser(userData);
       navigate("/");
     }
+
+    await createUser(userData);
+    navigate("/");
   };
 
   return (
     <S.Container>
       <S.FormTitle>{isAccount ? "Update Account" : "Registration"}</S.FormTitle>
-      <S.Form onSubmit={handleSubmit}>
+      <S.Form onSubmit={handleSubmit(onSubmit)}>
         <S.Label htmlFor="name">
           <S.Input
             type="text"
             id="name"
             placeholder="Name"
-            ref={nameInputRef}
-            required
+            {...register("name")}
           />
+          <S.InvalidInput>{errors.name?.message}</S.InvalidInput>
         </S.Label>
         <S.Label htmlFor="email">
           <S.Input
             type="text"
             id="email"
             placeholder="Email"
-            ref={emailInputRef}
-            required
+            {...register("email")}
           />
+          <S.InvalidInput>{errors.email?.message}</S.InvalidInput>
         </S.Label>        
         {!isAccount ?
           <S.Label htmlFor="password">
@@ -74,9 +60,9 @@ export const RegisterForm = ({ isAccount }: RegisterFormProps) => {
               type="password"
               id="password"
               placeholder="Password"
-              ref={passwordInputRef}
-              required
+              {...register("password")}
             />
+            <S.InvalidInput>{errors.password?.message}</S.InvalidInput>
           </S.Label> :
           ''
         }
