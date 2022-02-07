@@ -27,7 +27,7 @@ export const ChangeForm = () => {
       <S.Form onSubmit={handleSubmit}>
         <S.Label htmlFor="password">
           <S.Input
-            type="text"
+            type="password"
             id="password"
             placeholder="New Password"
             ref={passwordInputRef}
