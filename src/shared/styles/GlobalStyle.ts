@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import 'react-toastify/dist/ReactToastify.css';
 
 export const GlobalStyle = createGlobalStyle`
   * {
@@ -33,5 +34,9 @@ export const GlobalStyle = createGlobalStyle`
 
   .swal2-popup {
     font-size: 1.5rem !important;
+  }
+
+  .Toastify__toast-container {
+    font-size: 1.5rem;
   }
 `;

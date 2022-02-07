@@ -1,4 +1,5 @@
 import React from "react";
+import { ToastContainer } from 'react-toastify';
 import { GlobalStyle } from "@styles";
 import { BrowserRouter } from "react-router-dom";
 import { AppRoutes } from "@routes";
@@ -8,6 +9,7 @@ function App() {
     <BrowserRouter>
       <AppRoutes />
       <GlobalStyle />
+      <ToastContainer />
     </BrowserRouter>
   );
 }
