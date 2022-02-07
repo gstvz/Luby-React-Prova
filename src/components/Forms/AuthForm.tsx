@@ -1,10 +1,17 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { isEmailValid } from "@helpers";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { yupResolver } from '@hookform/resolvers/yup';
 import { UserState } from "@types";
 import { postUserData } from "@store";
+import { loginSchema } from "src/shared/schemas/loginSchema";
 import * as S from "./styles";
+
+type LoginInputs = {
+  email: string,
+  password: string
+}
 
 export const AuthForm = () => {
   const dispatch = useDispatch();
@@ -12,25 +19,11 @@ export const AuthForm = () => {
   const isAuthenticated = useSelector(
     (state: UserState) => state.user.isAuthenticated
   );
-  const emailInputRef = useRef<HTMLInputElement>(null);
-  const passwordInputRef = useRef<HTMLInputElement>(null);
+  const { register, handleSubmit, formState: { errors }} = useForm<LoginInputs>({
+    resolver: yupResolver(loginSchema)
+  });
 
-  const handleSubmit = (event: React.MouseEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    const enteredEmail = emailInputRef.current?.value;
-    const enteredPassword = passwordInputRef.current?.value;
-
-    if (!isEmailValid(enteredEmail!)) {
-      alert("Email inválido!");
-      return;
-    }
-
-    const loginData = {
-      email: enteredEmail,
-      password: enteredPassword,
-    };
-
+  const onSubmit: SubmitHandler<LoginInputs> = loginData => {
     dispatch(postUserData(loginData));
   };
 
@@ -43,24 +36,24 @@ export const AuthForm = () => {
   return (
     <S.Container>
       <S.FormTitle>Authentication</S.FormTitle>
-      <S.Form onSubmit={handleSubmit}>
+      <S.Form onSubmit={handleSubmit(onSubmit)}>
         <S.Label htmlFor="email">
           <S.Input
             type="text"
             id="email"
             placeholder="Email"
-            ref={emailInputRef}
-            required
+            {...register("email")}
           />
+          <S.InvalidInput>{errors.email?.message}</S.InvalidInput>
         </S.Label>
         <S.Label htmlFor="password">
           <S.Input
             type="password"
             id="password"
             placeholder="Password"
-            ref={passwordInputRef}
-            required
+            {...register("password")}
           />
+          <S.InvalidInput>{errors.password?.message}</S.InvalidInput>
         </S.Label>
         <S.PasswordLink to="reset">I forgot my password</S.PasswordLink>
         <S.Button>
