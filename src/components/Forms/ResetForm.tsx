@@ -1,27 +1,22 @@
-import React, { useRef } from "react";
-import { isEmailValid } from "@helpers";
+import React from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { yupResolver } from '@hookform/resolvers/yup';
 import * as S from "./styles";
 import { useNavigate } from "react-router-dom";
 import { resetPassword } from "@services";
+import { resetSchema } from "@schemas";
+
+type ResetInput = {
+  email: string
+}
 
 export const ResetForm = () => {
   const navigate = useNavigate();
-  const emailInputRef = useRef<HTMLInputElement>(null);
+  const { register, handleSubmit, formState: { errors }} = useForm<ResetInput>({
+    resolver: yupResolver(resetSchema)
+  });
 
-  const handleSubmit = async (event: React.MouseEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    const enteredEmail = emailInputRef.current?.value;
-
-    if (!isEmailValid(enteredEmail!)) {
-      alert("Email inválido!");
-      return;
-    }
-
-    const userEmail = {
-      email: enteredEmail!,
-    };
-
+  const onSubmit: SubmitHandler<ResetInput> = async(userEmail) => {
     const userToken = await resetPassword(userEmail);
 
     navigate(`/auth/reset/${userToken}`);
@@ -30,15 +25,15 @@ export const ResetForm = () => {
   return (
     <S.Container>
       <S.FormTitle>Reset password</S.FormTitle>
-      <S.Form onSubmit={handleSubmit}>
+      <S.Form onSubmit={handleSubmit(onSubmit)}>
         <S.Label htmlFor="email">
           <S.Input
             type="text"
             id="email"
             placeholder="Email"
-            ref={emailInputRef}
-            required
+            {...register("email")}
           />
+          <S.InvalidInput>{errors.email?.message}</S.InvalidInput>
         </S.Label>
         <S.Button>
           Send Link <S.ArrowRight />
