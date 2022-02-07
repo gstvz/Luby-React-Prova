@@ -7,6 +7,7 @@ import { createBet, formatToBRL } from "@helpers";
 import { GamesState } from "@types";
 import { gamesActions, postBetData } from "@store";
 import * as S from "./styles";
+import { useNavigate } from "react-router-dom";
 
 type CartProps = {
   isCart: boolean;
@@ -14,7 +15,8 @@ type CartProps = {
 };
 
 export const Cart = (props: CartProps) => {
-  const MySwal = withReactContent(Swal)
+  const MySwal = withReactContent(Swal);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const games = useSelector((state: GamesState) => state.games.types);
   const minCart = useSelector(
@@ -64,6 +66,7 @@ export const Cart = (props: CartProps) => {
     const bets = createBet(cartGames);
     dispatch(postBetData(bets));
     props.setIsCart(false);
+    navigate("/");
   };
 
   const handleReturnButton = () => {

@@ -21,7 +21,7 @@ export const postBetData = (bets: Bets) => {
 
     if (response.status === 200) {
       dispatch(gamesActions.saveBet());
-      dispatch(gamesActions.calculateCartTotal());
+      dispatch(gamesActions.calculateCartTotal());      
     }
   };
 };
