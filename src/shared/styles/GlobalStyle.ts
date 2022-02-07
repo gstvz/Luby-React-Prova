@@ -30,4 +30,8 @@ export const GlobalStyle = createGlobalStyle`
   li {
     list-style-type: none;
   }
+
+  .swal2-popup {
+    font-size: 1.5rem !important;
+  }
 `;

@@ -1,4 +1,6 @@
 import React, { SetStateAction } from "react";
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content'
 import { useDispatch, useSelector } from "react-redux";
 import { createBet, formatToBRL } from "@helpers";
 import { GamesState } from "@types";
@@ -11,6 +13,7 @@ type CartProps = {
 };
 
 export const Cart = (props: CartProps) => {
+  const MySwal = withReactContent(Swal)
   const dispatch = useDispatch();
   const games = useSelector((state: GamesState) => state.games.types);
   const minCart = useSelector(
@@ -23,9 +26,28 @@ export const Cart = (props: CartProps) => {
     return `${index}_${new Date().getTime() + index}`;
   };
 
-  const handleDeleteGame = (numbers: string[]) => {
-    dispatch(gamesActions.removeFromCart(numbers));
-    dispatch(gamesActions.calculateCartTotal());
+  const handleDeleteGame = async (numbers: string[]) => {
+    await MySwal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, remove it!'
+    }).then((result) => {
+      if (!result.isConfirmed) {
+        return;
+      };
+
+      dispatch(gamesActions.removeFromCart(numbers));
+      dispatch(gamesActions.calculateCartTotal());
+      Swal.fire(
+        'Removed!',
+        'The game was removed from the cart.',
+        'success'
+      );
+    });
   };
 
   const handleSaveBet = () => {
