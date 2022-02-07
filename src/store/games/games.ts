@@ -71,6 +71,11 @@ export const gamesSlice = createSlice({
     saveBet(state) {
       state.bets = [];
       state.cartTotal = 0;
+      toast.success('Bet saved!', {
+        autoClose: 2000,
+        draggable: false,
+        progress: undefined,
+        });
     },
   },
 });

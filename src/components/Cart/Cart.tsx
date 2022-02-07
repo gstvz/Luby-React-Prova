@@ -1,6 +1,7 @@
 import React, { SetStateAction } from "react";
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content'
+import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from "react-redux";
 import { createBet, formatToBRL } from "@helpers";
 import { GamesState } from "@types";
@@ -52,9 +53,11 @@ export const Cart = (props: CartProps) => {
 
   const handleSaveBet = () => {
     if (cartTotal < minCart) {
-      alert(
-        `O carrinho não atingiu o valor mínimo de ${formatToBRL(minCart)}!`
-      );
+      toast.error(`The cart hasnt reached the minimun value of ${formatToBRL(minCart)}!`, {
+        autoClose: 2000,
+        draggable: false,
+        progress: undefined,
+        });
       return;
     }
 
