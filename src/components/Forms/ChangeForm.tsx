@@ -1,22 +1,23 @@
-import React, { useRef } from "react";
+import React from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { yupResolver } from '@hookform/resolvers/yup';
 import { changePassword } from "@services";
 import * as S from "./styles";
-import { useNavigate, useParams } from "react-router-dom";
+import { changeSchema } from "@schemas";
+
+type ChangeInput = {
+  password: string
+}
 
 export const ChangeForm = () => {
   const navigate = useNavigate();
   const params = useParams();
-  const passwordInputRef = useRef<HTMLInputElement>(null);
+  const { register, handleSubmit, formState: { errors }} = useForm<ChangeInput>({
+    resolver: yupResolver(changeSchema)
+  });
 
-  const handleSubmit = async (event: React.MouseEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    const enteredPassword = passwordInputRef.current?.value;
-
-    const newPassword = {
-      password: enteredPassword!,
-    };
-
+  const onSubmit: SubmitHandler<ChangeInput> = async(newPassword) => {
     await changePassword(newPassword, params.token!);
     navigate("/");
   };
@@ -24,14 +25,15 @@ export const ChangeForm = () => {
   return (
     <S.Container>
       <S.FormTitle>Reset password</S.FormTitle>
-      <S.Form onSubmit={handleSubmit}>
+      <S.Form onSubmit={handleSubmit(onSubmit)}>
         <S.Label htmlFor="password">
           <S.Input
             type="password"
             id="password"
-            placeholder="New Password"
-            ref={passwordInputRef}
+            placeholder="Password"
+            {...register("password")}
           />
+          <S.InvalidInput>{errors.password?.message}</S.InvalidInput>
         </S.Label>
         <S.Button>
           Reset <S.ArrowRight />
