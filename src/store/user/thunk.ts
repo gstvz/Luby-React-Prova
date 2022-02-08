@@ -9,7 +9,9 @@ import {
 export const postUserData = (loginData: LoginData) => {
   return async (dispatch: Function) => {
     const userData = await loginUser(loginData);
-    dispatch(userActions.loginUser(userData));
+    if(userData) {
+      dispatch(userActions.loginUser(userData));
+    }
   };
 };
 
