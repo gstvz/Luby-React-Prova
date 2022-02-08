@@ -41,6 +41,10 @@ export const TopSpan = styled.span`
   max-width: 24.4rem;
   text-align: center;
   width: 100%;
+
+  @media (max-width: 996px) {
+    font-size: 5rem;
+  }
 `;
 export const CenterSpan = styled.span`
   background-color: #b5c401;
@@ -61,4 +65,8 @@ export const BottomSpan = styled.span`
   justify-content: center;
   align-items: center;
   width: 100%;
+
+  @media (max-width: 996px) {
+    font-size: 5.5rem;
+  }
 `;
