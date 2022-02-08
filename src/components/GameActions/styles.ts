@@ -18,6 +18,7 @@ export const Container = styled.div`
 `;
 
 export const ButtonsContainer = styled.div`
+  display: flex;
   flex: 1;
 
   @media (max-width: 996px) {
