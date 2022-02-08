@@ -9,7 +9,7 @@ function App() {
     <BrowserRouter>
       <AppRoutes />
       <GlobalStyle />
-      <ToastContainer />
+      <ToastContainer autoClose={500} draggable={false} pauseOnFocusLoss={false} />
     </BrowserRouter>
   );
 }

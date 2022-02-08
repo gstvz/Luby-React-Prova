@@ -24,11 +24,7 @@ export const GameActions = (props: GameActionsProps) => {
     const numbersLeft = activeGame.max_number - props.selectedNumbers.length;
 
     if (numbersLeft === 0) {
-      toast.error('Your game is already completed!', {
-        autoClose: 2000,
-        draggable: false,
-        progress: undefined,
-        });
+      toast.error('Your game is already completed!');
       return;
     }
 
@@ -90,11 +86,7 @@ export const GameActions = (props: GameActionsProps) => {
   const handleAddToCart = () => {
     if (props.selectedNumbers.length < activeGame.max_number) {
       const numbersLeft = activeGame.max_number - props.selectedNumbers.length;
-      toast.error(`You still have to choose ${numbersLeft} ${numbersLeft === 1 ? "number" : "numbers"}!`, {
-        autoClose: 2000,
-        draggable: false,
-        progress: undefined,
-        });
+      toast.error(`You still have to choose ${numbersLeft} ${numbersLeft === 1 ? "number" : "numbers"}!`);
       return;
     }
 
@@ -116,11 +108,7 @@ export const GameActions = (props: GameActionsProps) => {
     };
 
     if (isGameAlreadyOnCart(newBet)) {
-      toast.error('You already have this game on your cart!', {
-        autoClose: 2000,
-        draggable: false,
-        progress: undefined,
-        });
+      toast.error('You already have this game on your cart!');
       return;
     }
 

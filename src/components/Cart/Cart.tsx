@@ -55,11 +55,7 @@ export const Cart = (props: CartProps) => {
 
   const handleSaveBet = () => {
     if (cartTotal < minCart) {
-      toast.error(`The cart hasnt reached the minimun value of ${formatToBRL(minCart)}!`, {
-        autoClose: 2000,
-        draggable: false,
-        progress: undefined,
-        });
+      toast.error(`The cart hasnt reached the minimun value of ${formatToBRL(minCart)}!`);
       return;
     }
 

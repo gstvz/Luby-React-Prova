@@ -46,11 +46,7 @@ export const gamesSlice = createSlice({
     addGameToCart(state, action) {
       state.bets = [...state.bets, action.payload];
       state.selectedNumbers = [];
-      toast.success('Game added to cart!', {
-        autoClose: 2000,
-        draggable: false,
-        progress: undefined,
-        });
+      toast.success('Game added to cart!');
     },
     calculateCartTotal(state) {
       const cartTotal = state.bets
@@ -71,11 +67,7 @@ export const gamesSlice = createSlice({
     saveBet(state) {
       state.bets = [];
       state.cartTotal = 0;
-      toast.success('Bet saved!', {
-        autoClose: 2000,
-        draggable: false,
-        progress: undefined,
-        });
+      toast.success('Bet saved!');
     },
   },
 });
