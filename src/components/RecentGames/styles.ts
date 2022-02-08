@@ -58,6 +58,10 @@ export const NewBet = styled(Link)`
   font-size: 2.4rem;
   text-decoration: none;
   text-align: right;
+
+  @media (max-width: 996px) {
+    display: none;
+  }
 `;
 
 export const ArrowRight = styled(AiOutlineArrowRight)`
