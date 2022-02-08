@@ -1,15 +1,16 @@
-import * as yup from 'yup';
+import * as yup from "yup";
 
 export const registerSchema = yup.object({
   name: yup
     .string()
-    .required('Required field.'),
-  email: yup
-      .string()
-      .email('Invalid email.')
-      .required('Required field.'),
+    .max(50, "Must have a maximum of 50 characters.")
+    .matches(/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$/, {
+      message: "Must contain only letters, acentuation and spaces.",
+    })
+    .required("Required field."),
+  email: yup.string().email("Invalid email.").required("Required field."),
   password: yup
-      .string()
-      .max(6, 'The password max length is 6 characters.')
-      .required('Required field.')
+    .string()
+    .max(6, "Must have a maximum of 6 characters.")
+    .required("Required field."),
 });
