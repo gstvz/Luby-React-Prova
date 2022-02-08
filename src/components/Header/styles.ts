@@ -6,6 +6,7 @@ import {
   AiOutlineClose,
   AiOutlineShoppingCart,
 } from "react-icons/ai";
+import { IoGameControllerOutline } from "react-icons/io5";
 
 type MobileMenuProps = {
   isMenuOpen: boolean;
@@ -126,7 +127,7 @@ export const ArrowRight = styled(AiOutlineArrowRight)`
   width: 2.4rem;
 `;
 
-export const CartButton = styled.button<MobileMenuProps>`
+export const WildButton = styled.button<MobileMenuProps>`
   display: none;
 
   @media (max-width: 996px) {
@@ -143,6 +144,12 @@ export const CartButton = styled.button<MobileMenuProps>`
       margin-right: 1rem;    
     `}
   }
+`;
+
+export const GameIcon = styled(IoGameControllerOutline)`
+  color: #707070;
+  height: 2.4rem;
+  width: 2.4rem;
 `;
 
 export const CartIcon = styled(AiOutlineShoppingCart)`
