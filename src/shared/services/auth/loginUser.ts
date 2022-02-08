@@ -1,10 +1,14 @@
+import { toast } from "react-toastify";
 import { api } from "../axiosConfig";
 import { LoginData } from "@types";
 import { errorMessage } from "@helpers";
 
 export const loginUser = async (loginData: LoginData) => {
   try {
-    const response = await api.post("login", loginData)
+    const response = await toast.promise(api.post("login", loginData), {
+      pending: 'Logging in...',
+      success: 'User logged 👌'
+    })
     .then(res => {
       return {
         id: res.data.user.id,
