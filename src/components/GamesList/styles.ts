@@ -5,8 +5,7 @@ export const RecentGamesList = styled.ul`
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
-  max-height: calc(100vh - 25rem);
-  width: 60rem;
+  max-width: 60rem;
 
   &::-webkit-scrollbar {
     width: 0.4rem;
@@ -30,7 +29,7 @@ export const RecentGamesItem = styled.li`
   flex-direction: column;
   border-left: 6px solid ${(props) => props.color};
   border-radius: 4px;
-  margin-bottom: 3rem;
+  margin: 1rem;
 `;
 
 export const RecentGamesItemNumbers = styled.p`
