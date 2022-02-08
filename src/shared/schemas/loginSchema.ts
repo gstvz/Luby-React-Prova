@@ -1,12 +1,9 @@
-import * as yup from 'yup';
+import * as yup from "yup";
 
 export const loginSchema = yup.object({
-  email: yup
-      .string()
-      .email('E-mail inválido.')
-      .required('Campo obrigatório.'),
+  email: yup.string().email("Invalid email.").required("Required field."),
   password: yup
-      .string()
-      .max(6, 'Senha inválida.')
-      .required('Campo obrigatório.')
+    .string()
+    .max(6, "Invalid password.")
+    .required("Required field."),
 });

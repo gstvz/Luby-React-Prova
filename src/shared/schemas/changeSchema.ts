@@ -1,8 +1,8 @@
-import * as yup from 'yup';
+import * as yup from "yup";
 
 export const changeSchema = yup.object({
   password: yup
     .string()
-    .max(6, 'The password can have only 6 characters.')
-    .required('Required field.')
+    .max(6, "Must have a maximum of 6 characters.")
+    .required("Required field."),
 });
