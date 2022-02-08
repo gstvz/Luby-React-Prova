@@ -5,7 +5,7 @@ import { Header, Footer, RegisterForm } from '@components';
 export const AccountPage = () => {
   return (
     <>
-      <Header />
+      <Header isAccount />
         <S.Main>
           <RegisterForm isAccount />
         </S.Main>
