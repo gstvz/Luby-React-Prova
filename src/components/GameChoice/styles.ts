@@ -19,6 +19,8 @@ export const Games = styled.div`
   margin-bottom: 1rem;
 
   @media (max-width: 996px) {
-    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 1rem;
   }
 `;
