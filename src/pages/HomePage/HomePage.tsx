@@ -1,6 +1,6 @@
 import React from "react";
-import { Header, Footer, RecentGames } from "@components";
 import * as S from "./styles";
+import { Header, Footer, RecentGames } from "@components";
 
 export const HomePage = () => {
   return (

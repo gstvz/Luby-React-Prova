@@ -1,23 +1,27 @@
 import React from "react";
+import * as S from "./styles";
 import { useNavigate, useParams } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { yupResolver } from '@hookform/resolvers/yup';
+import { yupResolver } from "@hookform/resolvers/yup";
 import { changePassword } from "@services";
-import * as S from "./styles";
 import { changeSchema } from "@schemas";
 
 type ChangeInput = {
-  password: string
-}
+  password: string;
+};
 
 export const ChangeForm = () => {
   const navigate = useNavigate();
   const params = useParams();
-  const { register, handleSubmit, formState: { errors }} = useForm<ChangeInput>({
-    resolver: yupResolver(changeSchema)
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ChangeInput>({
+    resolver: yupResolver(changeSchema),
   });
 
-  const onSubmit: SubmitHandler<ChangeInput> = async(newPassword) => {
+  const onSubmit: SubmitHandler<ChangeInput> = async (newPassword) => {
     await changePassword(newPassword, params.token!);
     navigate("/");
   };

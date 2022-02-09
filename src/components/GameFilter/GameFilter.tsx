@@ -1,9 +1,9 @@
 import React, { SetStateAction } from "react";
+import * as S from "./styles";
 import { useDispatch } from "react-redux";
 import { GameData, UserBets } from "@types";
 import { gamesActions } from "@store";
 import { GameButton } from "@components";
-import * as S from "./styles";
 
 type GameFilterProps = {
   games: GameData[];
@@ -13,19 +13,25 @@ type GameFilterProps = {
   setSelectedGames: React.Dispatch<SetStateAction<string[]>>;
 };
 
-export const GameFilter = (props: GameFilterProps) => {
+export const GameFilter = ({
+  games,
+  activeGame,
+  userBets,
+  selectedGames,
+  setSelectedGames,
+}: GameFilterProps) => {
   const dispatch = useDispatch();
 
   const handleGameButtonClick = (
     event: React.MouseEvent<HTMLButtonElement>
   ) => {
     const selectedGame = (event.target as HTMLButtonElement).value;
-    const newActiveGame = props.games.find(
+    const newActiveGame = games.find(
       (game) => game.type === selectedGame
     );
 
-    if (props.selectedGames.includes(selectedGame)) {
-      props.setSelectedGames((prevSelectedGames) => {
+    if (selectedGames.includes(selectedGame)) {
+      setSelectedGames((prevSelectedGames) => {
         return prevSelectedGames.filter((prevSelectedGame) => {
           return prevSelectedGame !== selectedGame;
         });
@@ -33,7 +39,7 @@ export const GameFilter = (props: GameFilterProps) => {
       return;
     }
 
-    props.setSelectedGames((prevSelectedGames) => {
+    setSelectedGames((prevSelectedGames) => {
       return [...prevSelectedGames, selectedGame];
     });
 
@@ -46,14 +52,14 @@ export const GameFilter = (props: GameFilterProps) => {
 
   return (
     <S.Container>
-      {props.games.map((game) => {
+      {games.map((game) => {
         return (
           <GameButton
             key={game.id}
             color={game.color}
             value={game.type}
             handleGameButtonClick={handleGameButtonClick}
-            isActive={props.selectedGames.includes(game.type)}
+            isActive={selectedGames.includes(game.type)}
           >
             {game.type}
           </GameButton>

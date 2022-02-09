@@ -1,22 +1,26 @@
 import React from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
-import { yupResolver } from '@hookform/resolvers/yup';
 import * as S from "./styles";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
 import { resetPassword } from "@services";
 import { resetSchema } from "@schemas";
 
 type ResetInput = {
-  email: string
-}
+  email: string;
+};
 
 export const ResetForm = () => {
   const navigate = useNavigate();
-  const { register, handleSubmit, formState: { errors }} = useForm<ResetInput>({
-    resolver: yupResolver(resetSchema)
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ResetInput>({
+    resolver: yupResolver(resetSchema),
   });
 
-  const onSubmit: SubmitHandler<ResetInput> = async(userEmail) => {
+  const onSubmit: SubmitHandler<ResetInput> = async (userEmail) => {
     const userToken = await resetPassword(userEmail);
 
     navigate(`/auth/reset/${userToken}`);

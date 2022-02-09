@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
+import * as S from "./styles";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { userActions } from "@store";
 import { Cart } from "@components";
-import * as S from "./styles";
 
 type HeaderProps = {
   isHome?: boolean;
   isAccount?: boolean;
 };
 
-export const Header = (props: HeaderProps) => {
+export const Header = ({ isHome, isAccount }: HeaderProps) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -49,10 +49,10 @@ export const Header = (props: HeaderProps) => {
         </S.Logo>
         <S.Menu isMenuOpen={isMenuOpen}>
           <S.MenuItem isMenuOpen={isMenuOpen}>
-            {!props.isHome ? <S.MenuItemLink to="/">Home</S.MenuItemLink> : null}
+            {!isHome ? <S.MenuItemLink to="/">Home</S.MenuItemLink> : null}
           </S.MenuItem>
           <S.MenuItem isMenuOpen={isMenuOpen}>
-            {!props.isAccount ? (
+            {!isAccount ? (
               <S.MenuItemLink to="/account" onClick={handleMobileMenu}>
                 Account
               </S.MenuItemLink>
@@ -64,11 +64,11 @@ export const Header = (props: HeaderProps) => {
               {!isMenuOpen && <S.ArrowRight />}
             </S.MenuItemLink>
           </S.MenuItem>
-          {!props.isHome && !props.isAccount ? (
+          {!isHome && !isAccount ? (
             <S.WildButton isMenuOpen={isMenuOpen} onClick={handleCartButton}>
               <S.CartIcon />
             </S.WildButton>
-          ) : props.isHome && !props.isAccount ? (
+          ) : isHome && !isAccount ? (
             <S.WildButton isMenuOpen={isMenuOpen} onClick={handleGameButton}>
               <S.GameIcon />
             </S.WildButton>

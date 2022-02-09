@@ -27,7 +27,7 @@ export const RecentGamesList = styled.ul`
 export const RecentGamesItem = styled.li`
   display: flex;
   flex-direction: column;
-  border-left: 6px solid ${(props) => props.color};
+  border-left: 6px solid ${({ color }) => color};
   border-radius: 4px;
   margin: 1rem;
 `;
@@ -47,7 +47,7 @@ export const RecentGamesItemDateAndPrice = styled.p`
 `;
 
 export const RecentGamesItemName = styled.p`
-  color: ${(props) => props.color};
+  color: ${({ color }) => color};
   font-size: 2rem;
   margin-left: 1rem;
   width: 24rem;

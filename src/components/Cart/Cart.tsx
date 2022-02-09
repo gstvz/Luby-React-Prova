@@ -1,20 +1,20 @@
 import React, { SetStateAction } from "react";
-import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content'
-import { toast } from 'react-toastify';
+import * as S from "./styles";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { createBet, formatToBRL } from "@helpers";
 import { GamesState } from "@types";
 import { gamesActions, postBetData } from "@store";
-import * as S from "./styles";
-import { useNavigate } from "react-router-dom";
 
 type CartProps = {
   isCart: boolean;
   setIsCart: React.Dispatch<SetStateAction<boolean>>;
 };
 
-export const Cart = (props: CartProps) => {
+export const Cart = ({ isCart, setIsCart }: CartProps) => {
   const MySwal = withReactContent(Swal);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -31,47 +31,45 @@ export const Cart = (props: CartProps) => {
 
   const handleDeleteGame = async (numbers: string[]) => {
     await MySwal.fire({
-      title: 'Are you sure?',
+      title: "Are you sure?",
       text: "You won't be able to revert this!",
-      icon: 'warning',
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, remove it!'
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, remove it!",
     }).then((result) => {
       if (!result.isConfirmed) {
         return;
-      };
+      }
 
       dispatch(gamesActions.removeFromCart(numbers));
       dispatch(gamesActions.calculateCartTotal());
-      Swal.fire(
-        'Removed!',
-        'The game was removed from the cart.',
-        'success'
-      );
+      Swal.fire("Removed!", "The game was removed from the cart.", "success");
     });
   };
 
   const handleSaveBet = () => {
     if (cartTotal < minCart) {
-      toast.error(`The cart hasnt reached the minimun value of ${formatToBRL(minCart)}!`);
+      toast.error(
+        `The cart hasnt reached the minimun value of ${formatToBRL(minCart)}!`
+      );
       return;
     }
 
     const bets = createBet(cartGames);
     dispatch(postBetData(bets));
-    props.setIsCart(false);
+    setIsCart(false);
     navigate("/");
   };
 
   const handleReturnButton = () => {
-    props.setIsCart(false);
+    setIsCart(false);
   };
 
   return (
-    <S.Aside isCart={props.isCart}>
-      {props.isCart && (
+    <S.Aside isCart={isCart}>
+      {isCart && (
         <S.ReturnButton onClick={handleReturnButton}>
           <S.ArrowLeft />
           Close Cart

@@ -5,10 +5,10 @@ type GameButtonProps = {
 };
 
 export const GameButton = styled.button<GameButtonProps>`
-  background-color: ${(props) => (props.isActive ? props.color : "#fff")};
+  background-color: ${({ isActive, color }) => (isActive ? color : "#fff")};
   border: 2px solid;
   border-radius: 100px;
-  color: ${(props) => (props.isActive ? "#fff" : props.color)};
+  color: ${({ isActive, color }) => (isActive ? "#fff" : color)};
   font-size: 1.4rem;
   font-style: inherit;
   font-weight: inherit;
@@ -18,7 +18,7 @@ export const GameButton = styled.button<GameButtonProps>`
   padding: 0.6rem 1rem;
 
   &:hover {
-    background-color: ${(props) => props.color};
+    background-color: ${({ color }) => color};
     color: #ffffff;
   }
 `;

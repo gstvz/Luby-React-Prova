@@ -1,14 +1,11 @@
 import { LoginData } from "@types";
 import { userActions } from "@store";
-import {
-  listBet,
-  loginUser,
-} from "@services";
+import { listBet, loginUser } from "@services";
 
 export const postUserData = (loginData: LoginData) => {
   return async (dispatch: Function) => {
     const userData = await loginUser(loginData);
-    if(userData) {
+    if (userData) {
       dispatch(userActions.loginUser(userData));
     }
   };

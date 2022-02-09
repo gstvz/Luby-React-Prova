@@ -5,7 +5,7 @@ export const listGames = async () => {
   try {
     const response = await api.get("cart_games");
     return response;
-  } catch(error) {
+  } catch (error) {
     errorMessage(error);
-  };
+  }
 };

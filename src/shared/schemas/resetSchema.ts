@@ -1,8 +1,5 @@
-import * as yup from 'yup';
+import * as yup from "yup";
 
 export const resetSchema = yup.object({
-  email: yup
-    .string()
-    .email('Invalid email.')
-    .required('Required field.')
+  email: yup.string().email("Invalid email.").required("Required field."),
 });

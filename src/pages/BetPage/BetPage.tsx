@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Header, Footer, NewBet, Cart } from "@components";
 import * as S from "./styles";
+import { Header, Footer, NewBet, Cart } from "@components";
 
 export const BetPage = () => {
   const [isCart, setIsCart] = useState<boolean>(false);

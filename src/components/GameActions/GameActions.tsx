@@ -1,16 +1,19 @@
 import React, { SetStateAction } from "react";
-import { toast } from 'react-toastify';
+import * as S from "./styles";
+import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { GamesState } from "@types";
 import { gamesActions } from "@store";
-import * as S from "./styles";
 
 type GameActionsProps = {
   selectedNumbers: string[];
   setSelectedNumberButtons: React.Dispatch<SetStateAction<string[]>>;
 };
 
-export const GameActions = (props: GameActionsProps) => {
+export const GameActions = ({
+  selectedNumbers,
+  setSelectedNumberButtons,
+}: GameActionsProps) => {
   const dispatch = useDispatch();
   const activeGame = useSelector((state: GamesState) => state.games.activeGame);
   const cartGames = useSelector((state: GamesState) => state.games.bets);
@@ -21,10 +24,10 @@ export const GameActions = (props: GameActionsProps) => {
   };
 
   const handleCompleteGame = () => {
-    const numbersLeft = activeGame.max_number - props.selectedNumbers.length;
+    const numbersLeft = activeGame.max_number - selectedNumbers.length;
 
     if (numbersLeft === 0) {
-      toast.error('Your game is already completed!');
+      toast.error("Your game is already completed!");
       return;
     }
 
@@ -37,27 +40,27 @@ export const GameActions = (props: GameActionsProps) => {
 
       if (
         !randomNumbers.includes(formattedNumber) &&
-        !props.selectedNumbers.includes(formattedNumber) &&
+        !selectedNumbers.includes(formattedNumber) &&
         formattedNumber !== "00"
       ) {
         randomNumbers.push(formattedNumber);
       }
     }
 
-    props.setSelectedNumberButtons((prevSelectedNumbers) => [
+    setSelectedNumberButtons((prevSelectedNumbers) => [
       ...prevSelectedNumbers,
       ...randomNumbers,
     ]);
 
     dispatch(
       gamesActions.setSelectedNumbers({
-        selectedNumbers: [...props.selectedNumbers, randomNumbers],
+        selectedNumbers: [...selectedNumbers, randomNumbers],
       })
     );
   };
 
   const handleClearGame = () => {
-    props.setSelectedNumberButtons([]);
+    setSelectedNumberButtons([]);
 
     dispatch(
       gamesActions.setSelectedNumbers({
@@ -84,13 +87,17 @@ export const GameActions = (props: GameActionsProps) => {
   };
 
   const handleAddToCart = () => {
-    if (props.selectedNumbers.length < activeGame.max_number) {
-      const numbersLeft = activeGame.max_number - props.selectedNumbers.length;
-      toast.error(`You still have to choose ${numbersLeft} ${numbersLeft === 1 ? "number" : "numbers"}!`);
+    if (selectedNumbers.length < activeGame.max_number) {
+      const numbersLeft = activeGame.max_number - selectedNumbers.length;
+      toast.error(
+        `You still have to choose ${numbersLeft} ${
+          numbersLeft === 1 ? "number" : "numbers"
+        }!`
+      );
       return;
     }
 
-    const sortedNumbers = props.selectedNumbers
+    const sortedNumbers = selectedNumbers
       .map((number) => {
         return parseInt(number);
       })
@@ -108,13 +115,13 @@ export const GameActions = (props: GameActionsProps) => {
     };
 
     if (isGameAlreadyOnCart(newBet)) {
-      toast.error('You already have this game on your cart!');
+      toast.error("You already have this game on your cart!");
       return;
     }
 
     dispatch(gamesActions.addGameToCart(newBet));
     dispatch(gamesActions.calculateCartTotal());
-    props.setSelectedNumberButtons([]);
+    setSelectedNumberButtons([]);
   };
 
   return (

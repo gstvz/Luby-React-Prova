@@ -36,7 +36,8 @@ export const ListItem = styled.li`
 `;
 
 export const NumberButton = styled.button<NumberButtonProps>`
-  background-color: ${(props) => (props.isSelected ? props.color : "#ADC0C4")};
+  background-color: ${({ isSelected, color }) =>
+    isSelected ? color : "#ADC0C4"};
   border: none;
   border-radius: 50%;
   color: #ffffff;

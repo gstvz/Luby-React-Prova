@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
+import * as S from "./styles";
 import { useDispatch, useSelector } from "react-redux";
 import { GamesState, UserState } from "@types";
 import { getGamesData, getUserBets } from "@store";
 import { GameFilter, GamesList } from "@components";
-import * as S from "./styles";
 
 export const RecentGames = () => {
   const dispatch = useDispatch();

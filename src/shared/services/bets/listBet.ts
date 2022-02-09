@@ -9,7 +9,7 @@ export const listBet = async (params: string) => {
       },
     });
     return response.data;
-  } catch(error) {
+  } catch (error) {
     errorMessage(error);
   }
 };

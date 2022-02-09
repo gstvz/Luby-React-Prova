@@ -37,4 +37,4 @@ export type NewUser = {
 export type UpdatedUser = {
   email?: string;
   name?: string;
-}
+};

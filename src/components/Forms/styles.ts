@@ -44,7 +44,7 @@ export const InvalidInput = styled.p`
   color: red;
   font-size: 1.2rem;
   font-weight: normal;
-`
+`;
 
 export const PasswordLink = styled(Link)`
   color: #c1c1c1;

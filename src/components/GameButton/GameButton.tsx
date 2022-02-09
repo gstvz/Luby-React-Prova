@@ -9,15 +9,21 @@ type GameButtonProps = {
   isActive: boolean;
 };
 
-export const GameButton = (props: GameButtonProps) => {
+export const GameButton = ({
+  children,
+  color,
+  value,
+  handleGameButtonClick,
+  isActive,
+}: GameButtonProps) => {
   return (
     <S.GameButton
-      color={props.color}
-      value={props.value}
-      isActive={props.isActive}
-      onClick={props.handleGameButtonClick}
+      color={color}
+      value={value}
+      isActive={isActive}
+      onClick={handleGameButtonClick}
     >
-      {props.children}
+      {children}
     </S.GameButton>
   );
 };

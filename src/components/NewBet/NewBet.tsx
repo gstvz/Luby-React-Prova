@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
+import * as S from "./styles";
 import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 import { getGamesData, gamesActions } from "@store";
 import { GamesState } from "@types";
 import { GameChoice, GameBet, GameActions } from "@components";
-import * as S from "./styles";
 
 export const NewBet = () => {
   const [selectedNumbers, setSelectedNumberButtons] = useState<string[]>([]);
@@ -45,7 +46,7 @@ export const NewBet = () => {
       setSelectedNumberButtons(filteredSelectedNumbers);
     } else {
       if (selectedNumbers.length === activeGame.max_number) {
-        alert(`Você já escolheu ${activeGame.max_number} números!`);
+        toast.error(`You already chose ${activeGame.max_number} numbers!`);
         return;
       } else {
         setSelectedNumberButtons((prevSelectedNumbers) => [

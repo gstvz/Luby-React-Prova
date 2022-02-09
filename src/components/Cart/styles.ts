@@ -19,8 +19,8 @@ export const Aside = styled.aside<AsideProps>`
   @media (max-width: 996px) {
     display: none;
 
-    ${(props) =>
-      props.isCart &&
+    ${({ isCart }) =>
+      isCart &&
       `
       align-items: center;
       background-color: #F7F7F7;
@@ -97,7 +97,7 @@ export const Trash = styled(BsTrash)`
 `;
 
 export const GameInfo = styled.div<ActiveGame>`
-  border-left: 4px solid ${(props) => props.color};
+  border-left: 4px solid ${({ color }) => color};
   border-radius: 4px;
   margin-bottom: 0.6rem;
   margin-left: 1.2rem;
@@ -112,7 +112,7 @@ export const GameNumbers = styled.p`
 `;
 
 export const GameData = styled.p<ActiveGame>`
-  color: ${(props) => props.color};
+  color: ${({ color }) => color};
   font-size: 1.6rem;
   margin-left: 1.2rem;
 

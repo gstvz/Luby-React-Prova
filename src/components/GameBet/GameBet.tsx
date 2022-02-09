@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
+import * as S from "./styles";
 import { useSelector } from "react-redux";
 import { GamesState } from "@types";
-import * as S from "./styles";
 
 type GameBetProps = {
   description: string;
@@ -10,7 +10,12 @@ type GameBetProps = {
   handleNumberButtonClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
-export const GameBet = (props: GameBetProps) => {
+export const GameBet = ({
+  description,
+  range,
+  selectedNumbers,
+  handleNumberButtonClick,
+}: GameBetProps) => {
   const [numberButtons, setNumberButtons] = useState<number[]>([]);
   const activeGame = useSelector((state: GamesState) => state.games.activeGame);
 
@@ -18,7 +23,7 @@ export const GameBet = (props: GameBetProps) => {
     const createNumberButtonsArray = () => {
       const numbersArray = [];
 
-      for (let number = 1; number <= props.range; number++) {
+      for (let number = 1; number <= range; number++) {
         numbersArray.push(number);
       }
 
@@ -26,7 +31,7 @@ export const GameBet = (props: GameBetProps) => {
     };
 
     createNumberButtonsArray();
-  }, [props.range]);
+  }, [range]);
 
   return (
     <S.Container>
@@ -34,7 +39,7 @@ export const GameBet = (props: GameBetProps) => {
         <p>
           <strong>Fill your bet</strong>
         </p>
-        <p>{props.description}</p>
+        <p>{description}</p>
       </S.Description>
       <S.List>
         {numberButtons.map((number) => {
@@ -44,10 +49,10 @@ export const GameBet = (props: GameBetProps) => {
             <S.ListItem key={number}>
               <S.NumberButton
                 value={formattedNumber}
-                onClick={props.handleNumberButtonClick}
+                onClick={handleNumberButtonClick}
                 color={activeGame.color}
                 isSelected={
-                  props.selectedNumbers.includes(formattedNumber) ? true : false
+                  selectedNumbers.includes(formattedNumber) ? true : false
                 }
               >
                 {formattedNumber}

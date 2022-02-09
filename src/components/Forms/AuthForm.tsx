@@ -1,17 +1,17 @@
 import React, { useEffect } from "react";
+import * as S from "./styles";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { yupResolver } from '@hookform/resolvers/yup';
+import { yupResolver } from "@hookform/resolvers/yup";
 import { UserState } from "@types";
 import { postUserData } from "@store";
 import { loginSchema } from "@schemas";
-import * as S from "./styles";
 
 type LoginInputs = {
-  email: string,
-  password: string
-}
+  email: string;
+  password: string;
+};
 
 export const AuthForm = () => {
   const dispatch = useDispatch();
@@ -19,11 +19,15 @@ export const AuthForm = () => {
   const isAuthenticated = useSelector(
     (state: UserState) => state.user.isAuthenticated
   );
-  const { register, handleSubmit, formState: { errors }} = useForm<LoginInputs>({
-    resolver: yupResolver(loginSchema)
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginInputs>({
+    resolver: yupResolver(loginSchema),
   });
 
-  const onSubmit: SubmitHandler<LoginInputs> = loginData => {
+  const onSubmit: SubmitHandler<LoginInputs> = (loginData) => {
     dispatch(postUserData(loginData));
   };
 

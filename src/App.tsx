@@ -1,7 +1,7 @@
 import React from "react";
-import { ToastContainer } from 'react-toastify';
 import { GlobalStyle } from "@styles";
 import { BrowserRouter } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import { AppRoutes } from "@routes";
 
 function App() {
@@ -9,7 +9,11 @@ function App() {
     <BrowserRouter>
       <AppRoutes />
       <GlobalStyle />
-      <ToastContainer autoClose={1000} draggable={false} pauseOnFocusLoss={false} />
+      <ToastContainer
+        autoClose={1000}
+        draggable={false}
+        pauseOnFocusLoss={false}
+      />
     </BrowserRouter>
   );
 }

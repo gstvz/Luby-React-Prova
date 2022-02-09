@@ -1,9 +1,9 @@
 import React from "react";
+import * as S from "./styles";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as S from "./styles";
 import { createUser, updateMyUser } from "@services";
 
 type RegisterFormProps = {

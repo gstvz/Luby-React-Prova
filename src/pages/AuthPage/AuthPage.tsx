@@ -1,7 +1,13 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
-import { Footer, AuthForm, ChangeForm, RegisterForm, ResetForm } from '@components';
 import * as S from "./styles";
+import { Route, Routes } from "react-router-dom";
+import {
+  Footer,
+  AuthForm,
+  ChangeForm,
+  RegisterForm,
+  ResetForm,
+} from "@components";
 
 export const AuthPage = () => {
   return (

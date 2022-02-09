@@ -28,12 +28,12 @@ export const Nav = styled.nav<MobileMenuProps>`
   width: 75%;
 
   @media (max-width: 996px) {
-    ${(props) =>
-      props.isMenuOpen &&
+    ${({ isMenuOpen }) =>
+      isMenuOpen &&
       `
         align-items: center;
         background-color: #F7F7F7;
-        display: ${props.isMenuOpen ? "flex" : "none"};
+        display: ${isMenuOpen ? "flex" : "none"};
         flex-direction: column;
         height: 100vh;
         position: fixed;
@@ -53,8 +53,8 @@ export const Logo = styled.h1<MobileMenuProps>`
   position: relative;
 
   @media(max-width: 996px) {
-    ${(props) =>
-      props.isMenuOpen &&
+    ${({ isMenuOpen }) =>
+      isMenuOpen &&
       `
       margin-right: 0;
     `}
@@ -78,8 +78,8 @@ export const Menu = styled.ul<MobileMenuProps>`
   @media (max-width: 996px) {
     justify-content: flex-end;
 
-    ${(props) =>
-      props.isMenuOpen &&
+    ${({ isMenuOpen }) =>
+      isMenuOpen &&
       `
       flex-direction: column;
       justify-content: center;
@@ -98,8 +98,8 @@ export const MenuItem = styled.li<MobileMenuProps>`
 
   @media (max-width: 996px) {
     display: none;
-    ${(props) =>
-      props.isMenuOpen &&
+    ${({ isMenuOpen }) =>
+      isMenuOpen &&
       `
       display: flex;
       padding: 1rem;
@@ -132,8 +132,8 @@ export const WildButton = styled.button<MobileMenuProps>`
   display: none;
 
   @media (max-width: 996px) {
-    ${(props) =>
-      props.isMenuOpen
+    ${({ isMenuOpen }) =>
+      isMenuOpen
         ? `
       display: none;
     `
@@ -166,7 +166,7 @@ export const MobileMenuButton = styled.button<MobileMenuProps>`
   display: none;
 
   @media (max-width: 996px) {
-    display: ${(props) => (props.isMenuOpen ? "none" : "flex")};
+    display: ${({ isMenuOpen }) => (isMenuOpen ? "none" : "flex")};
     justify-content: flex-end;
   }
 `;
@@ -184,7 +184,7 @@ export const CloseMobileMenuButton = styled.button<MobileMenuProps>`
   display: none;
 
   @media (max-width: 996px) {
-    display: ${(props) => props.isMenuOpen && "block"};
+    display: ${({ isMenuOpen }) => isMenuOpen && "block"};
   }
 `;
 

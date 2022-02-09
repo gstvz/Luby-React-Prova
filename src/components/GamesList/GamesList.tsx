@@ -1,7 +1,7 @@
 import React from "react";
+import * as S from "./styles";
 import { formatDate, formatToBRL, padNumbers } from "@helpers";
 import { GameData, UserBets } from "@types";
-import * as S from "./styles";
 
 type GamesListProps = {
   games: GameData[];
@@ -9,11 +9,11 @@ type GamesListProps = {
   userBets: UserBets;
 };
 
-export const GamesList = (props: GamesListProps) => {
+export const GamesList = ({ games, activeGame, userBets }: GamesListProps) => {
   return (
     <S.RecentGamesList>
-      {props.userBets.map((bet) => {
-        const color = props.games.find(
+      {userBets.map((bet) => {
+        const color = games.find(
           (game) => game.id === bet.type.id
         )?.color;
         const date = formatDate(bet.created_at!);
