@@ -47,6 +47,7 @@ export const RegisterForm = ({ isAccount }: RegisterFormProps) => {
     if (isAccount) {
       await updateMyUser(userData);
       navigate("/");
+      return;
     }
 
     await createUser(userData);

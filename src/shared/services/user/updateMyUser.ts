@@ -1,23 +1,21 @@
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 import { api } from "@services";
 import { UpdatedUser } from "@types";
-import { errorMessage, getUserToken } from "@helpers";
+import { errorMessage, feedbackMesssage, getUserToken } from "@helpers";
 
 export const updateMyUser = async (updatedUser: UpdatedUser) => {
   try {
-    const response = await toast.promise(
-      api.put("user/update", updatedUser, {
+    const feedback = toast.loading("Updating user...");
+    await api
+      .put("user/update", updatedUser, {
         headers: {
           Authorization: `Bearer ${getUserToken()}`,
-        }
-      }),
-      {
-        pending: 'Updating user...',
-        success: 'User updated 👌'
-      }
-    )  
-    return response;    
-  } catch(error) {
+        },
+      })
+      .then((res) => {
+        feedbackMesssage(feedback, res, "User updated! 👌");
+      });
+  } catch (error) {
     errorMessage(error);
   }
 };
