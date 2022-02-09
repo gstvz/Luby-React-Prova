@@ -122,6 +122,7 @@ export const GameActions = ({
     dispatch(gamesActions.addGameToCart(newBet));
     dispatch(gamesActions.calculateCartTotal());
     setSelectedNumberButtons([]);
+    toast.success('Game added to cart!');
   };
 
   return (

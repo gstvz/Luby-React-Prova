@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { toast } from "react-toastify";
 import { GameData, Bet } from "@types";
 
 type GamesState = {
@@ -46,7 +45,6 @@ export const gamesSlice = createSlice({
     addGameToCart(state, action) {
       state.bets = [...state.bets, action.payload];
       state.selectedNumbers = [];
-      toast.success("Game added to cart!");
     },
     calculateCartTotal(state) {
       const cartTotal = state.bets
@@ -66,7 +64,7 @@ export const gamesSlice = createSlice({
     },
     saveBet(state) {
       state.bets = [];
-      state.cartTotal = 0;
+      state.cartTotal = 0;      
     },
   },
 });
