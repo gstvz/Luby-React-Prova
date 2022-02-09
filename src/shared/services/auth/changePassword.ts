@@ -1,16 +1,14 @@
 import { toast } from 'react-toastify';
 import { api } from "@services";
-import { errorMessage } from "@helpers";
+import { errorMessage, feedbackMesssage } from "@helpers";
 
 export const changePassword = async (newPassword: { password: string }, token: string) => {  
   try {
-    await toast.promise(
-      api.post(`reset/${token}`, newPassword),
-      {
-        pending: 'Resetting password...',
-        success: 'Password reset 👌'        
-      }
-    )
+    const feedback = toast.loading("Resetting password...");
+    await api.post(`reset/${token}`, newPassword)
+    .then(res => {
+      feedbackMesssage(feedback, res, "Password reset 👌");
+    });
   } catch(error) {
     errorMessage(error);
   }
