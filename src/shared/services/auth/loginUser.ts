@@ -1,15 +1,14 @@
 import { toast } from "react-toastify";
 import { api } from "../axiosConfig";
 import { LoginData } from "@types";
-import { errorMessage } from "@helpers";
+import { errorMessage, feedbackMesssage } from "@helpers";
 
 export const loginUser = async (loginData: LoginData) => {
   try {
-    const response = await toast.promise(api.post("login", loginData), {
-      pending: 'Logging in...',
-      success: 'User logged 👌'
-    })
+    const feedback = toast.loading("Logging user...");
+    const response = await api.post("login", loginData)
     .then(res => {
+      feedbackMesssage(feedback, res, "User logged 👌");
       return {
         id: res.data.user.id,
         email: res.data.user.email,
@@ -23,7 +22,7 @@ export const loginUser = async (loginData: LoginData) => {
       }
 
       throw new Error(err.message);
-    })
+    });
 
     return response;
   } catch(error) {
