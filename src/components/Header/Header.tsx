@@ -48,16 +48,18 @@ export const Header = ({ isHome, isAccount }: HeaderProps) => {
           <S.LogoBorder />
         </S.Logo>
         <S.Menu isMenuOpen={isMenuOpen}>
-          <S.MenuItem isMenuOpen={isMenuOpen}>
-            {!isHome ? <S.MenuItemLink to="/">Home</S.MenuItemLink> : null}
-          </S.MenuItem>
-          <S.MenuItem isMenuOpen={isMenuOpen}>
-            {!isAccount ? (
+          {!isHome ? (
+            <S.MenuItem isMenuOpen={isMenuOpen}>
+              <S.MenuItemLink to="/">Home</S.MenuItemLink>
+            </S.MenuItem>
+          ) : null}
+          {!isAccount ? (
+            <S.MenuItem isMenuOpen={isMenuOpen}>
               <S.MenuItemLink to="/account" onClick={handleMobileMenu}>
                 Account
               </S.MenuItemLink>
-            ) : null}
-          </S.MenuItem>
+            </S.MenuItem>
+          ) : null}
           <S.MenuItem isMenuOpen={isMenuOpen}>
             <S.MenuItemLink to="/" onClick={handleLogOut}>
               Log Out
