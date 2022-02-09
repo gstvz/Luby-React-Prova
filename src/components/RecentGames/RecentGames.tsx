@@ -46,7 +46,7 @@ export const RecentGames = () => {
       {userBets.length === 0 ? (
         <S.EmptyGames>
           <S.EmptyCartIcon />
-          Não há apostas feitas!
+          There are no bets!
         </S.EmptyGames>
       ) : (
         <GamesList games={games} activeGame={activeGame} userBets={userBets} />

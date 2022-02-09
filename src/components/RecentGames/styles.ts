@@ -112,6 +112,10 @@ export const EmptyGames = styled.p`
   font-weight: normal;
   height: 100%;
   justify-content: center;
+
+  @media (max-width: 996px) {
+    font-size: 2rem;
+  }
 `;
 
 export const EmptyCartIcon = styled(BsCartX)`
