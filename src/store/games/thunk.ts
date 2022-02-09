@@ -5,7 +5,7 @@ import { listGames, newBet } from "@services";
 export const getGamesData = () => {
   return async (dispatch: Function) => {
     const gamesData = await listGames();
-    
+
     dispatch(
       gamesActions.getGames({
         min_cart_value: gamesData?.data.min_cart_value,
@@ -21,7 +21,7 @@ export const postBetData = (bets: Bets) => {
 
     if (response?.status === 200) {
       dispatch(gamesActions.saveBet());
-      dispatch(gamesActions.calculateCartTotal());      
+      dispatch(gamesActions.calculateCartTotal());
     }
   };
 };

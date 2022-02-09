@@ -66,8 +66,7 @@ export const gamesSlice = createSlice({
     },
     saveBet(state) {
       state.bets = [];
-      state.cartTotal = 0;
-      toast.success('Bet saved!');
+      state.cartTotal = 0;      
     },
   },
 });
