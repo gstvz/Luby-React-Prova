@@ -119,6 +119,7 @@ export const MenuItemLink = styled(Link)`
   align-items: center;
   display: flex;
   font-size: 2rem;
+  width: fit-content;
 `;
 
 export const ArrowRight = styled(AiOutlineArrowRight)`

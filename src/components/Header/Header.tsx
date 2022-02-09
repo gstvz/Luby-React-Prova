@@ -35,9 +35,9 @@ export const Header = (props: HeaderProps) => {
   };
 
   useEffect(() => {
-    if(isGame) {
+    if (isGame) {
       navigate("/bet");
-    };
+    }
   }, [isGame, navigate]);
 
   return (
@@ -49,12 +49,14 @@ export const Header = (props: HeaderProps) => {
         </S.Logo>
         <S.Menu isMenuOpen={isMenuOpen}>
           <S.MenuItem isMenuOpen={isMenuOpen}>
-            {!props.isHome ? <S.MenuItemLink to="/">Home</S.MenuItemLink> : ""}
+            {!props.isHome ? <S.MenuItemLink to="/">Home</S.MenuItemLink> : null}
           </S.MenuItem>
           <S.MenuItem isMenuOpen={isMenuOpen}>
-            <S.MenuItemLink to="/account" onClick={handleMobileMenu}>
-              Account
-            </S.MenuItemLink>
+            {!props.isAccount ? (
+              <S.MenuItemLink to="/account" onClick={handleMobileMenu}>
+                Account
+              </S.MenuItemLink>
+            ) : null}
           </S.MenuItem>
           <S.MenuItem isMenuOpen={isMenuOpen}>
             <S.MenuItemLink to="/" onClick={handleLogOut}>
