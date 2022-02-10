@@ -21,10 +21,10 @@ export const RegisterForm = ({ isAccount }: RegisterFormProps) => {
     name: yup
       .string()
       .max(50, "Must have a maximum of 50 characters.")
+      .required("Required field.")
       .matches(/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$/, {
         message: "Must contain only letters, acentuation and spaces.",
-      })
-      .required("Required field."),
+      }),
     email: yup.string().email("Invalid email.").required("Required field."),
     ...(!isAccount && {
       password: yup
