@@ -16,6 +16,7 @@ export const updateMyUser = async (updatedUser: UpdatedUser) => {
         feedbackMesssage(feedback, res, "User updated! 👌");
       });
   } catch (error) {
+    toast.dismiss();
     errorMessage(error);
   }
 };

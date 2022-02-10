@@ -19,6 +19,7 @@ export const newBet = async (bets: Bets) => {
 
     return response;
   } catch (error) {
+    toast.dismiss();
     errorMessage(error);
   }
 };

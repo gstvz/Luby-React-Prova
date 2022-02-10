@@ -12,6 +12,7 @@ export const changePassword = async (
       feedbackMesssage(feedback, res, "Password reset 👌");
     });
   } catch (error) {
+    toast.dismiss();
     errorMessage(error);
   }
 };

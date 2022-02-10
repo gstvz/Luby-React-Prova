@@ -10,6 +10,7 @@ export const createUser = async (newUser: NewUser) => {
       feedbackMesssage(feedback, res, "User registered! 👌");
     });
   } catch (error) {
+    toast.dismiss();
     errorMessage(error);
   }
 };

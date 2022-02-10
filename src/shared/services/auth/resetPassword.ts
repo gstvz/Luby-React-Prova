@@ -12,6 +12,7 @@ export const resetPassword = async (userEmail: { email: string }) => {
 
     return response;
   } catch (error) {
+    toast.dismiss();
     errorMessage(error);
   }
 };

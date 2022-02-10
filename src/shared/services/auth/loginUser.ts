@@ -27,6 +27,7 @@ export const loginUser = async (loginData: LoginData) => {
 
     return response;
   } catch (error) {
+    toast.dismiss();
     errorMessage(error);
   }
 };
