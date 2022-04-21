@@ -11,7 +11,7 @@ git clone https://github.com/gstvz/Luby-React-Prova.git
 
 ## 📂 Move yourself to the appropriate repository.
 ```bash
-cd todo-app
+cd luby-react-prova
 ```
 
 ## 🎉 Install the package dependencies.
